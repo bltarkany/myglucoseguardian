@@ -1,14 +1,28 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
 import './index.css';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
+import { Auth0Provider } from "./App/react-auth0-spa";
+import history from "./App/utils/history";
+
+const onRedirectCallback = appState => {
+    history.push(
+    appState && appState.targetUrl
+        ? appState.targetUrl
+        : window.location.pathname
+    );
+};
 
 render((
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <Auth0Provider
+    domain={"frosty-smoke-0050.auth0.com"}
+    client_id={"Cn1445IM2oUuQ5Oi9YierfUEF9AfA4VJ"}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={onRedirectCallback}
+    >
+    <App />
+    </Auth0Provider>
 ), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
