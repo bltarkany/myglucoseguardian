@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from "react";
 
-class Home extends Component {
-    render() {
-        return (
-            <div className="App">
-                <h1>Project Home</h1>
-                {/* link to List.js */}
-                <Link to={'./list'}>
-                    <button variant="raised">
-                        My List
-                    </button>
-                </Link>
-            </div>
-        );
-    }
-}
+import Hero from "../components/Hero";
+import Content from "../components/Content";
+
+const Home = () => (
+  <Fragment>
+    <Hero />
+    <hr />
+    <Content />
+  </Fragment>
+);
 
 export default Home;
