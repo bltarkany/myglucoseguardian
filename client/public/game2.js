@@ -1,6 +1,8 @@
 // GLOBAL VARIABLES (accessible by all functions)
 // ==================================================================================================
 
+/* eslint-disable */
+
 // Array of Word Options (all lowercase).
 var wordsList = [
     {
