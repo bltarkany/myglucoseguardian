@@ -193,6 +193,7 @@ function roundComplete() {
 
     // Give the user an alert
     alert("You win!" + " " + "Defintion:" + definition);
+    // CHANGE TO MODEL
 
     // Update the win counter in the HTML
     document.getElementById("win-counter").innerHTML = winCounter;
@@ -208,7 +209,8 @@ function roundComplete() {
     lossCounter++;
 
     // Give the user an alert
-    alert("You lose");
+    alert("You lose"  + " " + "Defintion:" + definition);
+    // CHANGE TO MODEL
 
     // Update the loss counter in the HTML
     document.getElementById("loss-counter").innerHTML = lossCounter;
