@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from "../utils/API";
 
 class List extends Component {
     // Initialize the state
@@ -12,6 +13,7 @@ class List extends Component {
     // Fetch the list on first mount
     componentDidMount() {
         this.getList();
+        this.getFood("cheddar cheese");
     }
 
     // Retrieves the list of items from the Express app
@@ -19,6 +21,11 @@ class List extends Component {
         fetch('/api/getList')
         .then(res => res.json())
         .then(list => this.setState({ list }))
+    }
+
+    getFood = search => {
+        API.getFood(search)
+        .then(res => console.log(res));
     }
 
     render() {
@@ -44,6 +51,7 @@ class List extends Component {
                         <h2>No list items found</h2>
                     </div>
                 )}
+
             </div>
         );
     }
