@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "youthAndTeens",
+        "image": "https://www.niddk.nih.gov/",
+        "url": "https://www.niddk.nih.gov/health-information/diabetes/overview?dkrd=hispt1152",
+        "des": "Resources for Youth and Teens"
+    },
+    {
+        "id": 2,
+        "name": "cdc",
+        "image": "https://www.cdc.gov/",
+        "url": "https://www.cdc.gov/diabetes/library/features/managing-diabetes-at-school.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Ffeatures%2Fdiabetesinschool%2Findex.html",
+        "des": "Managing Diabetes at School"
+    },
+    {
+        "id": 3,
+        "name": "managementAtSchool",
+        "image": "https://www.niddk.nih.gov/",
+        "url": "https://www.niddk.nih.gov/health-information/communication-programs/ndep/health-professionals/helping-student-diabetes-succeed-guide-school-personnel/diabetes-overview/effective-diabetes-management-school?dkrd=hispt1101",
+        "des": "Effective Diabetes Management at School"
+    },
+    {
+        "id": 4,
+        "name": "diabetesOverview",
+        "image": "https://www.niddk.nih.gov/",
+        "url": "https://www.niddk.nih.gov/health-information/diabetes/overview?dkrd=hispt1155",
+        "des": "Transitioning from Pediatrice to Adult Health Care"
+    },
+    {
+        "id": 5,
+        "name": "eagleBooks",
+        "image": "https://www.cdc.gov/diabetes/ndwp/images/nwdp_toolkit_subpage_home.jpg",
+        "url": "https://www.cdc.gov/diabetes/ndwp/eagle-books-toolkit/index.html",
+        "des": "Native Diabetes Wellness Program"
+    },
+    {
+        "id": 6,
+        "name": "kidsWithDiabetesResources",
+        "image": "",
+        "url": "https://www.thediabetescouncil.com/kids-with-diabetes-resources/",
+        "des": "Kids with Diabetes Resources"
+    },
+    {
+        "id": 7,
+        "name": "whatIsDiabetesVideo",
+        "image": "",
+        "url": "https://www.youtube.com/watch?v=4EEtubB74lM",
+        "des": "What is Diabetes?  Animated video covers basic issues such as glucose, insulin, the pancreas and warning signs of diabetes."
+    },
+    {
+        "id": 8,
+        "name": "diabetesInChildrenOverview",
+        "image": "",
+        "url": "https://www.kidshealth.org.nz/diabetes-children-overview",
+        "des": "Type 1 and type 2 diabetes are lifelong conditions. You can minimise the long-term risks and complications for your child."
+    }
+]
