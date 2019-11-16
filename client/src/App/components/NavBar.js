@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Icon from "./Icon"
 
 import {
   Collapse,
@@ -34,18 +35,38 @@ const NavBar = () => {
     <div className="nav-container">
       <Navbar color="light" light expand="md">
         <Container>
-          <NavbarBrand className="logo" />
+        <Icon/>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <NavLink
                   tag={RouterNavLink}
-                  to="/"
+                  to="/profile"
                   exact
                   activeClassName="router-link-exact-active"
                 >
-                  Home
+                  My Summary
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/Food"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Food Log
+                </NavLink>
+                </NavItem>
+                <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/Glucose"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Glucose Log
                 </NavLink>
               </NavItem>
             </Nav>

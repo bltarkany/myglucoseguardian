@@ -1,10 +1,11 @@
 import React from "react";
+import Icon from "./Icon"
 
 const Footer = () => (
   <footer className="bg-light p-3 text-center">
-    <div className="logo" />
+    <Icon/>
     <p>
-      Sample project provided by <a href="https://auth0.com">Auth0</a>
+      Glucose Guardian<a href="https://github.com/bltarkany/myglucoseguardian/tree/master/client/src/App"> GitHub</a>
     </p>
   </footer>
 );
