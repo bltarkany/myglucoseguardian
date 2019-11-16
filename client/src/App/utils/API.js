@@ -1,33 +1,91 @@
-import axios from 'axios';
-// import { ESRCH } from 'constants';
+require("dotenv").config();
+const axios = require('axios');
+import keys from './key';
+
+let appId = keys.appId;
+let appKey = keys.appKey;
 
 export default {
-    // grab item search
+    // grab food list search
     getFood: function (search) {
-        let query = search;
-        let url = `https://api.nutritionix.com/v1_1/search/${query}`;
+        
+        let url = `https://trackapi.nutritionix.com/v2/search/instant?query=${search}`;
 
-        axios({
-            method: "GET",
-            baseURL: 'https://api.nutritionix.com/v1_1/search/',
-            url: search,
+        axios.get(url, {
             headers: {
-                "content-type": "application/json",
-                "appId": `${process.env.APP_ID}`,
-                "appKey": `${process.env.APP_KEY}`,
-                "filters": {
-                    "item_type": 2
-                }
+            'x-app-id': appId,
+            'x-app-key': appKey,
+            'Content-Type': 'application/x-www-form-urlencoded'
             },
             params: {
-                fields: "brand_name,item_name,brand_id,item_id,upc,item_type,item_description,nf_ingredients_statement,nf_calories,nf_calories_from_fat,nf_total_fat,nf_saturated_fat,nf_monounsaturated_fat,nf_polyunsaturated_fat,nf_trans_fatty_acid,nf_cholesterol,nf_sodium,nf_total_carbohydrate,nf_dietary_fiber,nf_sugars,nf_protein,nf_vitamin_a_dv,nf_vitamin_c_dv,nf_calcium_dv,nf_iron_dv,nf_potassium,nf_serving_size_qty,nf_serving_size_unit,nf_serving_weight_grams,metric_qty,metric_uom"
+                branded: true,
+                common: false
             }
         }).then((res) => {
-            console.log(res);
-            res.json();
+            console.log(res.data);
+            // res.json();
         }).catch((error) => {
             console.log(error);
         });
-    }
+    },
+    // grab food item info
+    getItem: function (id) {
+        let url = `https://trackapi.nutritionix.com/v2/search/item?query=${id}`;
 
+        axios.get(url, {
+            headers: {
+                'x-app-id': appId,
+                'x-app-key': appKey,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then((res) => {
+            console.log(res.data);
+        }).catch((error) => {
+            console.log(error);
+        });
+    } 
 }
+
+// function get(search) {
+       
+//         let url = `https://trackapi.nutritionix.com/v2/search/instant?query=${search}`;
+
+//         axios.get(url, {
+//             headers: {
+//             'x-app-id': appId,
+//             'x-app-key': appKey,
+//             'Content-Type': 'application/x-www-form-urlencoded'
+//             },
+//             params: {
+//                 branded: true,
+//                 common: false
+//             }
+//         }).then((res) => {
+//             console.log(res.data);
+//             // res.json(data);
+//         }).catch((error) => {
+//             console.log(error);
+//         });
+
+// }
+
+// function getItem(id) {
+    
+//     let url = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${id}`;
+
+//     axios.get(url, {
+//         headers: {
+//             'x-app-id': appId,
+//             'x-app-key': appKey,
+//             'Content-Type': 'application/x-www-form-urlencoded'
+//         }
+//     }).then((res) => {
+//         console.log(res.data);
+//     }).catch((error) => {
+//         console.log(error);
+//     });
+// }
+
+
+// console.log(get("feta cheese"));
+// console.log(getItem('5b90d1ad1a47f2ec0f72cf10'));
