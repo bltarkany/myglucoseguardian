@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "./Icon"
+import Icon from "../Icon/Icon"
 
 const Footer = () => (
   <footer className="bg-light p-3 text-center">

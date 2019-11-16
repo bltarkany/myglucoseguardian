@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Icon from "./Icon"
+import Icon from "../Icon/Icon"
 
 import {
   Collapse,
@@ -19,7 +19,7 @@ import {
   DropdownItem
 } from "reactstrap";
 
-import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0 } from "../../react-auth0-spa";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);

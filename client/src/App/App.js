@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { Container } from "reactstrap";
 
-import PrivateRoute from "./components/PrivateRoute";
-import Loading from "./components/Loading";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Loading from "./components/Loading/Loading";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
 
 import './App.css';
 // react logo
