@@ -18,7 +18,7 @@ render((
     <Auth0Provider
     domain={"frosty-smoke-0050.auth0.com"}
     client_id={"Cn1445IM2oUuQ5Oi9YierfUEF9AfA4VJ"}
-    redirect_uri={window.location.origin}
+    redirect_uri={window.location.origin+"/profile"}
     onRedirectCallback={onRedirectCallback}
     >
     <App />
