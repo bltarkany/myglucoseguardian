@@ -1,6 +1,7 @@
+import keys from '../../../key';
+import axios from 'axios';
 require("dotenv").config();
-const axios = require('axios');
-import keys from './key';
+// const axios = require('axios');
 
 let appId = keys.appId;
 let appKey = keys.appKey;
