@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
-var UserSchema = new Schema({
+var userSchema = new Schema({
   auth0_id: {
     type: String,
     trim: true,
@@ -52,6 +52,6 @@ var UserSchema = new Schema({
   }
 });
 
-var UserModel = mongoose.model("User", UserSchema);
+var userModel = mongoose.model("User", userSchema);
 
-module.exports = UserModel;
+module.exports = userModel;
