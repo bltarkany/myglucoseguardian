@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
-var GlucoseSchema = new Schema({
+var glucoseSchema = new Schema({
   auth0_id: {
     type: String,
     trim: true,
@@ -18,6 +18,6 @@ var GlucoseSchema = new Schema({
   }
 });
 
-var GlucoseModel = mongoose.model("GlucoseInput", GlucoseSchema);
+var glucoseModel = mongoose.model("glucoseInput", glucoseSchema);
 
-module.exports = GlucoseModel;
+module.exports = glucoseModel;

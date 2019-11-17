@@ -4,7 +4,7 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/foodInput"
+  "mongodb://localhost/project3"
 );
 
 const foodSeed = [
@@ -34,9 +34,9 @@ const foodSeed = [
   }
 ];
 
-db.foodInput
+db.Food
   .remove({})
-  .then(() => db.foodInput.collection.insertMany(foodSeed))
+  .then(() => db.Food.collection.insertMany(foodSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

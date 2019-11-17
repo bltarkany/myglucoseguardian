@@ -26,7 +26,7 @@ app.get('/api/getList', (req, res) => {
 });
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/My Glucose Guardian");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3");
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {

@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
-var FoodSchema = new Schema({
+var foodSchema = new Schema({
   auth0_id: {
     type: String,
     trim: true,
@@ -24,6 +24,6 @@ var FoodSchema = new Schema({
   }
 });
 
-var FoodModel = mongoose.model("FoodInput", FoodSchema);
+var foodModel = mongoose.model("foodInput", foodSchema);
 
-module.exports = FoodModel;
+module.exports = foodModel;
