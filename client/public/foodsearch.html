@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Google Fonts - Company Name -->
+    <link href="https://fonts.googleapis.com/css?family=Supermercado+One&display=swap" rel="stylesheet">
+
+    <title>Food Calculation</title>
+</head>
+<!-- TEST -->
+
+
+<div class="container">
+
+    <!-- SEARCH FUNC -->
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>Food Search</h1>
+
+            <!-- Spacing -->
+            <hr
+                style="width: 100%; color: light-grey; height: 1px; background-color:light-grey; margin-top:40px; margin-bottom:40px;" />
+
+        </div>
+
+        <!-- ROW -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <!-- Calories -->
+                <label for="calories">Calories</label>
+                <input type="number" class="form-control" id="calories" aria-describedby="" placeholder="">
+                <small id="" class="form-text text-muted">Amount of Calories</small>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <!-- Spacing -->
+        <hr
+            style="width: 100%; color: light-grey; height: 1px; background-color:light-grey; margin-top:40px; margin-bottom:40px;" />
+
+    </div>
+
+    <!-- RESULTS -->
+
+    <!-- Documentation -->
+
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                
+                                <h3 id="nameOut" style="display: inline; margin-right: 10px; color:black">NAME</h3>
+
+                                <h6 id="brandOut" style="display: inline; color: grey">BRAND</h6>
+
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            
+                            <h4>Name:</h4>
+
+                            <h6 id="nameOut">Example Name</h6>
+
+                            <h4>Brand:</h4>
+
+                            <h6 id="brandOut">Example Brand</h6>
+
+                            <h4>Serving Size:</h4>
+
+                            <h6 id="sizeOut">Example Serving Size</h6>
+
+                            <h4>Quantity:</h4>
+
+                            <h6 id="quantOut">Example Quantity</h6>
+
+                            <h4>Weight:</h4>
+
+                            <h6 id="weightOut">Example Weight</h6>
+
+                            <h4>Calories:</h4>
+
+                            <h6 id="calOut">Example Calories</h6>
+
+                            <h4>Carbohydrates:</h4>
+
+                            <h6 id="carbOut">Example Carbs</h6>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+</body>
+
+</html>
