@@ -9,7 +9,6 @@ class Food extends Component {
                 {/* Header */}
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <h1>Food Calculation</h1>
-
                     {/* Spacing */}
                 <hr style={{width: "100%", color: "light-grey", height: "1px", backgroundColor: "light-grey", marginTop: "40px", marginBottom: "40px"}}/>
                 </div>
