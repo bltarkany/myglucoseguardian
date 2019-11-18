@@ -6,6 +6,8 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Loading from "./components/Loading/Loading";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Navigation from "./components/Navigation/Navigation";
 
 import './App.css';
 // react logo
@@ -13,7 +15,7 @@ import './App.css';
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 // import Education from "./public/Education";
-// import Food from "./public/Food";
+import Food from "./pages/Food";
 // import Glucose from "./public/Glucose";
 // import Profile2 from "./public/Profile";
 // testing paths for initial setup
@@ -44,11 +46,16 @@ const App = () => {
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute exact path='/Home2' component={Home2}/>
             <PrivateRoute path='/list' component={List}/>
+
+            {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
+            <PrivateRoute path='/test' component={Header}/>
+            <PrivateRoute path="/food" component={Food} />
+
+            
             {/* <PrivateRoute path="/education" component={Education} />
             <PrivateRoute path="/food" component={Food} />
             <PrivateRoute path="/glucose" component={Glucose} /> */}
             {/* <PrivateRoute path="/profile2" component={Profile2} /> */}
-
             {/* <Route path="/NoMatch" component={NoMatch} /> */}
           </Switch>
         </Container>

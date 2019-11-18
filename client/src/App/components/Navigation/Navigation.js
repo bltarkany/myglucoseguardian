@@ -1,6 +1,6 @@
 import React from "react";
 
-const navigation = () => {
+const Navigation = () => {
     return (
         <ul className = "nav nav-tabs justify-content-center bg-light border" style = {{width: "100%", textAlign: "center"}}>
             <li className = "nav-item">
@@ -28,4 +28,4 @@ const navigation = () => {
 
 }
 
-export default navigation;
+export default Navigation;
