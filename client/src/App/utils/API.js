@@ -1,5 +1,8 @@
 import keys from '../../../key';
 import axios from 'axios';
+// ES6 format for dotenv
+// import dotenv from 'dotenv'
+// dotenv.config();
 require("dotenv").config();
 // const axios = require('axios');
 
@@ -9,14 +12,14 @@ let appKey = keys.appKey;
 export default {
     // grab food list search
     getFood: function (search) {
-        
+
         let url = `https://trackapi.nutritionix.com/v2/search/instant?query=${search}`;
 
-        axios.get(url, {
+        return axios.get(url, {
             headers: {
-            'x-app-id': appId,
-            'x-app-key': appKey,
-            'Content-Type': 'application/x-www-form-urlencoded'
+                'x-app-id': appId,
+                'x-app-key': appKey,
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
             params: {
                 branded: true,
@@ -44,11 +47,11 @@ export default {
         }).catch((error) => {
             console.log(error);
         });
-    } 
+    }
 }
 
 // function get(search) {
-       
+
 //         let url = `https://trackapi.nutritionix.com/v2/search/instant?query=${search}`;
 
 //         axios.get(url, {
@@ -71,7 +74,7 @@ export default {
 // }
 
 // function getItem(id) {
-    
+
 //     let url = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${id}`;
 
 //     axios.get(url, {

@@ -1,6 +1,51 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import { Col, Row, Container } from '../components/Grid';
+
+import API from "../utils/API";
+
 
 class Food extends Component {
+
+    state = {
+        search: "",
+        foodList: [],
+        itemId: 0,
+        name: "",
+        brand: "",
+        servingSize: 0,
+        servingQty: 0,
+        servingGrams: 0,
+        calories: 0,
+        totalFat: 0,
+        saturatedFat: 0,
+        cholesterol: 0,
+        carbs: 0,
+        dietaryFiber: 0,
+        sugars: 0,
+        protein: 0,
+        sodium: 0
+
+    };
+
+    foodSearch = () => {
+        API.getFood(this.state.search)
+         .then(res => {
+
+         }).catch((err) => {
+
+         })
+    };
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+
+
   render() {
     return (
         <div className="container">
