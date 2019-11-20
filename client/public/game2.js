@@ -4,27 +4,26 @@
 /* eslint-disable */
 
 // Array of Word Options (all lowercase).
-var wordsList = [
-    {
-        word: "antibodies",
-        def: "Antibodies are specialized proteins that are part of the immune system. They are created when an antigen (such as a virus or bacteria) is detected in the body. The antibodies bond with the specific antigen that triggered their production, and that action neutralizes the antigen, which is a threat to the body. Antibodies are created to fight off whatever has invaded the body. See also autoantibodies."
-    },
-    {
-        word: "antigens",
-        def: "An antigen is a foreign substance (such as a virus or bacteria) that invades the body. When the body detects it, it produces specific antibodies to fight off the antigen."
-    },
-    {
-        word: "autoantibodies",
-        def: "Autoantibodies are a group of antibodies that “go bad” and mistakenly attack and damage the body’s tissues and organs. In the case of type 1 diabetes, autoantibodies attack the insulin producing beta cells in the pancreas."
-    },
-    {
-        word: "carbohydrates",
-        def: "Carbohydrates are one of the three main energy sources for the body (the others are fat and protein). Your body breaks down carbohydrates to get glucose, which then provides energy to the body."
-    },
-    {
-        word: "fat",
-        def: "Fat is an energy source for your body (the other two energy sources are carbohydrates and protein)."
-    }
+var wordsList = [{
+    word: "antibodies",
+    def: "Antibodies are specialized proteins that are part of the immune system. They are created when an antigen (such as a virus or bacteria) is detected in the body. The antibodies bond with the specific antigen that triggered their production, and that action neutralizes the antigen, which is a threat to the body. Antibodies are created to fight off whatever has invaded the body. See also autoantibodies."
+  },
+  {
+    word: "antigens",
+    def: "An antigen is a foreign substance (such as a virus or bacteria) that invades the body. When the body detects it, it produces specific antibodies to fight off the antigen."
+  },
+  {
+    word: "autoantibodies",
+    def: "Autoantibodies are a group of antibodies that “go bad” and mistakenly attack and damage the body’s tissues and organs. In the case of type 1 diabetes, autoantibodies attack the insulin producing beta cells in the pancreas."
+  },
+  {
+    word: "carbohydrates",
+    def: "Carbohydrates are one of the three main energy sources for the body (the others are fat and protein). Your body breaks down carbohydrates to get glucose, which then provides energy to the body."
+  },
+  {
+    word: "fat",
+    def: "Fat is an energy source for your body (the other two energy sources are carbohydrates and protein)."
+  }
 ];
 // Library found here https://www.endocrineweb.com/conditions/diabetes/diabetes-glossary
 
@@ -209,7 +208,7 @@ function roundComplete() {
     lossCounter++;
 
     // Give the user an alert
-    alert("You lose"  + " " + "Defintion:" + definition);
+    alert("You lose" + " " + "Defintion:" + definition);
     // CHANGE TO MODEL
 
     // Update the loss counter in the HTML
@@ -229,7 +228,7 @@ function roundComplete() {
 startGame();
 
 // Then initiates the function for capturing key clicks.
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
 
   // Converts all key clicks to lowercase letters.
   letterGuessed = String.fromCharCode(event.which).toLowerCase();
