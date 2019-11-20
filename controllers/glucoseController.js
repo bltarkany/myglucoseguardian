@@ -1,7 +1,4 @@
 const db = require("../models");
-const Schema = mongoose.Schema;
-const ObjectId = mongoose.Types.ObjectId;
-
 
 module.exports = {
     findAll: function (req, res) {
