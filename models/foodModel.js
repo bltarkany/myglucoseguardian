@@ -2,19 +2,13 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 var foodSchema = new Schema({
-  auth0_id: {
-    type: String,
-    trim: true,
-    required: true
-  },
   meal: {
     type: Number,
     trim: true,
     required: true
   },
   mealTime: {
-    type: String,
-    trim: true,
+    type: Date,
     required: true
   },
   carbsAmt: {
