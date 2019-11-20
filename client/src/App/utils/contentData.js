@@ -1,23 +1,23 @@
 const contentData = [
   {
-    title: "Track your Sugar Levels...",
+    title: "Track your Blood Sugar",
     // link: "https://auth0.com/docs/connections",
-    description: "Use Glucose Guardian to track the insilin levels of your children to build strong habits for a better future"
+    description: "Blood sugar testing — or self-monitoring blood glucose — provides useful information for diabetes management. Glucose Guardian povides the tools to allow you and your children you reach your overall goals."
   },
   {
-    title: "Extensive catelog of Foods...",
+    title: "Extensive catalog of Food Facts & Information",
     // link: "https://auth0.com/docs/multifactor-authentication",
-    description: "Track the important information about the food you eat on a daily basis and get helpful suggestions on better food options"
+    description: "Track the important information about the food you eat on a daily basis and get helpful suggestions on better food options. Keeping track of what we eat for a short period of time can help us gain some insight into our into habits. Maybe it helps us realize we don't consume a lot of fruit, or that we tend to eat the same things all the time. This is can then help us establish small goals to improve our eating habits. It can also be very helpful to look beyond what we are eating, and be curious about how we are eating."
   },
   {
     title: "Educational Material",
     // link: "https://auth0.com/docs/anomaly-detection",
-    description: "Take advantage of an ever growing database of articles, videos, & information for you and your children"
+    description: "A doctor is your best source of knowledge about Type 1 & Type 2 Diabetes but we can support your education with an extensive libray of videos, books, & how-to-articles. Learn how diat and exercise affect along with other factors affect blood sugar levels."
   },
   {
     title: "Fun & Games!",
     // link: "https://auth0.com/docs/rules",
-    description: "PSH! Enjoy lots of Games! what are you waiting for? Sign up TODAY!"
+    description: "Sometimes it can be really difficult to grab the attention of a child or young adult and explain the importance of diabtetes. Thats why we provide a fun enviroment to allow your children to Learn & have fun!"
   }
 ];
 
