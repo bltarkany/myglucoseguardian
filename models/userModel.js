@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const ObjectId = mongoose.Types.ObjectId;
 
-var Schema = mongoose.Schema;
 var userSchema = new Schema({
   auth0_id: {
     type: String,
@@ -49,7 +50,9 @@ var userSchema = new Schema({
   userCreated: {
     type: Date,
     default: Date.now
-  }
+  },
+  glucoseCharts:{ type: Schema.Types.ObjectId, ref: "glucoseChart" },
+  foodLogs:{ type: Schema.Types.ObjectId, ref: "foodLog" }
 });
 
 var userModel = mongoose.model("User", userSchema);
