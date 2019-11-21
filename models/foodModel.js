@@ -1,23 +1,23 @@
 var mongoose = require("mongoose");
-
 var Schema = mongoose.Schema;
+
 var foodSchema = new Schema({
   meal: {
-    type: Number,
+    type: String,
     trim: true,
     required: true
   },
   mealTime: {
-    type: Date,
+    type: String,
     required: true
   },
   carbsAmt: {
-    type: Number,
+    type: String,
     trim: true,
     required: true
   }
 });
 
-var foodModel = mongoose.model("foodInput", foodSchema);
+var Food = mongoose.model("Food", foodSchema);
 
-module.exports = foodModel;
+module.exports = Food;
