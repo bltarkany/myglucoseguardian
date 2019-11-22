@@ -39,13 +39,13 @@ const App = () => {
 
   if (loading) {
     return <Loading />;
-  }
+  } 
 
   return (
     // Going to need to move <NavBar/> and <Footer/> component into each 'page' component if we're going to split <NavBar/> into <Header/> and <Navigation/>
 
     <Router history={history}>
-      <div id="app" className="d-flex flex-column h-100">
+      <div id="app" className="d-flex flex-column h-100" style={{backgroundColor: "#5AC0FD"}}>
         <NavBar />
         <Container className="flex-grow-1 mt-5">
           <Switch>

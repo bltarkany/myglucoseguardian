@@ -24,15 +24,15 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
-
+ 
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin
     });
 
   return (
-    <div className="nav-container">
-      <Navbar color="light" light expand="md">
+    <div className="nav-container" >
+      <Navbar light expand="md" style={{backgroundColor: "#662E9B"}}>
         <Container>
         <Icon className = "navBarStyle"/>
           <NavbarToggler onClick={toggle} />
