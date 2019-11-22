@@ -1,4 +1,4 @@
-import keys from '../../../key';
+import keys from '../key';
 import axios from 'axios';
 // ES6 format for dotenv
 // import dotenv from 'dotenv'
