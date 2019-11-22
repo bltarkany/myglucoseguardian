@@ -1,5 +1,4 @@
 const db = require("../models");
-const ObjectId = mongoose.Types.ObjectId;
 
 // Defining methods for the UserController
 module.exports = {
