@@ -1,14 +1,17 @@
-import keys from '../key';
-import axios from 'axios';
+require("dotenv").config();
+// import axios from 'axios';
 // ES6 format for dotenv
 // import dotenv from 'dotenv'
 // dotenv.config();
-require("dotenv").config();
+const axios = require('axios');
+const keys = require('../../keys');
+
 // const axios = require('axios');
 
 let appId = keys.appId;
 let appKey = keys.appKey;
 
+console.log(appId, appKey);
 export default {
     // grab food list search
     getFood: function (search) {
@@ -91,5 +94,5 @@ export default {
 // }
 
 
-// console.log(get("feta cheese"));
+// console.log(get("reduced fat feta cheese"));
 // console.log(getItem('5b90d1ad1a47f2ec0f72cf10'));
