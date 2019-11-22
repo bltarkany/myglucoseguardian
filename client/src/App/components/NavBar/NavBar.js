@@ -32,7 +32,7 @@ const NavBar = () => {
 
   return (
     <div className="nav-container" >
-      <Navbar light expand="md" style={{backgroundColor: "#662E9B"}}>
+      <Navbar light expand="md" style={{backgroundColor: "#cac2c0"}}>
         <Container>
         <Icon className = "navBarStyle"/>
           <NavbarToggler onClick={toggle} />
