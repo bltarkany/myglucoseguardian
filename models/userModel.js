@@ -51,10 +51,10 @@ var userSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  glucoseChart:{ type: Schema.Types.ObjectId, ref: "GlucoseChart" },
-  foodLog:{ type: Schema.Types.ObjectId, ref: "FoodLog" }
+  glucoseCharts:{ type: Schema.Types.ObjectId, ref: "glucoseChart" },
+  foodLogs:{ type: Schema.Types.ObjectId, ref: "foodLog" }
 });
 
-var User = mongoose.model("User", userSchema);
+var userModel = mongoose.model("User", userSchema);
 
-module.exports = User;
+module.exports = userModel;

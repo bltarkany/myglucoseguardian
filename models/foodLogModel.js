@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 
 const foodLogSchema = new Schema({
-  foodEntry: [{ type: Schema.Types.ObjectId, ref: "Food" }]
+  foodLogs: [{ type: Schema.Types.ObjectId, ref: "Food" }]
 });
 
-const FoodLog = mongoose.model("FoodLog", foodLogSchema);
+const foodLog = mongoose.model("foodLog", foodLogSchema);
 
-module.exports = FoodLog;
+module.exports = foodLog;
