@@ -1,7 +1,14 @@
+const webpack = require('dotenv-webpack');
+const dotenv = require('dotenv');
+
+
 console.log('keys loaded');
 
 
-module.exports = {
-    appId: process.env.REACT_APP_APP_ID,
-    appKey: process.env.REACT_APP_APP_KEY
-};
+module.exports = () => {
+    const env = dotenv.config().parsed;
+
+    console.log(env);
+
+    const envKeys = Object.keys(env)reduce((prev, next))
+}
