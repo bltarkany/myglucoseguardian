@@ -5,10 +5,10 @@ const dotenv = require('dotenv');
 console.log('keys loaded');
 
 
-module.exports = () => {
-    const env = dotenv.config().parsed;
+// module.exports = () => {
+//     const env = dotenv.config().parsed;
 
-    console.log(env);
+//     console.log(env);
 
-    const envKeys = Object.keys(env)reduce((prev, next))
-}
+//     const envKeys = Object.keys(env)reduce((prev, next))
+// }
