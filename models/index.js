@@ -1,7 +1,7 @@
 module.exports = {
   User: require("./userModel"),
-  FoodLog: require("./foodLogModel"),
-  GlucoseChart: require("./glucoseChartModel"),
+  foodLog: require("./foodLogModel"),
+  glucoseChart: require("./glucoseChartModel"),
   Food: require("./foodModel"),
   Glucose: require("./glucoseModel")
 };

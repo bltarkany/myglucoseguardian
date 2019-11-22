@@ -13,6 +13,6 @@ var glucoseSchema = new Schema({
   }
 });
 
-var Glucose = mongoose.model("Glucose", glucoseSchema);
+var glucoseModel = mongoose.model("glucoseInput", glucoseSchema);
 
-module.exports = Glucose;
+module.exports = glucoseModel;
