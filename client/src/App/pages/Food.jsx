@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Container } from '../components/Grid';
 
 import API from "../utils/API";
+import Header from "../components/Header/Header.jsx";
+import Navigation from "../components/Navigation/Navigation";
 
 
 class Food extends Component {
@@ -49,6 +51,8 @@ class Food extends Component {
   render() {
     return (
         <div className="container">
+            <Header/>
+            <Navigation/>
             <div className="row">
 
                 {/* Header */}

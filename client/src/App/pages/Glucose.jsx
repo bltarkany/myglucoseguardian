@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import Header from "../components/Header/Header.jsx";
+import Navigation from "../components/Navigation/Navigation";
 
 class Glucose extends Component {
   render() {
     return (
 
         <div className="container">
+            <Header/>
+            <Navigation/>
+            
             <div className="row">
 
                 {/* ROW */}

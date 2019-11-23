@@ -20,6 +20,7 @@ import Food from "./pages/Food";
 import Home2 from "./pages/Home2";
 import List from "./pages/List";
 import MySummary from "./pages/MySummary/index";
+import Glucose from "./pages/Glucose";
 //==================================================================//
 
 //=============================Auth0==============================//
@@ -50,7 +51,6 @@ const App = () => {
                 className="d-flex flex-column h-100"
                 style={{ backgroundColor: "#5AC0FD" }}
             >
-                <NavBar />
                 <Container className="flex-grow-1 mt-5">
                     <Switch>
                         <Route path="/" exact component={Home} />
@@ -61,7 +61,8 @@ const App = () => {
                         {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
                         <PrivateRoute path="/test/:id" component={MySummary} />
                         <PrivateRoute path="/food" component={Food} />
-                        <PrivateRoute path="/test/" component={Accordion} />
+                        <PrivateRoute path="/glucose" component={Glucose} />
+                        <PrivateRoute path="/test2/" component={Accordion} />
 
                         {/* <PrivateRoute path="/education" component={Education} />
             <PrivateRoute path="/food" component={Food} />
