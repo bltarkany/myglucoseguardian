@@ -1,0 +1,13 @@
+hr {
+    width: 100%;
+    color: lightgrey;
+    background-color: lightgrey;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Yatra One', cursive;
+    font-weight: 600;
+    font-size: 2.5rem;
+}

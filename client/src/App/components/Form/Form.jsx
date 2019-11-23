@@ -55,13 +55,18 @@ const Search = (props) => {
        <div>
             <InputGroup>
                 <Input />
-                <InputGroupAddon addonType="append">
-                    <Button color="primary">To the Right!</Button>
+                <InputGroupAddon {...props} addonType="append">
+                    <Button onClick={props.handleFormSubmit} color="primary">Search</Button>
                 </InputGroupAddon>
             </InputGroup>
        </div>
     )
 }
 
+
+
   
-export default Example;
+export {
+    FoodInput,
+    Search
+}
