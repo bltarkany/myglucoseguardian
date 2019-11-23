@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { Col, Row, Container } from '../components/Grid';
+import { Container, Row, Col } from 'reactstrap';
+// import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+// import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+import Title from '../components/Title/Title';
+import { FoodInput, Search, Build, Name, InputSection, MealMenu, Submit } from '../components/Form/Form';
 
 import API from "../utils/API";
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
 
 
+// compiled by BT
 class Food extends Component {
 
     state = {
@@ -46,67 +51,37 @@ class Food extends Component {
         });
     };
 
-
-
-  render() {
-    return (
-        <div className="container">
-            <Header/>
-            <Navigation/>
-            <div className="row">
-
-                {/* Header */}
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>Food Calculation</h1>
-                    {/* Spacing */}
-                <hr style={{width: "100%", color: "light-grey", height: "1px", backgroundColor: "light-grey", marginTop: "40px", marginBottom: "40px"}}/>
-                </div>
-
-                {/* ROW */}
-                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div className="form-group">
-                        {/* CALORIES */}
-                        <label for="calories">Calories</label>
-                        <input type="number" className="form-control" id="calories"/>
-                        <small id="" className="form-text text-muted">Amount of Calories</small>
-                    </div>
-                </div>
-                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div className="form-goup">
-                        {/* CARBS */}
-                        <label for="carbs">Carbohydrates</label>
-                        <input type="number" className="form-control" id="carbs"/>
-                        <small id="" className="form-text text-muted">Amount of Carbohydrates in Grams</small>
-                    </div>
-                </div>
-
-                {/* ROW */}
-                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div className="form-group">
-                        {/* FATS */}
-                        <label for="fat">Fats</label>
-                        <input type="number" className="form-control" id="fat"/>
-                        <small id="" className="form-text text-muted">Amount of Fat in Grams</small>
-                    </div>
-                </div>
-                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div className="form-group">
-                        {/* PROTEIN */}
-                        <label for="Protein">Protein</label>
-                        <input type="number" className="form-control" id="protein"/>
-                        <small id="" className="form-text text-muted">Amount of Protein in Grams</small>
-                    </div>
-                </div>
-
-                {/* SUBMIT BUTTON */}
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-
-            </div>
-        </div>
-    );
-  }
+    render() {
+        return (
+            
+            <Container>
+                <Header />
+                <Navigation />
+                <Row>
+                    <Col xs="12" sm="12">
+                        <Title>
+                            <h1>Food Calculations and Carbs Tracking</h1>
+                            <hr></hr>
+                        </Title>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs="12" sm="12" md="7">
+                        <Search
+                        value={this.state.search}
+                        onChange={this.handleInputChange}
+                        onClick={this.handleFormSubmit}
+                        ></Search>
+                    </Col>
+                    <Col xs="12" sm="12" md={{ size: 4, offset: 1}}>
+                        <FoodInput></FoodInput>
+                    </Col>
+                </Row>
+            </Container>
+        
+           
+        );
+    }
 }
 
 export default Food;

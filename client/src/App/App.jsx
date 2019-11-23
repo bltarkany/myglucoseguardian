@@ -3,6 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 
 //==========================Components============================//
 import { Container } from "reactstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from "./components/Loading/Loading";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
