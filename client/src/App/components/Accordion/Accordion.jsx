@@ -65,12 +65,12 @@ class AccordionItem extends React.Component {
         opened
       }
     } = this
-    
+
     return (
-      <div id= {foodid} onClick={(e) => console.log(e.target.id)} //Onclick take value
+      <div id= {foodid}
         {...{
           className: `accordion-item, ${opened && 'accordion-item--opened'}` ,
-          onClick: () => { this.setState({ opened: !opened }) }
+          onClick: () => { this.setState({ opened: !opened }); console.log(foodid) }
         }}
       >
         <div {...{ className: 'accordion-item__line' }}>
