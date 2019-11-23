@@ -1,18 +1,14 @@
-require("dotenv").config();
-// import axios from 'axios';
-// ES6 format for dotenv
-// import dotenv from 'dotenv'
-// dotenv.config();
-const axios = require('axios');
+// require path to env -- prevent conflicts with react env
+require("dotenv").config({ path: '../../../.env' });
+// import keys file
 const keys = require('../../keys');
+const axios = require('axios');
 
-// const axios = require('axios');
 
 let appId = keys.appId;
 let appKey = keys.appKey;
 
-console.log(appId, appKey);
-export default {
+module.exports = {
     // grab food list search
     getFood: function (search) {
 
@@ -39,7 +35,7 @@ export default {
     getItem: function (id) {
         let url = `https://trackapi.nutritionix.com/v2/search/item?query=${id}`;
 
-        axios.get(url, {
+        return axios.get(url, {
             headers: {
                 'x-app-id': appId,
                 'x-app-key': appKey,
