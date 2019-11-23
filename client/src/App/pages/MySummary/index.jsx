@@ -43,7 +43,8 @@ class MySummary extends Component {
                         <Navigation />
                     </Col>
                 </Row>
-                <Row>
+            
+                <Row className = "chart.js mockup">
                     <Col size="sm-12">
                         <div    
                             style={{
