@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Accordian.css";
+import "./Accordion.css";
 
 // Example Data
 const data = [
