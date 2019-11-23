@@ -1,7 +1,5 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
 const db = require("../models");
-const ObjectId = mongoose.Types.ObjectId;
 
 mongoose.connect(
     process.env.MONGODB_URI ||
@@ -12,17 +10,25 @@ console.log("---------- POPULATING ----------");
 db.User
     .find({})
     .populate({
-        path: 'foodLogs',
+        path: 'foodLog',
         populate: {
-            path: 'Food'
+            path: 'foodEntry'
         }
-    }).then(res=>console.log(res))
-    .catch(error=>console.error(error));
-    // .then((err, res) => {
-    //     if (err) throw err;
-    //     console.log(res);
-    //     res.forEach(content => {
-    //         console.log(content);
-    //         });
-    //         process.exit(0);
-    // });
+    })
+    .populate({
+        path: "glucoseChart",
+        populate: {
+            path: "glucoseEntry"
+        }
+    })
+    .exec(function (err, res) {
+        if (err) throw err;
+        console.log("MAIN RETURN: ", res); 
+        res.forEach(content => {	
+            let keys = Object.keys(content.toJSON());	
+            keys.forEach(i => {	
+                console.log(`${i} : ${content[i]}`);	
+            })	
+        });	
+        process.exit(0);	
+    }); 
