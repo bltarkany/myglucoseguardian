@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const ObjectId = mongoose.Types.ObjectId;
 
 var userSchema = new Schema({
   auth0_id: {
@@ -51,10 +50,10 @@ var userSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  glucoseCharts:{ type: Schema.Types.ObjectId, ref: "glucoseChart" },
-  foodLogs:{ type: Schema.Types.ObjectId, ref: "foodLog" }
+  glucoseChart:{ type: Schema.Types.ObjectId, ref: "GlucoseChart" },
+  foodLog:{ type: Schema.Types.ObjectId, ref: "FoodLog" }
 });
 
-var userModel = mongoose.model("User", userSchema);
+var User = mongoose.model("User", userSchema);
 
-module.exports = userModel;
+module.exports = User;
