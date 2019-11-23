@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
+import Accordion from "./components/Accordion/Accordion"
 //================================================================//
 
 //=============================Pages==============================//
@@ -61,6 +62,7 @@ const App = () => {
                         {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
                         <PrivateRoute path="/test/:id" component={MySummary} />
                         <PrivateRoute path="/food" component={Food} />
+                        <PrivateRoute path="/test/" component={Accordion} />
 
                         {/* <PrivateRoute path="/education" component={Education} />
             <PrivateRoute path="/food" component={Food} />
