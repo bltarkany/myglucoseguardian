@@ -1,7 +1,7 @@
 import React from 'react';
 import './Title.css';
 
-export function Title(props) {
+export default function Title(props) {
     return (
         <div>
             <h1>{props}</h1>
