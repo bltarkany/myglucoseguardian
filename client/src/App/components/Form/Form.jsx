@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon } from 'reactstrap';
 import "./Form.css";
 
 const FoodInput = (props) => {
@@ -49,6 +49,46 @@ const FoodInput = (props) => {
     );
 }
 
+const Build = (props) => {
+    return (
+        <Form {...props}></Form>
+    );
+}
+
+const Name = (props) => {
+    return (
+        <Label {...props}></Label>
+    );
+}
+
+const InputSection = (props) => {
+    return (
+        <FormGroup>
+            <Input {...props} />
+        </FormGroup>
+    )
+}
+
+const MealMenu = (props) => {
+    return (
+        <FormGroup>
+          <Label>Which meal was this?</Label>
+          <Input type="select" name="select">
+            <option selected>Options</option>
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+            <option>Snack</option>
+          </Input>
+        </FormGroup>
+    )
+}
+
+const Submit = (props) => {
+    return (
+        <Button color="info"></Button>
+    )
+}
 
 const Search = (props) => {
     return (
@@ -68,5 +108,10 @@ const Search = (props) => {
   
 export {
     FoodInput,
-    Search
+    Search,
+    Build,
+    Name,
+    InputSection,
+    MealMenu,
+    Submit
 }
