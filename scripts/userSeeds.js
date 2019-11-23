@@ -18,7 +18,7 @@ const userSeed = [
     "height": "10", 
     "weight": "35", 
     "diabetes_type": "1",
-    "glucoseCharts": ObjectId("000000000000000000000001"),
+    "glucoseChart": ObjectId("000000000000000000000001"),
     "foodLog": ObjectId("000000000000000000000001")
   },
   {
@@ -31,7 +31,7 @@ const userSeed = [
     "height": "190", 
     "weight": "500", 
     "diabetes_type": "2",
-    "glucoseCharts": ObjectId("000000000000000000000002")
+    "glucoseChart": ObjectId("000000000000000000000002")
   },
   {
     "auth0__id":"ebjgrejlgbrlsjgd54634", 
@@ -50,11 +50,11 @@ const userSeed = [
 const foodLogSeed = [
   {
   "_id": ObjectId("000000000000000000000001"),
-  GlucoseLogs: [ObjectId("000000000000000000000001"), ObjectId("000000000000000000000003")]
+  foodEntry: [ObjectId("000000000000000000000001"), ObjectId("000000000000000000000003")]
   }, 
   {
   "_id": ObjectId("000000000000000000000002"),
-  GlucoseLogs: [ObjectId("000000000000000000000002"), ObjectId("000000000000000000000004")]
+  foodEntry: [ObjectId("000000000000000000000002"), ObjectId("000000000000000000000004")]
   }
 ];
 
@@ -105,14 +105,14 @@ const foodSeed = [
   }
 ];
 
-const glucoseChartSeed = [
+const glucoseCharteed = [
   {
   "_id": ObjectId("000000000000000000000001"),
-  GlucoseLogs: [ObjectId("000000000000000000000001"), ObjectId("000000000000000000000002"), ObjectId("000000000000000000000004")]
+  glucoseEntry: [ObjectId("000000000000000000000001"), ObjectId("000000000000000000000002"), ObjectId("000000000000000000000004")]
   }, 
   {
   "_id": ObjectId("000000000000000000000002"),
-  GlucoseLogs: [ObjectId("000000000000000000000003"), ObjectId("000000000000000000000005")]
+  glucoseEntry: [ObjectId("000000000000000000000003"), ObjectId("000000000000000000000005")]
   }
 ];
 
@@ -147,9 +147,9 @@ const glucoseSeed = [
 db.User
   .remove({})
   .then(() => db.User.collection.insertMany(userSeed))
-  .then(() => db.foodLog.collection.insertMany(foodLogSeed))
+  .then(() => db.FoodLog.collection.insertMany(foodLogSeed))
   .then(() => db.Food.collection.insertMany(foodSeed))
-  .then(() => db.glucoseChart.collection.insertMany(glucoseChartSeed))
+  .then(() => db.GlucoseChart.collection.insertMany(glucoseCharteed))
   .then(() => db.Glucose.collection.insertMany(glucoseSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");

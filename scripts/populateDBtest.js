@@ -21,13 +21,14 @@ db.User
             path: "glucoseEntry"
         }
     })
-    }).then(res=>console.log(res))
-    .catch(error=>console.error(error));
-    // .then((err, res) => {
-    //     if (err) throw err;
-    //     console.log(res);
-    //     res.forEach(content => {
-    //         console.log(content);
-    //         });
-    //         process.exit(0);
-    // });
+    .exec(function (err, res) {
+        if (err) throw err;
+        console.log("MAIN RETURN: ", res); 
+        res.forEach(content => {	
+            let keys = Object.keys(content.toJSON());	
+            keys.forEach(i => {	
+                console.log(`${i} : ${content[i]}`);	
+            })	
+        });	
+        process.exit(0);	
+    }); 
