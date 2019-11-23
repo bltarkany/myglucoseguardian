@@ -50,7 +50,12 @@ export default {
         }).catch((error) => {
             console.log(error);
         });
+    },
+    
+    getUser: function (id) {
+        return axios.get("/api/user/" + id)
     }
+ 
 }
 
 // function get(search) {
