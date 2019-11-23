@@ -61,27 +61,47 @@ const foodLogSeed = [
 const foodSeed = [
   { 
     "_id": ObjectId("000000000000000000000001"), 
-    "meal":"Costco Hot", 
-    "mealTime":"11:00pm", 
-    "carbsAmt": "150"
+    "meal":"Costco Hotdog",
+    "mealTime":"Lunch",
+    "calories":552,
+    "fats":32,
+    "carbs":46,
+    "sugar":11,
+    "dietFiber":35,
+    "protiens":20
   },
   {
     "_id": ObjectId("000000000000000000000002"),
-    "meal":"Ceasar Salad", 
-    "mealTime":"9:00pm", 
-    "carbsAmt": "250"
+    "meal":"Gatorade",
+    "mealTime":"Lunch",
+    "calories":80,
+    "fats":0,
+    "carbs":21,
+    "sugar":21,
+    "dietFiber":21,
+    "protiens":0
   },
   {
     "_id": ObjectId("000000000000000000000003"),
-    "meal":"Cheeseburger", 
-    "mealTime":"3:00am", 
-    "carbsAmt": "460"
+    "meal":"Twinkies",
+    "mealTime":"Snack",
+    "calories":270,
+    "fats":9,
+    "carbs":46,
+    "sugar":33,
+    "dietFiber":0,
+    "protiens":2
   },
   {
     "_id": ObjectId("000000000000000000000004"),
-    "meal":"Twinkies", 
-    "mealTime":"6:00am", 
-    "carbsAmt": "700"
+    "meal":"mac and cheese",
+    "mealTime":"breakfast",
+    "calories":108,
+    "fats":4.3,
+    "carbs":14.6,
+    "sugar":0,
+    "dietFiber":2,
+    "protiens":3
   }
 ];
 
