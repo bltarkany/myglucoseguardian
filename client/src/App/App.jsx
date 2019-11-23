@@ -51,7 +51,7 @@ const App = () => {
                 className="d-flex flex-column h-100"
                 style={{ backgroundColor: "#5AC0FD" }}
             >
-                <Container className="flex-grow-1 mt-5">
+                <Container >
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <PrivateRoute path="/profile" component={Profile} />
@@ -65,8 +65,8 @@ const App = () => {
                         <PrivateRoute path="/test2/" component={Accordion} />
 
                         {/* <PrivateRoute path="/education" component={Education} />
-            <PrivateRoute path="/food" component={Food} />
-            <PrivateRoute path="/glucose" component={Glucose} /> */}
+                        <PrivateRoute path="/food" component={Food} />
+                        <PrivateRoute path="/glucose" component={Glucose} /> */}
                         {/* <PrivateRoute path="/profile2" component={Profile2} /> */}
                         {/* <Route path="/NoMatch" component={NoMatch} /> */}
                     </Switch>
