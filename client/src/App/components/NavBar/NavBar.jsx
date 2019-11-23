@@ -32,42 +32,12 @@ const NavBar = () => {
 
   return (
     <div className="nav-container" >
-      <Navbar light expand="md" style={{backgroundColor: "#cac2c0"}}>
+      <Navbar light expand="md" style={{backgroundColor: "#6369D1"}}>
         <Container>
         <Icon className = "navBarStyle"/>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/profile"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  My Summary
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/Food"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  Food Log
-                </NavLink>
-                </NavItem>
-                <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/Glucose"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  Glucose Log
-                </NavLink>
-              </NavItem>
             </Nav>
             <Nav className="d-none d-md-block" navbar>
               {!isAuthenticated && (
