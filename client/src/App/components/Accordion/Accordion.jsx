@@ -67,7 +67,7 @@ class AccordionItem extends React.Component {
     } = this
 
     return (
-      <div id= {foodid}
+      <div data-id= {foodid}
         {...{
           className: `accordion-item, ${opened && 'accordion-item--opened'}` ,
           onClick: () => { this.setState({ opened: !opened }); console.log(foodid) }
