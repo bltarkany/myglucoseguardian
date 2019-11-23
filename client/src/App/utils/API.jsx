@@ -53,6 +53,8 @@ export default {
     },
     
     getUser: function (id) {
+        console.log(id + " has entered API call");
+        console.log(axios.get("/api/user/" + id));
         return axios.get("/api/user/" + id)
     }
  
