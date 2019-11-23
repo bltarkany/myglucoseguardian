@@ -9,26 +9,24 @@ import API from "../../utils/API";
 
 class MySummary extends Component {
     state = {
-        // userid: auth0id,
-        _id: "",
-        glucoseCharts: [],
-        foodLog: []
+        userInfo: {}
     };
 
     componentDidMount() {
-        this.loadUser();
+        this.loadUser(this.props.match.params.id);
     }
 
     loadUser = id => {
+        console.log("User: " + id + " has entered loadUser.");
         API.getUser(id)
-            .then(res =>
+            .then(res => {
+                console.log("promise received");
+                console.log(res.data);
+
                 this.setState({
-                    _id: res.data._id,
-                    glucoseCharts: res.data.glucoseCharts,
-                    foodLog: res.data.foodLog
-                })
-            )
-            .then(console.log(this.state))
+                    userInfo: res.data
+                });
+            })
             .catch(err => console.log(err));
     };
 
@@ -47,7 +45,7 @@ class MySummary extends Component {
                 </Row>
                 <Row>
                     <Col size="sm-12">
-                        <div
+                        <div    
                             style={{
                                 width: "300px",
                                 height: "400px",
@@ -57,7 +55,8 @@ class MySummary extends Component {
                                 marginBottom: "25px"
                             }}
                         >
-                            Chart mockup
+                            <h5>Hello {this.state.userInfo.first_name}</h5>
+                        <h5>This is your email {this.state.userInfo.email}</h5>
                         </div>
                     </Col>
                 </Row>
