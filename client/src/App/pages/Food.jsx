@@ -6,8 +6,10 @@ import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import Title from '../components/Title/Title';
 import { Search } from '../components/Form/Form';
 
-
 import API from "../utils/API";
+import Header from "../components/Header/Header.jsx";
+import Navigation from "../components/Navigation/Navigation";
+
 
 // compiled by BT
 class Food extends Component {
