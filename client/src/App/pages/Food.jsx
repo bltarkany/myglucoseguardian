@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+// import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+// import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import Title from '../components/Title/Title';
-import { Search } from '../components/Form/Form';
+import { FoodInput, Search, Build, Name, InputSection, MealMenu, Submit } from '../components/Form/Form';
 
 import API from "../utils/API";
 import Header from "../components/Header/Header.jsx";
@@ -53,7 +53,10 @@ class Food extends Component {
 
     render() {
         return (
+            
             <Container>
+                <Header />
+                <Navigation />
                 <Row>
                     <Col xs="12" sm="12">
                         <Title>
@@ -71,7 +74,7 @@ class Food extends Component {
                         ></Search>
                     </Col>
                     <Col xs="12" sm="12" md={{ size: 4, offset: 1}}>
-                        
+                        <FoodInput></FoodInput>
                     </Col>
                 </Row>
             </Container>
