@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./content.css";
 
 import contentData from "../../utils/contentData";
 
@@ -18,8 +19,8 @@ class Content extends Component {
                     {contentData.map((col, i) => (
                         <Col key={i} md={5} className="mb-4">
                             <h3 className="mb-3">
-                                <a href={col.link} style={{ color: "#D8D2E1", textAlign: "center" }}>
-                                    {/* <FontAwesomeIcon icon="link" className="mr-2" /> */}
+                                <a href={col.link} style={{ color: "whitesmoke", textAlign: "center" }}>
+                                    <img src={col.icon} alt="" className="icon"/>
                                     {col.title}
                                 </a>
                             </h3>

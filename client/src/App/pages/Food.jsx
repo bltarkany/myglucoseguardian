@@ -55,8 +55,6 @@ class Food extends Component {
         return (
             
             <Container>
-                <Header />
-                <Navigation />
                 <Row>
                     <Col xs="12" sm="12">
                         <Title>
