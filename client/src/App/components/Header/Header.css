@@ -1,0 +1,29 @@
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}
+
+.navbar {
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid whitesmoke;
+  border-top: none;
+  margin: none;
+  padding: none;
+}

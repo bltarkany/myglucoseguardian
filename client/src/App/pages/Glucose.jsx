@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
+import Accordion from "../components/Accordion/Accordion";
 
 class Glucose extends Component {
   render() {
@@ -8,7 +9,9 @@ class Glucose extends Component {
 
         <div className="container">
             <Header/>
+            <br/>
             <Navigation/>
+            <br/> <br/>
             
             <div className="row">
 
@@ -44,6 +47,21 @@ class Glucose extends Component {
                 </div>
 
             </div>
+
+            <br/><br/>
+
+            <div className="col-lg-12">
+                    <h1>Logs</h1>
+
+                    {/* SPACING */}
+                    <hr style={{width: "100%", color: "light-grey", height: "1px", backgroundColor: "light-grey", marginTop: "40px", marginBottom: "40px"}}/>
+
+            </div>
+
+            <Accordion/>
+
+            <br/><br/>
+
         </div>
 
     );
