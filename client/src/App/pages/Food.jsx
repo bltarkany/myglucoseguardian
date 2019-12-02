@@ -47,10 +47,26 @@ class Food extends Component {
     foodSearch = () => {
         API.getFood(this.state.search)
          .then(res => {
+            console.log(res.data);
+            this.setState({
+                foodList: res.data
+            })
 
          }).catch((err) => {
+            console.log(err);
+         });
+    };
 
-         })
+    itemSearch = (eventKey) => {
+        API.getItem(eventKey)
+        .then(res => {
+            console.log(res.data);
+            this.setState({
+                item: res.data
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
     };
 
     handleInputChange = event => {
