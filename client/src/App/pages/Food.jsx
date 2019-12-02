@@ -44,8 +44,8 @@ class Food extends Component {
         mealTime: ""
     };
 
-    foodSearch = () => {
-        API.getFood(this.state.search)
+    foodSearch = (search) => {
+        API.getFood(search)
          .then(res => {
             console.log(res.data);
             this.setState({
@@ -76,6 +76,11 @@ class Food extends Component {
         });
     };
 
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.foodSearch(this.state.search);
+    }
+
     render() {
         return (
             
@@ -98,7 +103,7 @@ class Food extends Component {
                             <InfoInput 
                             name="search" value={this.state.search}
                             onChange={this.handleInputChange} />
-                            <InputGroupAddon>
+                            <InputGroupAddon addonType="append">
                                 <Submit onClick={this.handleFormSubmit} />
                             </InputGroupAddon>
                         </InputGroup>
@@ -189,7 +194,7 @@ class Food extends Component {
                                         <Input type="select" name="mealTime"
                                         value={this.state.mealTime}
                                         onChange={this.handleInputChange} >
-                                        <option selected>Options</option>
+                                        <option defaultValue>Options</option>
                                         <option>Breakfast</option>
                                         <option>Lunch</option>
                                         <option>Dinner</option>

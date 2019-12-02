@@ -15,7 +15,7 @@ const MealMenu = (props) => {
     return (
         <div className="form-group">
           <input type="select" {...props}>
-            <option selected>Options</option>
+            <option defaultValue>Options</option>
             <option>Breakfast</option>
             <option>Lunch</option>
             <option>Dinner</option>
@@ -27,7 +27,7 @@ const MealMenu = (props) => {
 
 const Submit = (props) => {
     return (
-        <button type="button" class="btn btn-info" {...props} >Submit</button>
+        <button type="button" className="btn btn-info" {...props} >Submit</button>
     )
 }
 
