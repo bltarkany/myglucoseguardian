@@ -1,7 +1,18 @@
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-  }
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.foot {
+  border-left: 1px solid whitesmoke;
+  border-right: none;
+  border-bottom: none;
+  border-top: none;
+  border-radius: 1px;
+  margin: none;
+  padding: none;
+  background-color: #6369D1;
+}

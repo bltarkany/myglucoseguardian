@@ -5,23 +5,23 @@ import "./Accordion.css";
 const data = [
   {
     foodid: 1,
-    name: 'Example Name',
-    brand: 'Example Brand',
-    servingSize: 'Example Serving Size',
-    quantity: 'Example Quantity',
+    name: 'Example Name 1',
+    brand: 'Example Brand 1',
+    servingSize: 'Example Serving Size 1',
+    quantity: 'Example Quantity 1',
     weight: 50,
     cals: 500,
     carbs: 100
   },
   {
     foodid: 2,
-    name: 'Example Name',
-    brand: 'Example Brand',
-    servingSize: 'Example Serving Size',
-    quantity: 'Example Quantity',
-    weight: 50,
-    cals: 500,
-    carbs: 100
+    name: 'Example Name 2',
+    brand: 'Example Brand 2',
+    servingSize: 'Example Serving Size 2',
+    quantity: 'Example Quantity 2',
+    weight: 60,
+    cals: 300,
+    carbs: 150
   }
 
 ]
@@ -106,7 +106,7 @@ class AccordionItem extends React.Component {
                 {cals}
               </p>
               <br/>
-              <h6>carbs</h6>
+              <h6>Carbohydrates</h6>
               <p {...{ className: 'accordion-item__paragraph' }}>
                 {carbs}
               </p>
