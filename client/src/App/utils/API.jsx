@@ -1,9 +1,3 @@
-// import {} from 'dotenv/config';
-// import axios from 'axios';
-// import keys from '../../keys.jsx';
-// dotenv.config({ path: path.join(__dirname, '.env') });
-
-
 // require path to env -- prevent conflicts with react env
 require("dotenv").config({ path: '../../../.env' });
 // import keys file
@@ -14,7 +8,6 @@ const axios = require('axios');
 let appId = keys.appId;
 let appKey = keys.appKey;
 
-console.log(appId, appKey);
 
 module.exports = {
     // grab food list search
