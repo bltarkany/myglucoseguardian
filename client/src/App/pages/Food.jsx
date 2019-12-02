@@ -85,12 +85,9 @@ class Food extends Component {
         return (
             
             <Container>
-<<<<<<< HEAD
                 <Header />
                 <Navigation />
                 <br></br>
-=======
->>>>>>> 1834d364b81aed967f1298bdf02eabdc12893d2d
                 <Row>
                     <Col xs="12" sm="12">
                         <Title>
