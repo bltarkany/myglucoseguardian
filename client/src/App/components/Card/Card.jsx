@@ -6,7 +6,7 @@ const CardBody = (props) => {
         <div className="card-body">
             <ul>
                 <li>
-                    <strong>Serving Size:</strong> {props.servingSize} ({props.servingGrams} grams)
+                    <strong>Serving Size:</strong> {props.servingSize} {props.servingUnit} ({props.servingGrams} grams)
                 </li>
                 <li>
                     <strong>Calories:</strong> {props.calories}

@@ -1,7 +1,7 @@
 // require path to env -- prevent conflicts with react env
 require("dotenv").config({ path: '../../../.env' });
 // import keys file
-const keys = require('../../keys');
+const keys = require('../../keys.jsx');
 const axios = require('axios');
 
 

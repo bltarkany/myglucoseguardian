@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+// ============== Grid ===================
 import { Container, Row, Col } from 'reactstrap';
+// ============== Form ===================
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { InputGroup, InputGroupAddon } from 'reactstrap';
-import Title from '../components/Title/Title';
 import { Submit, InfoInput } from '../components/Form/Form';
-
+// ============== Title ==================
+import Title from '../components/Title/Title';
+// ============== Card ===================
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import CardBody from '../components/Card/Card';
+// =============== Food Database pull ===========
 import API from "../utils/API";
+// ============= Auth0 and NavBar
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
 
@@ -17,6 +25,7 @@ class Food extends Component {
     state = {
         search: "",
         foodList: [],
+        item: [],
         itemId: 0,
         name: "",
         brand: "",
@@ -79,6 +88,36 @@ class Food extends Component {
                         </InputGroup>
                         <br></br>
                         <h5>Choose from the options below:</h5>
+                        <br></br>
+                        {this.state.foodList.length ? (
+                            <Accordion defaultActiveKey="0">
+                                {this.state.foodList.map(food => (
+                                    <Card>
+                                        <Accordion.Toggle as={Card.Header} eventKey={food.nix_item_id} onClick={this.itemSearch}>
+                                            <strong>{food.brand_name_item_name}</strong>
+                                        </Accordion.Toggle>
+                                        <Accordion.Collapse eventKey={food.nix_item_id}>
+                                            {this.state.item.map(item => (
+                                              <CardBody
+                                              servingSize={item.serving_qty}
+                                              servingUnit={item.serving_unit}
+                                              servingGrams={item.serving_weight_grams}
+                                              calories={item.nf_calories}
+                                              totalFat={item.nf_total_fat}
+                                              saturatedFat={item.nf_saturated_fat}
+                                              carbs={item.nf_total_carbohydrate}
+                                              sugars={item.nf_sugars}
+                                              dietaryFiber={item.nf_dietary_fiber}
+                                              protein={item.nf_protein}
+                                              sodium={item.nf_sodium} />  
+                                            ))}
+                                        </Accordion.Collapse>
+                                    </Card>
+                                ))}
+                            </Accordion>
+                        ) : (
+                            <h6>No items to display</h6>
+                        )}
                     </Col>
                     <Col xs="12" sm="12" md={{ size: 4, offset: 1}}>
                         <h4>Custom Nutritional Info</h4>
