@@ -1,11 +1,10 @@
 import React from 'react';
 import './Title.css';
 
-export default function Title(props) {
+export default function Title({children}) {
     return (
         <div>
-            <h1>{props}</h1>
-            <hr/>
+          {children} 
         </div>
     );
 }
