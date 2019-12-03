@@ -28,18 +28,12 @@ class Food extends Component {
         itemId: 0,
         name: "",
         brand: "",
-        servingSize: 0,
-        servingQty: 0,
-        servingGrams: 0,
         calories: 0,
         totalFat: 0,
-        saturatedFat: 0,
-        cholesterol: 0,
         carbs: 0,
         dietaryFiber: 0,
         sugars: 0,
         protein: 0,
-        sodium: 0,
         mealTime: ""
     };
 
@@ -144,26 +138,14 @@ class Food extends Component {
                         {console.log(this.state.foodList)}
                         {this.state.foodList ? (
                             <Accordion defaultActiveKey="0">
-                                {this.state.foodList.branded.map(food => (
-                                    <Card id={food._id}>
-                                        <Accordion.Toggle as={Card.Header} eventKey={food.nix_item_id} onClick={this.itemSearch}>
+                                {this.state.foodList.map((food, index) => (
+                                    <Card>
+                                        {console.log(index)}
+                                        <Accordion.Toggle as={Card.Header} eventKey={index} onClick={ () => { this.itemSearch(food.nix_item_id, index) }}>
                                             <strong>{food.brand_name_item_name}</strong>
                                         </Accordion.Toggle>
-                                        <Accordion.Collapse eventKey={food.nix_item_id}>
-                                            {this.state.item.map(item => (
-                                              <CardBody
-                                              servingSize={item.serving_qty}
-                                              servingUnit={item.serving_unit}
-                                              servingGrams={item.serving_weight_grams}
-                                              calories={item.nf_calories}
-                                              totalFat={item.nf_total_fat}
-                                              saturatedFat={item.nf_saturated_fat}
-                                              carbs={item.nf_total_carbohydrate}
-                                              sugars={item.nf_sugars}
-                                              dietaryFiber={item.nf_dietary_fiber}
-                                              protein={item.nf_protein}
-                                              sodium={item.nf_sodium} />  
-                                            ))}
+                                        <Accordion.Collapse eventKey={index}>
+                                            <CardBody obj={this.state.item[index]}></CardBody>
                                         </Accordion.Collapse>
                                     </Card>
                                 ))}
