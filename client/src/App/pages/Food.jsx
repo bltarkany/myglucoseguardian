@@ -24,7 +24,7 @@ class Food extends Component {
     state = {
         search: "",
         foodList: null,
-        item: [],
+        item: this.emptyItem(),
         itemId: 0,
         name: "",
         brand: "",
@@ -43,31 +43,62 @@ class Food extends Component {
         mealTime: ""
     };
 
+    // compile empty card body as a place holder
+    emptyItem() {
+        let emptyObj = {
+            serving_qty: "",
+            serving_unit: "",
+            serving_weight_grams: "",
+            nf_calories: "",
+            nf_total_fat: "",
+            nf_saturated_fat: "",
+            nf_total_carbohydrate: "",
+            nf_sugars: "",
+            nf_dietary_fiber: "",
+            nf_protein: "",
+            nf_sodium: ""
+        };
+        let obj = [];
+        for (var i = 0; i < 20; i++) {
+            obj.push(emptyObj);
+        }
+        return obj;
+    }
+
+    // search for branded food item list
     foodSearch = (search) => {
         API.getFood(search)
          .then(res => {
-            console.log(res.branded);
+            console.log(res);
+            console.log("I'm setting state");
             this.setState({
                 foodList: res
             });
-            console.log(this.state.foodList, this.state.foodList.branded.length);
+            console.log(this.state.foodList, this.state.foodList.length);
          }).catch((err) => {
             console.log(err);
          });
     };
 
-    itemSearch = (eventKey) => {
-        API.getItem(eventKey)
+    // search for single item selected
+    itemSearch = (id, index) => {
+        let newList = this.state.item;
+        console.log(`Food: ${id}, ${index}`);
+        console.log(`Item: ${this.state.item[index]}`);
+        API.getItem(id)
         .then(res => {
             console.log(res);
+            console.log(`Food Details: ${res.data}`);
+            newList[index] = res;
             this.setState({
-                item: res.data
-            })
+                item: newList
+            });
         }).catch((err) => {
             console.log(err);
         });
     };
 
+    // handle input change of the search
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -75,6 +106,7 @@ class Food extends Component {
         });
     };
 
+    // handle submit of the search request
     handleFormSubmit = event => {
         event.preventDefault();
         this.foodSearch(this.state.search);
