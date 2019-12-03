@@ -2,37 +2,40 @@ import React from 'react';
 import './Card.css';
 
 const CardBody = (props) => {
+    console.log(`Prop: ${props}`);
+    props = props.obj;
+    console.log(`Prop2: ${props}`)
     return (
         <div className="card-body">
             <ul>
                 <li>
-                    <strong>Serving Size:</strong> {props.servingSize} {props.servingUnit} ({props.servingGrams} grams)
+                    <strong>Serving Size:</strong> {props.serving_qty} {props.serving_unit} ({props.serving_weight_grams} grams)
                 </li>
                 <li>
-                    <strong>Calories:</strong> {props.calories}
+                    <strong>Calories:</strong> {props.nf_calories}
                 </li>
                 <li>
-                    <strong>Total Fat:</strong> {props.totalFat} g
+                    <strong>Total Fat:</strong> {props.nf_total_fat} g
                 </li>
                 <li>
-                    <strong>Saturated Fat:</strong> {props.saturatedFat} g
+                    <strong>Saturated Fat:</strong> {props.nf_saturated_fat} g
                 </li>
                 <li>
-                    <strong>Carbohydrates:</strong> {props.carbs} g
+                    <strong>Carbohydrates:</strong> {props.nf_total_carbohydrate} g
                     <ul className="tab">
                         <li>
-                            <strong>Sugars:</strong> {props.sugars} g
+                            <strong>Sugars:</strong> {props.nf_sugars} g
                         </li>
                         <li>
-                            <strong>Dietary Fiber:</strong> {props.dietaryFiber} g
+                            <strong>Dietary Fiber:</strong> {props.nf_dietary_fiber} g
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <strong>Protein:</strong> {props.protein} g
+                    <strong>Protein:</strong> {props.nf_protein} g
                 </li>
                 <li>
-                    <strong>Sodium:</strong> {props.sodium} mg
+                    <strong>Sodium:</strong> {props.nf_sodium} mg
                 </li>
             </ul>
         </div>

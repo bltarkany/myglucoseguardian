@@ -21,54 +21,74 @@ import Navigation from "../components/Navigation/Navigation";
 
 // compiled by BT
 class Food extends Component {
-
     state = {
         search: "",
-        foodList: [],
-        item: [],
-        itemId: 0,
+        foodList: null,
+        item: this.emptyItem(),
         name: "",
         brand: "",
-        servingSize: 0,
-        servingQty: 0,
-        servingGrams: 0,
         calories: 0,
         totalFat: 0,
-        saturatedFat: 0,
-        cholesterol: 0,
         carbs: 0,
         dietaryFiber: 0,
         sugars: 0,
         protein: 0,
-        sodium: 0,
         mealTime: ""
     };
 
+    // compile empty card body as a place holder
+    emptyItem() {
+        let emptyObj = {
+            serving_qty: "",
+            serving_unit: "",
+            serving_weight_grams: "",
+            nf_calories: "",
+            nf_total_fat: "",
+            nf_saturated_fat: "",
+            nf_total_carbohydrate: "",
+            nf_sugars: "",
+            nf_dietary_fiber: "",
+            nf_protein: "",
+            nf_sodium: ""
+        };
+        let obj = [];
+        for (var i = 0; i < 20; i++) {
+            obj.push(emptyObj);
+        }
+        return obj;
+    }
+
+    // search for branded food item list
     foodSearch = (search) => {
         API.getFood(search)
          .then(res => {
-            console.log(res.data);
+            console.log("I'm setting state");
             this.setState({
-                foodList: res.data
-            })
-
+                foodList: res
+            });
          }).catch((err) => {
             console.log(err);
          });
     };
 
-    itemSearch = (eventKey) => {
-        API.getItem(eventKey)
+    // search for single item selected
+    itemSearch = (id, index) => {
+        let newList = this.state.item;
+        console.log(`Food: ${id}, ${index}`);
+        console.log(`Item: ${this.state.item[index]}`);
+        API.getItem(id)
         .then(res => {
-            console.log(res.data);
+            console.log(`Food Details: ${res}`);
+            newList[index] = res;
             this.setState({
-                item: res.data
-            })
+                item: newList
+            });
         }).catch((err) => {
             console.log(err);
         });
     };
 
+    // handle input change of the search
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -76,6 +96,7 @@ class Food extends Component {
         });
     };
 
+    // handle submit of the search request
     handleFormSubmit = event => {
         event.preventDefault();
         this.foodSearch(this.state.search);
@@ -110,28 +131,18 @@ class Food extends Component {
                         <br></br>
                         <h5>Choose from the options below:</h5>
                         <br></br>
-                        {this.state.foodList.length ? (
+                        {console.log(this.state.foodList)}
+                        {this.state.foodList ? (
                             <Accordion defaultActiveKey="0">
-                                {this.state.foodList.map(food => (
+                                {console.log(this.state.foodList)}
+                                {this.state.foodList.map((food, index) => (
                                     <Card>
-                                        <Accordion.Toggle as={Card.Header} eventKey={food.nix_item_id} onClick={this.itemSearch}>
+                                        {console.log(index)}
+                                        <Accordion.Toggle as={Card.Header} eventKey={index} onClick={ () => { this.itemSearch(food.nix_item_id, index) }}>
                                             <strong>{food.brand_name_item_name}</strong>
                                         </Accordion.Toggle>
-                                        <Accordion.Collapse eventKey={food.nix_item_id}>
-                                            {this.state.item.map(item => (
-                                              <CardBody
-                                              servingSize={item.serving_qty}
-                                              servingUnit={item.serving_unit}
-                                              servingGrams={item.serving_weight_grams}
-                                              calories={item.nf_calories}
-                                              totalFat={item.nf_total_fat}
-                                              saturatedFat={item.nf_saturated_fat}
-                                              carbs={item.nf_total_carbohydrate}
-                                              sugars={item.nf_sugars}
-                                              dietaryFiber={item.nf_dietary_fiber}
-                                              protein={item.nf_protein}
-                                              sodium={item.nf_sodium} />  
-                                            ))}
+                                        <Accordion.Collapse eventKey={index}>
+                                            <CardBody obj={this.state.item[index]}></CardBody>
                                         </Accordion.Collapse>
                                     </Card>
                                 ))}
