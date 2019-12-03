@@ -21,10 +21,9 @@ import Navigation from "../components/Navigation/Navigation";
 
 // compiled by BT
 class Food extends Component {
-
     state = {
         search: "",
-        foodList: [],
+        foodList: null,
         item: [],
         itemId: 0,
         name: "",
@@ -47,11 +46,11 @@ class Food extends Component {
     foodSearch = (search) => {
         API.getFood(search)
          .then(res => {
-            console.log(res.data);
+            console.log(res.branded);
             this.setState({
-                foodList: res.data
-            })
-
+                foodList: res
+            });
+            console.log(this.state.foodList, this.state.foodList.branded.length);
          }).catch((err) => {
             console.log(err);
          });
@@ -60,7 +59,7 @@ class Food extends Component {
     itemSearch = (eventKey) => {
         API.getItem(eventKey)
         .then(res => {
-            console.log(res.data);
+            console.log(res);
             this.setState({
                 item: res.data
             })
@@ -110,10 +109,11 @@ class Food extends Component {
                         <br></br>
                         <h5>Choose from the options below:</h5>
                         <br></br>
-                        {this.state.foodList.length ? (
+                        {console.log(this.state.foodList)}
+                        {this.state.foodList ? (
                             <Accordion defaultActiveKey="0">
-                                {this.state.foodList.map(food => (
-                                    <Card>
+                                {this.state.foodList.branded.map(food => (
+                                    <Card id={food._id}>
                                         <Accordion.Toggle as={Card.Header} eventKey={food.nix_item_id} onClick={this.itemSearch}>
                                             <strong>{food.brand_name_item_name}</strong>
                                         </Accordion.Toggle>

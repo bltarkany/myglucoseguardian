@@ -26,28 +26,23 @@ module.exports = {
                 common: false
             }
         }).then((res) => {
-            console.log(res.data);
-            res.json();
+            return res.data.branded;
         })
-        .catch((error) => {
-            console.log(error);
-        });
     },
     // grab food item info
     getItem: function(id) {
-        let url = `https://trackapi.nutritionix.com/v2/search/item?query=${id}`;
+        let url = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${id}`;
 
         return axios.get(url, {
             headers: {
-                'x-app-id': appId,
-                'x-app-key': appKey,
+                'x-app-id': `${appId}`,
+                'x-app-key': `${appKey}`,
+                'x-remote-user-id': '0',
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then((res) => {
-            console.log(res.data);
-        }).catch((error) => {
-            console.log(error);
-        });
+            return res.data.foods;
+        })
     },
     
     getUser: function(id) {
@@ -58,46 +53,46 @@ module.exports = {
  
 }
 
-function get(search) {
+// function get(search) {
 
-        let url = `https://trackapi.nutritionix.com/v2/search/instant?query=${search}`;
+//         let url = `https://trackapi.nutritionix.com/v2/search/instant?query=${search}`;
 
-        axios.get(url, {
-            headers: {
-            'x-app-id': appId,
-            'x-app-key': appKey,
-            'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            params: {
-                branded: true,
-                common: false
-            }
-        }).then((res) => {
-            console.log(res.data);
-            // res.json(data);
-        }).catch((error) => {
-            console.log(error);
-        });
+//         axios.get(url, {
+//             headers: {
+//             'x-app-id': appId,
+//             'x-app-key': appKey,
+//             'Content-Type': 'application/x-www-form-urlencoded'
+//             },
+//             params: {
+//                 branded: true,
+//                 common: false
+//             }
+//         }).then((res) => {
+//             console.log(res.data);
+//             // res.json(data);
+//         }).catch((error) => {
+//             console.log(error);
+//         });
 
-}
+// }
 
-function getItem(id) {
+// function getItem(id) {
 
-    let url = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${id}`;
+//     let url = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${id}`;
 
-    axios.get(url, {
-        headers: {
-            'x-app-id': appId,
-            'x-app-key': appKey,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    }).then((res) => {
-        console.log(res.data);
-    }).catch((error) => {
-        console.log(error);
-    });
-}
+//     axios.get(url, {
+//         headers: {
+//             'x-app-id': appId,
+//             'x-app-key': appKey,
+//             'Content-Type': 'application/x-www-form-urlencoded'
+//         }
+//     }).then((res) => {
+//         console.log(res.data);
+//     }).catch((error) => {
+//         console.log(error);
+//     });
+// }
 
 
-console.log(get("reduced fat feta cheese"));
-console.log(getItem('5b90d1ad1a47f2ec0f72cf10'));
+// console.log(get("reduced fat feta cheese"));
+// console.log(getItem('5b90d1ad1a47f2ec0f72cf10'));
