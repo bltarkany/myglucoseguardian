@@ -53,28 +53,6 @@ module.exports = {
  
 }
 
-// function get(search) {
-
-//         let url = `https://trackapi.nutritionix.com/v2/search/instant?query=${search}`;
-
-//         axios.get(url, {
-//             headers: {
-//             'x-app-id': appId,
-//             'x-app-key': appKey,
-//             'Content-Type': 'application/x-www-form-urlencoded'
-//             },
-//             params: {
-//                 branded: true,
-//                 common: false
-//             }
-//         }).then((res) => {
-//             console.log(res.data);
-//             // res.json(data);
-//         }).catch((error) => {
-//             console.log(error);
-//         });
-
-// }
 
 // function getItem(id) {
 
@@ -93,6 +71,3 @@ module.exports = {
 //     });
 // }
 
-
-// console.log(get("reduced fat feta cheese"));
-// console.log(getItem('5b90d1ad1a47f2ec0f72cf10'));

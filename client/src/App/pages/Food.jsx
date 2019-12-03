@@ -25,7 +25,6 @@ class Food extends Component {
         search: "",
         foodList: null,
         item: this.emptyItem(),
-        itemId: 0,
         name: "",
         brand: "",
         calories: 0,
@@ -63,12 +62,10 @@ class Food extends Component {
     foodSearch = (search) => {
         API.getFood(search)
          .then(res => {
-            console.log(res);
             console.log("I'm setting state");
             this.setState({
                 foodList: res
             });
-            console.log(this.state.foodList, this.state.foodList.length);
          }).catch((err) => {
             console.log(err);
          });
@@ -81,8 +78,7 @@ class Food extends Component {
         console.log(`Item: ${this.state.item[index]}`);
         API.getItem(id)
         .then(res => {
-            console.log(res);
-            console.log(`Food Details: ${res.data}`);
+            console.log(`Food Details: ${res}`);
             newList[index] = res;
             this.setState({
                 item: newList
@@ -138,6 +134,7 @@ class Food extends Component {
                         {console.log(this.state.foodList)}
                         {this.state.foodList ? (
                             <Accordion defaultActiveKey="0">
+                                {console.log(this.state.foodList)}
                                 {this.state.foodList.map((food, index) => (
                                     <Card>
                                         {console.log(index)}
