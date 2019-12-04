@@ -1,10 +1,12 @@
 import React from "react";
+// =========== Grid =================
 import { Container, Row, Col } from "reactstrap";
 
 import Highlight from "../components/Highlight/Highlight";
 import Loading from "../components/Loading/Loading";
 import { useAuth0 } from "../react-auth0-spa";
-
+// ============== Title ==================
+import Title from '../components/Title/Title';
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
 
@@ -33,6 +35,17 @@ const Profile = () => {
       </Row>
       <Row>
         <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
+      </Row>
+
+      <Row>
+        <Col xs="12" sm="12">
+          <Title>
+            <h1>Welcome back, {user.name} </h1>
+          </Title>
+        </Col>
+      </Row>
+      <Row>
+        
       </Row>
     </Container>
   );
