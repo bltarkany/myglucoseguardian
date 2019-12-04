@@ -56,7 +56,7 @@ class Food extends Component {
             obj.push(emptyObj);
         }
         return obj;
-    }
+    };
 
     // search for branded food item list
     foodSearch = (search) => {
@@ -100,7 +100,7 @@ class Food extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         this.foodSearch(this.state.search);
-    }
+    };
 
     render() {
         return (
@@ -158,19 +158,19 @@ class Food extends Component {
                                         <InfoInput 
                                         name="calories" value={this.state.calories}
                                         onChange={this.handleInputChange}
-                                        type="number" placeholder="Calories Kcal" />
+                                        type="number" />
 
                                         <Label>Carbs</Label>
                                         <InfoInput
                                         name="carbs" value={this.state.carbs}
                                         onChange={this.handleInputChange} 
-                                        type="number" placeholder="in grams" />
+                                        type="number" />
                             
                                         <Label>Sugars</Label>
                                         <InfoInput
                                         name="sugars" value={this.state.sugars}
                                         onChange={this.handleInputChange}
-                                        type="number" placeholder="in grams" />
+                                        type="number" />
                                     </FormGroup>
                                 </Col>
                                 <Col xs="12" sm="12" md="6">
@@ -179,19 +179,19 @@ class Food extends Component {
                                         <InfoInput 
                                         name="totalFat" value={this.state.totalFat}
                                         onChange={this.handleInputChange}
-                                        type="number" placeholder="in grams" />
+                                        type="number" />
 
                                         <Label>Dietary Fiber</Label>
                                         <InfoInput 
                                         name="dietaryFiber" value={this.state.dietaryFiber}
                                         onChange={this.handleInputChange}
-                                        type="number" placeholder="in grams" />
+                                        type="number" />
                                         
                                         <Label>Proteins</Label>
                                         <InfoInput 
                                         name="protein" value={this.state.protein}
                                         onChange={this.handleInputChange}
-                                        type="number" placeholder="in grams" />
+                                        type="number" />
                                     </FormGroup>
                                 </Col>
                             </Row>
@@ -203,10 +203,10 @@ class Food extends Component {
                                         value={this.state.mealTime}
                                         onChange={this.handleInputChange} >
                                         <option defaultValue>Options</option>
-                                        <option>Breakfast</option>
-                                        <option>Lunch</option>
-                                        <option>Dinner</option>
-                                        <option>Snack</option>
+                                        <option value="breakfast">Breakfast</option>
+                                        <option value="lunch">Lunch</option>
+                                        <option value="dinner">Dinner</option>
+                                        <option value="snack">Snack</option>
                                         </Input>
                                     </FormGroup>
                                     </Col>

@@ -4,9 +4,10 @@ import { Container, Row, Col } from 'reactstrap';
 // ============== Title ==================
 import Title from '../components/Title/Title';
 // ============== Form ===================
-import { Form, FormGroup, Label, Input } from 'reactstrap';
-import { InputGroup, InputGroupAddon } from 'reactstrap';
+import { Form, FormGroup, Label } from 'reactstrap';
 import { Submit, InfoInput } from '../components/Form/Form';
+// ============== Collapse ================
+import Collapse from '../components/Collapse/Collapse';
 // =========== Auht0 header nav ================
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
@@ -19,11 +20,32 @@ class Glucose extends Component {
         userInfo: {},
         glucoseInfo: {},
         glucoseInput: [],
-        numLogs: 0
+        numLogs: 0,
+        glucoseLevel: 0,
+        time: "",
+        search: ""
     };
 
     componentDidMount() {
         this.loadUser(this.props.match.params.id);
+    };
+
+    // handle input change and set state
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    // handle submit of the search request for logs
+    handleFormSubmit = event => {
+        event.preventDefault();
+    };
+
+    // handle glucose input submit
+    handleSubmit = event => {
+        event.preventDefault();
     }
 
     // Changes user state on loadup
@@ -105,9 +127,14 @@ class Glucose extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs="12" sm="12" md="6">
-                        <h5>Let's search our daily logs</h5>
-                        
+                    <Col xs="12" sm="12" md="6">                        
+                        <h5>Let's search our daily logs</h5>                        
+                        <Collapse
+                        name="search"
+                        value={this.state.search}
+                        onChange={this.handleInputChange}
+                        onClick={this.handleFormSubmit}
+                        ></Collapse>    
                     </Col>
                     <Col xs="12" sm="12" md="6">
                         <h5>Let's log glucose levels {this.state.userInfo.first_name} {this.state.userInfo.last_name}</h5>
@@ -118,17 +145,16 @@ class Glucose extends Component {
                                 name="glucoseLevel"
                                 value={this.state.glucoseLevel}
                                 onChange={this.handleInputChange}
-                                type="number"
-                                placeholder="mg/dl" />
+                                type="number" />
 
                                 <Label>When did you collect it?</Label>
                                 <InfoInput
                                 name="time"
                                 value={this.state.time}
-                                onchange={this.handleInputChange}
+                                onChange={this.handleInputChange}
                                 type="time" />    
                             </FormGroup>
-                            <Submit onClick={this.handleFormSubmit} />
+                            <Submit onClick={this.handleSubmit} />
                         </Form>
                     </Col>
                 </Row>
