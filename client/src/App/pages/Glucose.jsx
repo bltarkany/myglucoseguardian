@@ -6,6 +6,7 @@ import Title from '../components/Title/Title';
 // ============== Form ===================
 import { Form, FormGroup, Label } from 'reactstrap';
 import { Submit, InfoInput } from '../components/Form/Form';
+import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 // ============== Collapse ================
 import Collapse from '../components/Collapse/Collapse';
 // =========== Auht0 header nav ================
@@ -128,12 +129,22 @@ class Glucose extends Component {
                 </Row>
                 <Row>
                     <Col xs="12" sm="12" md="6">                        
-                        <h5>Let's search our daily logs</h5>                        
-                        <Collapse
-                        name="search"
-                        value={this.state.search}
+                        <h5>Let's search our daily logs</h5>
+                        <Label>Search by Date</Label>
+                        <InputGroup>
+                        <Input 
+                        name="search" 
+                        value={this.state.value} 
                         onChange={this.handleInputChange}
-                        onClick={this.handleFormSubmit}
+                        type="date"/>
+                        <InputGroupAddon addonType="append">
+                            <Button color="info" id="toggler" onClick={this.handleFormSubmit} style={{ marginBottom: '1rem' }}>
+                            search
+                            </Button> 
+                        </InputGroupAddon>
+                        </InputGroup>                      
+                        <Collapse
+
                         ></Collapse>    
                     </Col>
                     <Col xs="12" sm="12" md="6">

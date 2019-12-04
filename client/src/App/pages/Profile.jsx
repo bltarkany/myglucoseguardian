@@ -1,7 +1,9 @@
 import React from "react";
 // =========== Grid =================
 import { Container, Row, Col } from "reactstrap";
-
+// ============ profile Display =============
+import { Info, Contact, Health } from '../components/Info/Info';
+// =========== Auth0 ================
 import Highlight from "../components/Highlight/Highlight";
 import Loading from "../components/Loading/Loading";
 import { useAuth0 } from "../react-auth0-spa";
@@ -44,8 +46,21 @@ const Profile = () => {
           </Title>
         </Col>
       </Row>
+      <br></br>
       <Row>
-        
+        <Col xs="12" sm="12" md="6">
+          <h4></h4>
+          <Info></Info>
+        </Col>
+        <Col xs="12" sm="12" md="6">
+          <Contact></Contact>
+        </Col>
+      </Row>
+      <br></br>
+      <Row>
+        <Col xs="12" sm="12" md={{ size: 6, offset: 3 }}>
+          <Health></Health>
+        </Col>
       </Row>
     </Container>
   );
