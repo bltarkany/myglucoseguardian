@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 
 const TableLog = (props) => {
   return (
-    <Table hover>
+    <Table hover size="sm">
       <thead>
         <tr>
           <th>Date</th>

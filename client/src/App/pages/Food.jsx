@@ -67,7 +67,11 @@ class Food extends Component {
             });
          }).catch((err) => {
             console.log(err);
-         });
+        });
+
+        this.setState({
+            search: ""
+        });
     };
 
     // search for single item selected
