@@ -72,6 +72,7 @@ const NavBar = () => {
                     >
                       <FontAwesomeIcon icon="user" className="mr-3" /> Profile
                     </DropdownItem>
+                    
                     <DropdownItem
                       id="qsLogoutBtn"
                       onClick={() => logoutWithRedirect()}
