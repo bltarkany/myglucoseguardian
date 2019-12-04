@@ -52,22 +52,3 @@ module.exports = {
     }
  
 }
-
-
-// function getItem(id) {
-
-//     let url = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${id}`;
-
-//     axios.get(url, {
-//         headers: {
-//             'x-app-id': appId,
-//             'x-app-key': appKey,
-//             'Content-Type': 'application/x-www-form-urlencoded'
-//         }
-//     }).then((res) => {
-//         console.log(res.data);
-//     }).catch((error) => {
-//         console.log(error);
-//     });
-// }
-

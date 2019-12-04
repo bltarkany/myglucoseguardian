@@ -62,7 +62,6 @@ class Food extends Component {
     foodSearch = (search) => {
         API.getFood(search)
          .then(res => {
-            console.log("I'm setting state");
             this.setState({
                 foodList: res
             });
@@ -74,12 +73,9 @@ class Food extends Component {
     // search for single item selected
     itemSearch = (id, index) => {
         let newList = this.state.item;
-        console.log(`Food: ${id}, ${index}`);
-        console.log(`Item: ${this.state.item[index]}`);
         API.getItem(id)
         .then(res => {
-            console.log(`Food Details: ${res}`);
-            newList[index] = res;
+            newList[index] = res[0];
             this.setState({
                 item: newList
             });
@@ -131,13 +127,10 @@ class Food extends Component {
                         <br></br>
                         <h5>Choose from the options below:</h5>
                         <br></br>
-                        {console.log(this.state.foodList)}
                         {this.state.foodList ? (
-                            <Accordion defaultActiveKey="0">
-                                {console.log(this.state.foodList)}
+                            <Accordion defaultActiveKey="0">                               
                                 {this.state.foodList.map((food, index) => (
                                     <Card>
-                                        {console.log(index)}
                                         <Accordion.Toggle as={Card.Header} eventKey={index} onClick={ () => { this.itemSearch(food.nix_item_id, index) }}>
                                             <strong>{food.brand_name_item_name}</strong>
                                         </Accordion.Toggle>
