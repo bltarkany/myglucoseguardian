@@ -1,9 +1,16 @@
-// Glucose page Current as of 15:27 12/1/2019
-
 import React, { Component } from "react";
+// ============== Grid ===================
+import { Container, Row, Col } from 'reactstrap';
+// ============== Title ==================
+import Title from '../components/Title/Title';
+// ============== Form ===================
+import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon } from 'reactstrap';
+import { Submit, InfoInput } from '../components/Form/Form';
+// =========== Auht0 header nav ================
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
-import { Container, Row, Col } from "../components/Grid/index";
+// ============== database info pulls ==========
 import API from "../utils/API";
 // import { stringify } from "querystring";
 
@@ -84,83 +91,104 @@ class Glucose extends Component {
     render() {
         console.log('STATE OF GLU', typeof this.state.glucoseInput)
         return (
-            <Container>
-                <Row>
-                    <Col size="sm-12">
-                        <Header />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col size="sm-12">
-                        <Navigation />
-                    </Col>
-                </Row>
 
+            <Container>
+                <Header />
+                <Navigation />
+                <br/>
                 <Row>
-                    <Col size="lg-12">
+                    <Col xs="12" sm="12">
+                        <Title>
                         <h1>Glucose Calculation</h1>
-                        <hr
-                            style={{
-                                width: "100%",
-                                color: "light-grey",
-                                height: "1px",
-                                backgroundColor: "light-grey",
-                                marginTop: "40px",
-                                marginBottom: "40px"
-                            }}
-                        />
+                        <hr></hr>
+                        </Title>
                     </Col>
                 </Row>
                 <Row>
-                    <Col size="lg-6">
-                        <div className="form-group">
-                            <label htmlFor="glucoseLevel">
-                                Glucose Level for{" "}
-                                {this.state.userInfo.first_name +
-                                    " " +
-                                    this.state.userInfo.last_name}
-                            </label>
-                            <input
+                    <Col xs="12" sm="12" md="6">
+                        <h5>Let's search our daily logs</h5>
+                        
+                    </Col>
+                    <Col xs="12" sm="12" md="6">
+                        <h5>Let's log glucose levels {this.state.userInfo.first_name} {this.state.userInfo.last_name}</h5>
+                        <Form>
+                            <FormGroup>
+                                <Label>Glucose Level</Label>
+                                <InfoInput 
+                                name="glucoseLevel"
+                                value={this.state.glucoseLevel}
+                                onChange={this.handleInputChange}
                                 type="number"
-                                className="form-control"
-                                id="glucoseLevel"
-                            />
-                            <small
-                                id=""
-                                className="form-text text-muted"
-                            ></small>
-                        </div>
-                    </Col>
-                    <Col size="lg-6">
-                        <div className="form-group">
-                            <label htmlFor="time">When did you collect?</label>
-                            <input
-                                type="time"
-                                className="form-control"
-                                id="time"
-                            />
-                            <small
-                                id=""
-                                className="form-text text-muted"
-                            ></small>
-                        </div>
+                                placeholder="mg/dl" />
+
+                                <Label>When did you collect it?</Label>
+                                <InfoInput
+                                name="time"
+                                value={this.state.time}
+                                onchange={this.handleInputChange}
+                                type="time" />    
+                            </FormGroup>
+                            <Submit onClick={this.handleFormSubmit} />
+                        </Form>
                     </Col>
                 </Row>
-                <Row>
-                    <Col size="lg-12">
-                        <button type="submit" className="btn btn-primary">
-                            submit
-                        </button>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col size="lg-12">  
-                        <p>You have {this.state.numLogs} logs</p>
-                        <h5>Here's your log information</h5>
-                        <p>{this.state.glucoseInput}</p>
-                    </Col>
-                </Row>
+                <br></br>
             </Container>
+
+            // <Container>
+                
+
+               
+            //     <Row>
+            //         <Col size="lg-6">
+            //             <div className="form-group">
+            //                 <label htmlFor="glucoseLevel">
+            //                     Glucose Level for{" "}
+            //                     {this.state.userInfo.first_name +
+            //                         " " +
+            //                         this.state.userInfo.last_name}
+            //                 </label>
+            //                 <input
+            //                     type="number"
+            //                     className="form-control"
+            //                     id="glucoseLevel"
+            //                 />
+            //                 <small
+            //                     id=""
+            //                     className="form-text text-muted"
+            //                 ></small>
+            //             </div>
+            //         </Col>
+            //         <Col size="lg-6">
+            //             <div className="form-group">
+            //                 <label htmlFor="time">When did you collect?</label>
+            //                 <input
+            //                     type="time"
+            //                     className="form-control"
+            //                     id="time"
+            //                 />
+            //                 <small
+            //                     id=""
+            //                     className="form-text text-muted"
+            //                 ></small>
+            //             </div>
+            //         </Col>
+            //     </Row>
+            //     <Row>
+            //         <Col size="lg-12">
+            //             <button type="submit" className="btn btn-primary">
+            //                 submit
+            //             </button>
+            //         </Col>
+            //     </Row>
+            //     <Row>
+            //         <Col size="lg-12">  
+            //             <p>You have {this.state.numLogs} logs</p>
+            //             <h5>Here's your log information</h5>
+            //             <p>{this.state.glucoseInput}</p>
+            //         </Col>
+            //     </Row>
+            // </Container>
         );
     }
 }
