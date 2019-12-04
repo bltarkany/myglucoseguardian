@@ -61,6 +61,37 @@ module.exports = {
         console.log(id + " has entered API call");
         console.log(axios.get("/api/user/" + id));
         return axios.get("/api/user/" + id)
+    },
+    
+    getGlucoseLogCharts: function(glucoseID) {
+        console.log(glucoseID + " has entered getGlucoseLogCharts API call");
+        // console.log(axios.get("/api/GlucoseChart/" + glucoseID));
+        return axios.get("/api/GlucoseChart/" + glucoseID);
+    },
+
+
+    getGlucoseInput: function(glucoseChartObject) {
+        //holds the promises from each AXIOS call
+        const promiseArray = [];
+
+        console.log(
+            glucoseChartObject + " has entered getGlucoseInput API call"
+        );
+
+        //does an AXIOS call for each logID the user has, then stores the results in promiseArray
+        glucoseChartObject.forEach(Entry => {
+            promiseArray.push(axios.get("/api/Glucose/" + Entry));
+        });
+        //return results
+        return Promise.all(promiseArray).then(function(resolvedPromises) {
+            console.log(
+                "contents of promiseArray" + JSON.stringify(resolvedPromises)
+            );
+            console.log("========================================");
+            console.log(resolvedPromises);
+            return resolvedPromises;
+        });
+        // axios.get("/api/Glucose/" + glucoseInputID);
     }
  
 }

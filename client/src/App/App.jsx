@@ -62,7 +62,7 @@ const App = () => {
                         {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
                         <PrivateRoute path="/test/:id" component={MySummary} />
                         <PrivateRoute path="/food" component={Food} />
-                        <PrivateRoute path="/glucose" component={Glucose} />
+                        <PrivateRoute path="/glucose/:id" component={Glucose} />
                         <PrivateRoute path="/test2/" component={Accordion} />
 
                         {/* <PrivateRoute path="/education" component={Education} />
