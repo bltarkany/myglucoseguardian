@@ -2,9 +2,9 @@ import React from 'react';
 import './Card.css';
 
 const CardBody = (props) => {
-    console.log(`Prop: ${props}`);
+    
     props = props.obj;
-    console.log(`Prop2: ${props}`)
+    
     return (
         <div className="card-body">
             <ul>
