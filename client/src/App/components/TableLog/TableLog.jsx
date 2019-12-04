@@ -13,16 +13,15 @@ const TableLog = (props) => {
       </thead>
       <tbody>
         <tr>
-          <th scope="row">1</th>
-          <td>11/16/2019</td>
+          <th scope="row">11/16/2019</th>
           <td>6:00 AM</td>
           <td>120</td>
         </tr>
-        <tr>
+        {/* <tr>
           <th scope="row">{props.glucoseSchema.dateCollected}</th>
           <td>{props.glucoseSchema.timeCollected}</td>
           <td>{props.glucoseSchema.glucoseLevel}</td>
-        </tr>
+        </tr> */}
       </tbody>
     </Table>
   );

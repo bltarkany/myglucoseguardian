@@ -21,7 +21,7 @@ const Collapse = (props, children) => (
     </InputGroup>
     <UncontrolledCollapse toggler="#toggler">
       <Card>
-       {/* <TableLog glucoseSchema={props.glucoseSchema} /> */}
+       <TableLog />
       </Card>
     </UncontrolledCollapse>
   </div>
