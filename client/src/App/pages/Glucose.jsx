@@ -9,7 +9,7 @@ import { Submit, InfoInput } from "../components/Form/Form";
 import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
 // ============== Collapse ================
 import Collapse from "../components/Collapse/Collapse";
-import TableLog from "../components/TableLog/TableLog";
+import { TableLog, TableLine } from "../components/TableLog/TableLog";
 // =========== Auht0 header nav ================
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
@@ -140,21 +140,30 @@ class Glucose extends Component {
                                 </Button>
                             </InputGroupAddon>
                         </InputGroup>
-                        {}
-                        {this.state.glucoseInput ? (
-                            <Collapse>
-                                {this.state.glucoseInput.map((log, index) => (
-                                    <TableLog
-                                        key={index}
-                                        dateCollected={log.dateCollected}
-                                        glucoseLevel={log.glucoseLevel}
-                                        timeCollected={log.timeCollected}
-                                    />
-                                ))}
-                            </Collapse>
-                        ) : (
-                            <h4>No logs currently</h4>
-                        )}
+                        <Collapse>
+                            {console.log(this.state.glucoseInput)}
+                            {this.state.glucoseInput ? (
+                                <TableLog>
+                                    {this.state.glucoseInput.map(
+                                        (logs, index) =>
+                                            <TableLine
+                                                key={index}
+                                                dateCollected={logs.dateCollected}
+                                                glucoseLevel={logs.glucoseLevel}
+                                                timeCollected={logs.timeCollected}
+                                            />
+                                            // console.log(
+                                            //     "This is the index: " +
+                                            //         index +
+                                            //         ": " +
+                                            //         logs.glucoseLevel
+                                            // )
+                                    )}
+                                </TableLog>
+                            ) : (
+                                <h4>No logs currently</h4>
+                            )}
+                        </Collapse>
                     </Col>
                     <Col xs="12" sm="12" md="6">
                         <h5>

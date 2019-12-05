@@ -1,6 +1,5 @@
 import React from 'react';
 import { UncontrolledCollapse, Card } from 'reactstrap';
-import TableLog from '../TableLog/TableLog';
 
 const Collapse = (props) => (
   <div>
