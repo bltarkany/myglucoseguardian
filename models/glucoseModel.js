@@ -8,7 +8,20 @@ var glucoseSchema = new Schema({
     required: true
   },
   dateCollected: {
+    type: String,
+    required: true
+  },
+  timeCollected: {
     type: Date,
+    required: true
+  },
+  DateEntered: {
+    type: Date,
+    default: Date.now,
+    required: true
+  },
+  auth0__id: {
+    type:String,
     required: true
   }
 });

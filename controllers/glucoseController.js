@@ -16,6 +16,23 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findByAuthId: function (req, res) {
+        db.Glucose
+            .find({
+                "auth0__id": req.params.id
+            })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    findByAuthIdAndDate: function (req, res) {
+        db.Glucose
+            .find({
+                "auth0__id": req.params.id,
+                "dateCollected": req.params.date
+            })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     create: function (req, res) {
         db.Glucose
             .create(req.body)

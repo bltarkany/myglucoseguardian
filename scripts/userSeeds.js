@@ -9,7 +9,7 @@ mongoose.connect(
 
 const userSeed = [
   {
-    "auth0__id":"12345rutdhsf", 
+    "auth0__id":"5dce30121735bc0d420a4b42", 
     "first_name":"Spongebob", 
     "last_name":"Squarepants", 
     "email": "bubbles@krustykrab.com", 
@@ -18,11 +18,11 @@ const userSeed = [
     "height": "10", 
     "weight": "35", 
     "diabetes_type": "1",
-    "glucoseChart": ObjectId("000000000000000000000001"),
-    "foodLog": ObjectId("000000000000000000000001")
+    "glucoseChart": ObjectId("5dce30121735bc0d420a4b42"),
+    "foodLog": ObjectId("5dce30121735bc0d420a4b42")
   },
   {
-    "auth0__id":"23456754ersgtrewg", 
+    "auth0__id":"5dce20141735bc0d420a4c17", 
     "first_name":"Post", 
     "last_name":"Malone", 
     "email": "pmcircles@gmail.com", 
@@ -31,10 +31,10 @@ const userSeed = [
     "height": "190", 
     "weight": "500", 
     "diabetes_type": "2",
-    "glucoseChart": ObjectId("000000000000000000000002")
+    "glucoseChart": ObjectId("5dce20141735bc0d420a4c17")
   },
   {
-    "auth0__id":"ebjgrejlgbrlsjgd54634", 
+    "auth0__id":"2dce301277a3bc0d170a4af1", 
     "first_name":"Speed", 
     "last_name":"Racer", 
     "email": "2fast@mach5.com", 
@@ -43,17 +43,17 @@ const userSeed = [
     "height": "160", 
     "weight": "150", 
     "diabetes_type": "1",
-    "foodLog": ObjectId("000000000000000000000002")
+    "foodLog": ObjectId("2dce301277a3bc0d170a4af1")
   }
 ];
 
 const foodLogSeed = [
   {
-  "_id": ObjectId("000000000000000000000001"),
+  "_id": ObjectId("5dce30121735bc0d420a4b42"),
   foodEntry: [ObjectId("000000000000000000000001"), ObjectId("000000000000000000000003")]
   }, 
   {
-  "_id": ObjectId("000000000000000000000002"),
+  "_id": ObjectId("2dce301277a3bc0d170a4af1"),
   foodEntry: [ObjectId("000000000000000000000002"), ObjectId("000000000000000000000004")]
   }
 ];
@@ -68,7 +68,8 @@ const foodSeed = [
     "carbs":46,
     "sugar":11,
     "dietFiber":35,
-    "protiens":20
+    "proteins":20,
+    "auth0__id": "5dce30121735bc0d420a4b42"
   },
   {
     "_id": ObjectId("000000000000000000000002"),
@@ -79,7 +80,8 @@ const foodSeed = [
     "carbs":21,
     "sugar":21,
     "dietFiber":21,
-    "protiens":0
+    "proteins":0,
+    "auth0__id": "2dce301277a3bc0d170a4af1"
   },
   {
     "_id": ObjectId("000000000000000000000003"),
@@ -90,7 +92,8 @@ const foodSeed = [
     "carbs":46,
     "sugar":33,
     "dietFiber":0,
-    "protiens":2
+    "proteins":2,
+    "auth0__id": "5dce30121735bc0d420a4b42"
   },
   {
     "_id": ObjectId("000000000000000000000004"),
@@ -101,17 +104,18 @@ const foodSeed = [
     "carbs":14.6,
     "sugar":0,
     "dietFiber":2,
-    "protiens":3
+    "proteins":3,
+    "auth0__id": "2dce301277a3bc0d170a4af1"
   }
 ];
 
 const glucoseCharteed = [
   {
-  "_id": ObjectId("000000000000000000000001"),
+  "_id": ObjectId("5dce30121735bc0d420a4b42"),
   glucoseEntry: [ObjectId("000000000000000000000001"), ObjectId("000000000000000000000002"), ObjectId("000000000000000000000004")]
   }, 
   {
-  "_id": ObjectId("000000000000000000000002"),
+  "_id": ObjectId("5dce20141735bc0d420a4c17"),
   glucoseEntry: [ObjectId("000000000000000000000003"), ObjectId("000000000000000000000005")]
   }
 ];
@@ -120,27 +124,37 @@ const glucoseSeed = [
   {
   "_id": ObjectId("000000000000000000000001"), 
   "glucoseLevel":"250", 
-  "timeCollected":"6:00"
+  "dateCollected": "2019-11-01",
+  "timeCollected":"6:00",
+  "auth0__id": "5dce30121735bc0d420a4b42"
   },
   {
   "_id": ObjectId("000000000000000000000002"), 
-  "glucoseLevel":"225", 
-  "timeCollected":"11:00"
+  "glucoseLevel":"225",
+  "dateCollected": "2019-11-01", 
+  "timeCollected":"11:00",
+  "auth0__id": "5dce30121735bc0d420a4b42"
   },
   {
   "_id": ObjectId("000000000000000000000003"),
-  "glucoseLevel":"150", 
-  "timeCollected":"13:00"
+  "glucoseLevel":"150",
+  "dateCollected": "2019-11-05", 
+  "timeCollected":"13:00",
+  "auth0__id": "5dce20141735bc0d420a4c17"
   },
   {
   "_id": ObjectId("000000000000000000000004"),
   "glucoseLevel":"500", 
-  "timeCollected":"18:00"
+  "dateCollected": "2019-11-01",
+  "timeCollected":"18:00",
+  "auth0__id": "5dce30121735bc0d420a4b42"
   },
   {
   "_id": ObjectId("000000000000000000000005"),
-  "glucoseLevel":"250", 
-  "timeCollected":"22:00"
+  "glucoseLevel":"250",
+  "dateCollected": "2019-11-05", 
+  "timeCollected":"22:00",
+  "auth0__id": "5dce20141735bc0d420a4c17"
   }
 ];
 
