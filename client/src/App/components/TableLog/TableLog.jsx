@@ -12,19 +12,23 @@ const TableLog = (props) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">11/16/2019</th>
-          <td>6:00 AM</td>
-          <td>120</td>
-        </tr>
-        {/* <tr>
-          <th scope="row">{props.glucoseSchema.dateCollected}</th>
-          <td>{props.glucoseSchema.timeCollected}</td>
-          <td>{props.glucoseSchema.glucoseLevel}</td>
-        </tr> */}
+        {props.children}
       </tbody>
     </Table>
   );
 }
 
-export default TableLog;
+const TableLine = (props) => {
+  return (
+    <tr {...props}>
+      <th scope="row">{props.dateCollected}</th>
+      <td>{props.timeCollected}</td>
+      <td>{props.glucoseLevel}</td>
+    </tr>
+  );
+}
+
+export{
+  TableLog,
+  TableLine
+};

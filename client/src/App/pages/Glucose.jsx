@@ -9,11 +9,13 @@ import { Submit, InfoInput } from '../components/Form/Form';
 import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 // ============== Collapse ================
 import Collapse from '../components/Collapse/Collapse';
+import { UncontrolledCollapse, Card } from 'reactstrap';
 // =========== Auht0 header nav ================
 import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
 // ============== database info pulls ==========
 import API from "../utils/API";
+import { TableLog, TableLine } from "../components/TableLog/TableLog";
 // import { stringify } from "querystring";
 
 class Glucose extends Component {
@@ -142,10 +144,39 @@ class Glucose extends Component {
                             search
                             </Button> 
                         </InputGroupAddon>
-                        </InputGroup>                      
-                        <Collapse
-
-                        ></Collapse>    
+                        </InputGroup>
+                        <UncontrolledCollapse toggler="#toggler">
+                            <Card>
+                            {this.state.glucoseInput ? (
+                                <TableLog>
+                                    {this.state.glucoseInput.map((logs, index) => (
+                                        <TableLine
+                                        key={index}
+                                        dateCollected={logs.dateCollected}
+                                        glucoseLevel={logs.glucoseLevel}
+                                        timeCollected={logs.timeCollected} />
+                                    ))}
+                                </TableLog>
+                            ) : (
+                                <h4>No logs currently</h4>
+                            )} 
+                            </Card>
+                        </UncontrolledCollapse> 
+                        {/* <Collapse>
+                            {this.state.glucoseInput ? (
+                                <TableLog>
+                                    {this.state.glucoseInput.map((logs, index) => (
+                                        <TableLine
+                                        key={index}
+                                        dateCollected={logs.dateCollected}
+                                        glucoseLevel={logs.glucoseLevel}
+                                        timeCollected={logs.timeCollected} />
+                                    ))}
+                                </TableLog>
+                            ) : (
+                                <h4>No logs currently</h4>
+                            )} 
+                        </Collapse>                     */}
                     </Col>
                     <Col xs="12" sm="12" md="6">
                         <h5>Let's log glucose levels {this.state.userInfo.first_name} {this.state.userInfo.last_name}</h5>
