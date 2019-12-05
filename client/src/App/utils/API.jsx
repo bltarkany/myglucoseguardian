@@ -49,8 +49,8 @@ module.exports = {
 
     createUser: function(obj) {
         console.log("grabbed obj",  obj);
-        console.log(axios.post('/api/user/'))
-        return axios.post("/api/user/");
+        console.log(axios.post('/api/user/', obj))
+        return axios.post("/api/user/", obj);
     },
 
     updateUser: function(id) {

@@ -14,7 +14,7 @@ class InfoUpdate extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            auth0__id: this.props.userId,
+            auth0_id: this.props.userId,
             first_name: "",
             last_name: "",
             email: "",
@@ -27,7 +27,7 @@ class InfoUpdate extends Component {
     }
 
     componentDidMount = () => {
-        console.log("Mounted", this.state.auth0__id);
+        console.log("Mounted", this.state.auth0_id);
     }
 
     // handle input change of the search
@@ -47,7 +47,7 @@ class InfoUpdate extends Component {
 
     createUser = () => {
         let newUser = {
-            auth0__id: this.state.auth0__id,
+            auth0_id: this.state.auth0_id,
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             email: this.state.email,
@@ -58,12 +58,14 @@ class InfoUpdate extends Component {
             diabetes_type: this.state.diabetes_type
         }
         console.log('Obj to be submitted creating new user');
+        console.log(newUser);
         API.createUser(newUser)
         .then(res => {
+            console.log(newUser);
             console.log(res);
 
         }).catch(err => {
-            console.log(`User Creation error: ${err}`);
+            console.log('User Creation error:', err.res);
         });
     };
 
@@ -78,8 +80,8 @@ class InfoUpdate extends Component {
             weight: this.state.weight,
             diabetes_type: this.state.diabetes_type
         };
-        console.log(`Updating user ${this.state.auth0__id}`);
-        API.updateUser(this.state.auth0__id)
+        console.log(`Updating user ${this.state.auth0_id}`);
+        API.updateUser(this.state.auth0_id)
         .then(res =>{
             console.log(res);
         }).catch(err => {
