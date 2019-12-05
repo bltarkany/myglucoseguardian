@@ -8,7 +8,6 @@ import { Form, FormGroup, Label } from "reactstrap";
 import { Submit, InfoInput } from "../components/Form/Form";
 import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
 // ============== Collapse ================
-// import Collapse from "../components/Collapse/Collapse";
 import { UncontrolledCollapse, Card } from "reactstrap";
 import { TableLog, TableLine } from "../components/TableLog/TableLog";
 // =========== Auht0 header nav ================
@@ -230,58 +229,6 @@ class Glucose extends Component {
                 <br></br>
             </Container>
 
-            // <Container>
-
-            //     <Row>
-            //         <Col size="lg-6">
-            //             <div className="form-group">
-            //                 <label htmlFor="glucoseLevel">
-            //                     Glucose Level for{" "}
-            //                     {this.state.userInfo.first_name +
-            //                         " " +
-            //                         this.state.userInfo.last_name}
-            //                 </label>
-            //                 <input
-            //                     type="number"
-            //                     className="form-control"
-            //                     id="glucoseLevel"
-            //                 />
-            //                 <small
-            //                     id=""
-            //                     className="form-text text-muted"
-            //                 ></small>
-            //             </div>
-            //         </Col>
-            //         <Col size="lg-6">
-            //             <div className="form-group">
-            //                 <label htmlFor="time">When did you collect?</label>
-            //                 <input
-            //                     type="time"
-            //                     className="form-control"
-            //                     id="time"
-            //                 />
-            //                 <small
-            //                     id=""
-            //                     className="form-text text-muted"
-            //                 ></small>
-            //             </div>
-            //         </Col>
-            //     </Row>
-            //     <Row>
-            //         <Col size="lg-12">
-            //             <button type="submit" className="btn btn-primary">
-            //                 submit
-            //             </button>
-            //         </Col>
-            //     </Row>
-            //     <Row>
-            //         <Col size="lg-12">
-            //             <p>You have {this.state.numLogs} logs</p>
-            //             <h5>Here's your log information</h5>
-            //             <p>{this.state.glucoseInput}</p>
-            //         </Col>
-            //     </Row>
-            // </Container>
         );
     }
 }

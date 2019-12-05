@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { Card } from 'reactstrap';
 import './Info.css';
 
 // user info display
@@ -40,13 +41,13 @@ const Contact = (props) => {
                 </Col>
             </Row>
             <Row>
-                <Col xs="12" sm="12" md="8">
+                <Col xs="12" sm="12" md="6">
                     <p><strong>City:  </strong>{props.city}</p>
                 </Col>
-                <Col xs="12" sm="12" md="2">
+                <Col xs="12" sm="12" md="3">
                     <p><strong>State:  </strong>{props.state}</p>
                 </Col>
-                <Col xs="12" sm="12" md="2">
+                <Col xs="12" sm="12" md="3">
                     <p><strong>Zip:  </strong>{props.zip}</p>
                 </Col>
             </Row>
