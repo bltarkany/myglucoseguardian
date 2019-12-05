@@ -141,30 +141,23 @@ class Glucose extends Component {
                                 </Button>
                             </InputGroupAddon>
                         </InputGroup>
-                        <Collapse>
-                            {console.log(this.state.glucoseInput)}
+                        <UncontrolledCollapse toggler="#toggler">
+                            <Card>
                             {this.state.glucoseInput ? (
                                 <TableLog>
-                                    {this.state.glucoseInput.map(
-                                        (logs, index) =>
-                                            <TableLine
-                                                key={index}
-                                                dateCollected={logs.dateCollected}
-                                                glucoseLevel={logs.glucoseLevel}
-                                                timeCollected={logs.timeCollected}
-                                            />
-                                            // console.log(
-                                            //     "This is the index: " +
-                                            //         index +
-                                            //         ": " +
-                                            //         logs.glucoseLevel
-                                            // )
-                                    )}
+                                    {this.state.glucoseInput.map((logs, index) => (
+                                        <TableLine
+                                        key={index}
+                                        dateCollected={logs.dateCollected}
+                                        glucoseLevel={logs.glucoseLevel}
+                                        timeCollected={logs.timeCollected} />
+                                    ))}
                                 </TableLog>
                             ) : (
                                 <h4>No logs currently</h4>
-                            )}
-                        </Collapse>
+                            )} 
+                            </Card>
+                        </UncontrolledCollapse>
                     </Col>
                     <Col xs="12" sm="12" md="6">
                         <h5>
