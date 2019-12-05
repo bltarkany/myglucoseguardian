@@ -8,7 +8,7 @@ import { Form, FormGroup, Label } from "reactstrap";
 import { Submit, InfoInput } from "../components/Form/Form";
 import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
 // ============== Collapse ================
-import { UncontrolledCollapse, Card } from 'reactstrap';
+import { UncontrolledCollapse, Card } from "reactstrap";
 import { TableLog, TableLine } from "../components/TableLog/TableLog";
 // =========== Auht0 header nav ================
 import Header from "../components/Header/Header.jsx";
@@ -44,15 +44,31 @@ class Glucose extends Component {
     // handle submit of the search request for logs
     handleFormSubmit = event => {
         event.preventDefault();
+        // if user is successfully logged in and entered a search date
         if (this.state.userInfo.auth0__id && this.state.searchDate) {
             console.log("Entered this date", this.state.searchDate);
             API.loadUserLogs(
                 this.state.userInfo.auth0__id,
                 this.state.searchDate
-            ).then(res => {
-                this.setState({
-                    glucoseInput: res.data
-                });
+            )
+                .then(res => {
+                    // if API returns data, set state
+                    if (res.data.length) {
+                        this.setState({
+                            glucoseInput: res.data
+                        });
+                        // Otherwise reset state to empty
+                    } else {
+                        this.setState({
+                            glucoseInput: null
+                        });
+                    }
+                })
+                .catch(err => console.log(err));
+            // Otherwise reset state to empty
+        } else {
+            this.setState({
+                glucoseInput: null
             });
         }
     };
@@ -60,6 +76,38 @@ class Glucose extends Component {
     // handle glucose input submit
     handleSubmit = event => {
         event.preventDefault();
+
+        if (
+            this.state.userInfo.auth0__id &&
+            this.state.glucoseLevel &&
+            this.state.day &&
+            this.state.time
+        ) {
+            console.log(
+                this.state.userInfo.auth0__id,
+                this.state.glucoseLevel,
+                this.state.day,
+                this.state.time
+            );
+            API.submitNewGlucoseLog(
+                this.state.userInfo.auth0__id,
+                this.state.glucoseLevel,
+                this.state.day,
+                this.state.time
+            )
+                .then(res => {
+                    console.log("Successful push to Database!");
+                    console.log(res.data);
+                    this.setState({
+                        glucoseLevel: 0,
+                        day: "",
+                        time: ""
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
     };
 
     // Changes user state on loadup
@@ -76,31 +124,6 @@ class Glucose extends Component {
                 //this.loadUserGlucoseLogs(res.data.auth0__id);
             })
             .catch(err => console.log(err));
-    };
-
-    // loadUserGlucoseLogs = glucoseUserID => {
-    //     // console.log("For each test: ID num: " + glocoseLogEntry);
-    //     console.log("Entered loadLogs: " + JSON.stringify(glucoseUserID));
-    //     API.getGlucoseInput(glucoseUserID)
-    //         .then(res => {
-    //             console.log("2nd promise recieved");
-    //             console.log(res.data);
-    //             // this.setState({
-    //             //     glucoseInput: glucoseArr
-    //             // })
-    //         })
-    //         .catch(err => console.log(err));
-    // };
-
-    consoleTest = () => {
-        console.log("==================================");
-        console.log("Entering console log test section");
-        console.log(this.state.userInfo);
-        console.log(this.state.glucoseInfo);
-        console.log(this.state.numLogs);
-        console.log(this.state.glucoseInput);
-        console.log(this.state.glucoseInput[0]);
-        console.log("==================================");
     };
 
     render() {
@@ -142,19 +165,28 @@ class Glucose extends Component {
                         </InputGroup>
                         <UncontrolledCollapse toggler="#toggler">
                             <Card>
-                            {this.state.glucoseInput ? (
-                                <TableLog>
-                                    {this.state.glucoseInput.map((logs, index) => (
-                                        <TableLine
-                                        key={index}
-                                        dateCollected={logs.dateCollected}
-                                        glucoseLevel={logs.glucoseLevel}
-                                        timeCollected={logs.timeCollected} />
-                                    ))}
-                                </TableLog>
-                            ) : (
-                                <h4>No logs currently</h4>
-                            )} 
+                                {this.state.glucoseInput ? (
+                                    <TableLog>
+                                        {this.state.glucoseInput.map(
+                                            (logs, index) => (
+                                                <TableLine
+                                                    key={index}
+                                                    dateCollected={
+                                                        logs.dateCollected
+                                                    }
+                                                    glucoseLevel={
+                                                        logs.glucoseLevel
+                                                    }
+                                                    timeCollected={
+                                                        logs.timeCollected
+                                                    }
+                                                />
+                                            )
+                                        )}
+                                    </TableLog>
+                                ) : (
+                                    <h4>No logs currently</h4>
+                                )}
                             </Card>
                         </UncontrolledCollapse>
                     </Col>
@@ -167,7 +199,7 @@ class Glucose extends Component {
                         <Form>
                             <FormGroup>
                                 <Label>Glucose Level</Label>
-                                <InfoInput
+                                <Input
                                     name="glucoseLevel"
                                     value={this.state.glucoseLevel}
                                     onChange={this.handleInputChange}
@@ -175,7 +207,7 @@ class Glucose extends Component {
                                 />
 
                                 <Label>What day did you collect it?</Label>
-                                <InfoInput
+                                <Input
                                     name="day"
                                     value={this.state.day}
                                     onChange={this.handleInputChange}

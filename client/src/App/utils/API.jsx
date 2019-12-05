@@ -66,27 +66,25 @@ module.exports = {
     },
 
     loadUserLogs: function(glucoseUserID, dateString) {
-        let apistring = "/api/Glucose/" + glucoseUserID + "/" + dateString;
-        // console.log("Loading user info " + glucoseUserID);
-        // console.log("For this day " + dateString);
-        // console.log("/api/Glucose/" + glucoseUserID + "/" + dateString);
-        // console.log("/api/Glucose/5dce30121735bc0d420a4b42/2019-11-01");
-        // console.log(apistring);
-        // axios.get(apistring).then();
-        // console.log("HardCoded API Call");
-        // console.log(
-        //     axios.get("/api/Glucose/5dce30121735bc0d420a4b42/2019-11-01")
-        // );
-        axios.get(apistring)
+        let apiString = "/api/Glucose/" + glucoseUserID + "/" + dateString;
+        axios.get(apiString)
             .then(res => {
                 console.log(res.data);
             })
-        return axios.get(apistring);
+        return axios.get(apiString);
     },
 
     getGlucoseInput: function(glucoseID) {
         console.log(glucoseID + " has entered getGlucoseLogCharts API call");
         // console.log(axios.get("/api/GlucoseChart/" + glucoseID));
         return axios.get("/api/Glucose/" + glucoseID);
+    },
+
+    submitNewGlucoseLog: function(glucoseUserID, glucoseLevel,dateString,timeString){
+        let cleanTimeString = timeString.replace(":", "%3A")
+        let apiString = "/api/Glucose/" + glucoseUserID + "/" + glucoseLevel + "/" + dateString + "/" + cleanTimeString;
+        console.log(glucoseUserID + " has entered getGlucoseLogCharts API call");
+        console.log(apiString) 
+        return axios.post(apiString);
     }
 };

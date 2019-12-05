@@ -7,7 +7,7 @@ const TableLog = (props) => {
                 <tr>
                     <th>Date</th>
                     <th>Time Collected</th>
-                    <th>Glucose Level (mg/dL) (</th>
+                    <th>Glucose Level (mg/dL)</th>
                 </tr>
             </thead>
             <tbody>{props.children}</tbody>

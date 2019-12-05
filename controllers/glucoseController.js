@@ -33,6 +33,17 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    createNewRecord: function (req, res) {
+        db.Glucose
+            .create({
+                "glucoseLevel": req.params.glucoseLevel,
+                "dateCollected": req.params.date,
+                "timeCollected":req.params.time,
+                "auth0__id":req.params.id
+            })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     create: function (req, res) {
         db.Glucose
             .create(req.body)

@@ -12,7 +12,7 @@ var glucoseSchema = new Schema({
     required: true
   },
   timeCollected: {
-    type: Date,
+    type: String,
     required: true
   },
   DateEntered: {

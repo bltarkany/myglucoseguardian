@@ -12,10 +12,15 @@ router
     .get(glucoseController.findByAuthId)
     .put(glucoseController.update)
     .delete(glucoseController.remove);
-    
+
 router
     .route("/:id/:date")
     .get(glucoseController.findByAuthIdAndDate)
+    .put(glucoseController.update)
+    .delete(glucoseController.remove);
+router
+    .route("/:id/:glucoseLevel/:date/:time")
+    .post(glucoseController.createNewRecord)
     .put(glucoseController.update)
     .delete(glucoseController.remove);
 

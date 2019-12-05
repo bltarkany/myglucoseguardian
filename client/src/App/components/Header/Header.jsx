@@ -1,6 +1,8 @@
 import React from "react";
 
 import { useAuth0 } from "../../react-auth0-spa";
+import shield from  "./shield.png"
+import Icon from "../Icon/Icon"
 
 import './Header.css'
 
@@ -13,9 +15,8 @@ const Header = () => {
             <div className = "container" style = {{width: "100%"}}>
                 <div className = "row" style = {{width: "100%"}}>
                     <div className = "col-md-2" style = {{textAlign: "center",  display: "flex", alignItems: "center"}}>
-                        <a href = "/#">
-                            <img src = "example.jpg" alt = "example" style = {{width:"40px", display: "block", margin: "0px auto" }}/>
-                        </a>
+                            {/* <img src = {shield} alt = "shield" style = {{width:"40px", display: "block", margin: "0px auto" }}/> */}
+                            <Icon/>
                     </div>
                     <div className = "col-md-2 spacer"></div>
                     <div className = "col-md-4" style = {{textAlign: "center", justifyContent: "center", display: "flex", alignItems: "center"}}>
