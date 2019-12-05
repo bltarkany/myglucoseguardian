@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import './Info.css';
 
 // user info display
-const Profile = (props) => {
+const Info = (props) => {
     return (
         <div>
             <Row>
@@ -85,7 +85,7 @@ const Health = (props) => {
 
 
 export {
-    Profile,
+    Info,
     Contact,
     Health
 }
