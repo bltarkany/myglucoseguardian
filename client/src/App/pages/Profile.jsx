@@ -3,10 +3,10 @@ import React, { Component, useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 // ============ profile Display =============
 import { Info, Health } from '../components/Info/Info';
-// ============== Form ===================
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { InputGroup, InputGroupAddon } from 'reactstrap';
-import { Submit, InfoInput } from '../components/Form/Form';
+// ========== components ==============
+import { Submit } from '../components/Form/Form';
+import { UncontrolledCollapse, Card } from 'reactstrap';
+import InfoUpdate from './InfoUpdate';
 // =========== Auth0 ================
 import Highlight from "../components/Highlight/Highlight";
 import Loading from "../components/Loading/Loading";
@@ -50,7 +50,7 @@ const Profile = () => {
   return (
     <Container className="mb-5">
       <Navigation style={{marginTop: "0"}}/>
-      <Row className="align-items-center profile-header mb-5 text-center text-md-left">
+      {/* <Row className="align-items-center profile-header mb-5 text-center text-md-left">
         <Col md={2}>
           <img
             src={user.picture}
@@ -65,14 +65,13 @@ const Profile = () => {
       </Row>
       <Row>
         <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
-      </Row>
+      </Row> */}
 
       <Row>
         <Col xs="12" sm="12">
           <Title>
             <h1>Welcome back, {user.name} </h1>
           </Title>
-          <h4>If you have yet to do so please update your user info</h4>
         </Col>
       </Row>
       <br></br>
@@ -98,82 +97,16 @@ const Profile = () => {
       </Row>
       <br></br>
       <hr></hr>
-      <Row>
-        <Col xs="12" sm="12">
-          <h3>Update Account Details</h3>
-        </Col>
-      </Row>
+      <h4>Need to update your user info?   <Submit id="toggler" /> </h4>
       <br></br>
-      <Row>
-        <Col xs="12" sm="12">
-          <Form>
-            <Row>
-              <Col xs="12" sm="12" md="6">
-                <FormGroup>
-                  <Label>First Name</Label>
-                  <Input
-                  name="first"
-                  type="text" />
-                </FormGroup>
-                <FormGroup>
-                  <Label>Last Name</Label>
-                  <Input
-                  name="last"
-                  type="text" />
-                </FormGroup>          
-              </Col>
-              <Col xs="12" sm="12" md="6">
-                <FormGroup>
-                  <Label>Email Address</Label>
-                  <Input
-                  name="email"
-                  type="email" />
-                </FormGroup>               
-              </Col>
-            </Row>
-            <Row>
-            <Col xs="12" sm="12" md="6">
-                <FormGroup>
-                  <Label>Gender</Label>
-                  <Input
-                  name="gender"
-                  type="text" />
-                </FormGroup>
-                <FormGroup>
-                  <Label>Weight - lbs</Label>
-                  <Input
-                  name="weight"
-                  type="number" />
-                </FormGroup>          
-              </Col>
-              <Col xs="12" sm="12" md="6">
-                <FormGroup>
-                  <Label>BirthDay</Label>
-                  <Input
-                  name="dob"
-                  type="date" />
-                </FormGroup>
-                <FormGroup>
-                  <Label>Height - in inches</Label>
-                  <Input
-                  name="height"
-                  type="number" />
-                </FormGroup>               
-              </Col>
-              <Col xs="12" sm="12" md="6">
-                <FormGroup>
-                  <Label>Diabetes Type</Label>
-                  <Input
-                  name="type"
-                  type="number" />
-                </FormGroup>             
-              </Col>
-            </Row>
-            <Button type="button" className='btn btn-info' onClick={(event) => handleFormSubmit}>Submit</Button>
-            {/* <Button type="submit" className='btn btn-info' >Submit</Button> */}
-          </Form>
-        </Col>
-      </Row>
+      <UncontrolledCollapse toggler="#toggler">
+        <Card>
+          <InfoUpdate
+          userId={user.sub}
+          setIsUpdated={setIsUpdated} />
+        </Card>
+    </UncontrolledCollapse>
+    <br></br>
     </Container>
   );
 };

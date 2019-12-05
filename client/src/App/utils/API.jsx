@@ -47,6 +47,18 @@ module.exports = {
             });
     },
 
+    createUser: function(obj) {
+        console.log("grabbed obj",  obj);
+        console.log(axios.post('/api/user/'))
+        return axios.post("/api/user/");
+    },
+
+    updateUser: function(id) {
+        console.log("grabbed user id", id);
+        console.log(axios.put("api/user/" + id));
+        return axios.put("api/user/" + id);
+    },
+
     getUser: function(id) {
         console.log(id + " has entered API call");
         console.log(axios.get("/api/user/" + id));

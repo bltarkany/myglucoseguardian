@@ -15,7 +15,6 @@ import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
 // ============== database info pulls ==========
 import API from "../utils/API";
-import { TableLog, TableLine } from "../components/TableLog/TableLog";
 // import { stringify } from "querystring";
 
 class Glucose extends Component {
