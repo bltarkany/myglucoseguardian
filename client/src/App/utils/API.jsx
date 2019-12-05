@@ -49,13 +49,11 @@ module.exports = {
 
     createUser: function(obj) {
         console.log("grabbed obj",  obj);
-        console.log(axios.post('/api/user/', obj))
         return axios.post("/api/user/", obj);
     },
 
     updateUser: function(id) {
         console.log("grabbed user id", id);
-        console.log(axios.put("api/user/" + id));
         return axios.put("api/user/" + id);
     },
 

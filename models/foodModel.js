@@ -46,7 +46,7 @@ var foodSchema = new Schema({
     trim: true,
     required: true
   },
-  auth0__id: {
+  auth0_id: {
     type:String,
     required: true
   }

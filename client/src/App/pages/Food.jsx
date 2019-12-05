@@ -88,6 +88,17 @@ class Food extends Component {
         });
     };
 
+    // handle push food item to the database
+    handleSubmit = event => {
+        event.preventDefault();
+        let foodLog = {
+            meal: "celery",
+            mealTime: this.state.mealTime,
+            calories: this.state.calories,
+            fats: this.state.fats
+        }
+    };
+
     // handle input change of the search
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -211,7 +222,7 @@ class Food extends Component {
                                     </FormGroup>
                                     </Col>
                                 </Row>
-                            <Submit onClick={this.handleFormSubmit} />
+                            <Submit onClick={this.handleSubmit} />
                         </Form>
                     </Col>
                 </Row>

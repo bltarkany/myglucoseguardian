@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // =========== Grid =================
 import { Container, Row, Col } from "reactstrap";
 // ============ profile Display =============
@@ -8,12 +8,12 @@ import { Submit } from '../components/Form/Form';
 import { UncontrolledCollapse, Card } from 'reactstrap';
 import InfoUpdate from './InfoUpdate';
 // =========== Auth0 ================
-import Highlight from "../components/Highlight/Highlight";
+// import Highlight from "../components/Highlight/Highlight";
 import Loading from "../components/Loading/Loading";
 import { useAuth0 } from "../react-auth0-spa";
 // ============== Title ==================
 import Title from '../components/Title/Title';
-import Header from "../components/Header/Header.jsx";
+// import Header from "../components/Header/Header.jsx";
 import Navigation from "../components/Navigation/Navigation";
 
 import API from '../utils/API';
@@ -50,7 +50,7 @@ const Profile = () => {
   return (
     <Container className="mb-5">
       <Navigation style={{marginTop: "0"}}/>
-      <Row className="align-items-center profile-header mb-5 text-center text-md-left">
+      {/* <Row className="align-items-center profile-header mb-5 text-center text-md-left">
         <Col md={2}>
           <img
             src={user.picture}
@@ -65,7 +65,7 @@ const Profile = () => {
       </Row>
       <Row>
         <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
-      </Row>
+      </Row> */}
 
       <Row>
         <Col xs="12" sm="12">
