@@ -50,7 +50,7 @@ const Profile = () => {
   return (
     <Container className="mb-5">
       <Navigation style={{marginTop: "0"}}/>
-      {/* <Row className="align-items-center profile-header mb-5 text-center text-md-left">
+      <Row className="align-items-center profile-header mb-5 text-center text-md-left">
         <Col md={2}>
           <img
             src={user.picture}
@@ -65,7 +65,7 @@ const Profile = () => {
       </Row>
       <Row>
         <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
-      </Row> */}
+      </Row>
 
       <Row>
         <Col xs="12" sm="12">
