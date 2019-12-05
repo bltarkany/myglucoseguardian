@@ -65,6 +65,10 @@ module.exports = {
         // console.log(
         //     axios.get("/api/Glucose/5dce30121735bc0d420a4b42/2019-11-01")
         // );
+        axios.get(apistring)
+            .then(res => {
+                console.log(res.data);
+            })
         return axios.get(apistring);
     },
 

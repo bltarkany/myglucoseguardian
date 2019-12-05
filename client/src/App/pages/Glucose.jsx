@@ -9,6 +9,7 @@ import { Submit, InfoInput } from "../components/Form/Form";
 import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
 // ============== Collapse ================
 import Collapse from "../components/Collapse/Collapse";
+import { UncontrolledCollapse, Card } from 'reactstrap';
 import { TableLog, TableLine } from "../components/TableLog/TableLog";
 // =========== Auht0 header nav ================
 import Header from "../components/Header/Header.jsx";
@@ -140,30 +141,23 @@ class Glucose extends Component {
                                 </Button>
                             </InputGroupAddon>
                         </InputGroup>
-                        <Collapse>
-                            {console.log(this.state.glucoseInput)}
+                        <UncontrolledCollapse toggler="#toggler">
+                            <Card>
                             {this.state.glucoseInput ? (
                                 <TableLog>
-                                    {this.state.glucoseInput.map(
-                                        (logs, index) =>
-                                            <TableLine
-                                                key={index}
-                                                dateCollected={logs.dateCollected}
-                                                glucoseLevel={logs.glucoseLevel}
-                                                timeCollected={logs.timeCollected}
-                                            />
-                                            // console.log(
-                                            //     "This is the index: " +
-                                            //         index +
-                                            //         ": " +
-                                            //         logs.glucoseLevel
-                                            // )
-                                    )}
+                                    {this.state.glucoseInput.map((logs, index) => (
+                                        <TableLine
+                                        key={index}
+                                        dateCollected={logs.dateCollected}
+                                        glucoseLevel={logs.glucoseLevel}
+                                        timeCollected={logs.timeCollected} />
+                                    ))}
                                 </TableLog>
                             ) : (
                                 <h4>No logs currently</h4>
-                            )}
-                        </Collapse>
+                            )} 
+                            </Card>
+                        </UncontrolledCollapse>
                     </Col>
                     <Col xs="12" sm="12" md="6">
                         <h5>
