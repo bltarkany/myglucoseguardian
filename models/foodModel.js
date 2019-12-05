@@ -11,6 +11,11 @@ var foodSchema = new Schema({
     type: String,
     required: true
   },
+  DateEntered: {
+    type: Date,
+    default: Date.now,
+    required: true
+  },
   calories: {
     type: Number,
     trim: true,
@@ -36,11 +41,15 @@ var foodSchema = new Schema({
     trim: true,
     required: true
   },
-  protiens: {
+  proteins: {
     type: Number,
     trim: true,
     required: true
   },
+  auth0__id: {
+    type:String,
+    required: true
+  }
 });
 
 var Food = mongoose.model("Food", foodSchema);

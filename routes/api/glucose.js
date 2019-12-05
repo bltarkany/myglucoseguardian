@@ -9,7 +9,13 @@ router.route("/")
 // Matches with "/api/glucose/:id"
 router
     .route("/:id")
-    .get(glucoseController.findById)
+    .get(glucoseController.findByAuthId)
+    .put(glucoseController.update)
+    .delete(glucoseController.remove);
+    
+router
+    .route("/:id/:date")
+    .get(glucoseController.findByAuthIdAndDate)
     .put(glucoseController.update)
     .delete(glucoseController.remove);
 
