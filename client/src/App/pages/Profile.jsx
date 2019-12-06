@@ -13,8 +13,7 @@ import Loading from "../components/Loading/Loading";
 import { useAuth0 } from "../react-auth0-spa";
 // ============== Title ==================
 import Title from '../components/Title/Title';
-// import Header from "../components/Header/Header.jsx";
-import Navigation from "../components/Navigation/Navigation";
+import NavBar from "../components/NavBar/NavBar";
 
 import API from '../utils/API';
 
@@ -49,7 +48,7 @@ const Profile = () => {
 
   return (
     <Container className="mb-5">
-      <Navigation style={{marginTop: "0"}}/>
+      <NavBar/>
       {/* <Row className="align-items-center profile-header mb-5 text-center text-md-left">
         <Col md={2}>
           <img

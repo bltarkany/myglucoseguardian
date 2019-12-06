@@ -18,8 +18,6 @@ import "./App.css";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Food from "./pages/Food";
-import Home2 from "./pages/Home2";
-import List from "./pages/List";
 import MySummary from "./pages/MySummary/index";
 import Glucose from "./pages/Glucose";
 //==================================================================//
@@ -56,9 +54,6 @@ const App = () => {
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <PrivateRoute path="/profile" component={Profile} />
-                        <PrivateRoute exact path="/Home2" component={Home2} />
-                        <PrivateRoute path="/list" component={List} />
-
                         {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
                         <PrivateRoute path="/test/:id" component={MySummary} />
                         <PrivateRoute path="/food" component={Food} />

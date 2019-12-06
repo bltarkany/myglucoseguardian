@@ -11,8 +11,7 @@ import { InputGroup, InputGroupAddon, Input, Button } from "reactstrap";
 import { UncontrolledCollapse, Card } from "reactstrap";
 import { TableLog, TableLine } from "../components/TableLog/TableLog";
 // =========== Auht0 header nav ================
-import Header from "../components/Header/Header.jsx";
-import Navigation from "../components/Navigation/Navigation";
+import NavBar from "../components/NavBar/NavBar";
 // ============== database info pulls ==========
 import API from "../utils/API";
 // import { stringify } from "querystring";
@@ -130,8 +129,7 @@ class Glucose extends Component {
         console.log("STATE OF GLU", this.state);
         return (
             <Container>
-                <Header />
-                <Navigation />
+                <NavBar/>
                 <br />
                 <Row>
                     <Col xs="12" sm="12">
