@@ -117,7 +117,6 @@ class Food extends Component {
         return (
             
             <Container>
-                <NavBar/>
                 <br></br>
                 <Row>
                     <Col xs="12" sm="12">
