@@ -35,7 +35,7 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-    const { loading } = useAuth0();
+    const { loading, user } = useAuth0();
 
     if (loading) {
         return <Loading />;
@@ -56,9 +56,9 @@ const App = () => {
                         <Route path="/" exact component={Home} />
                         <PrivateRoute path="/profile" component={Profile} />
                         {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
-                        <PrivateRoute path="/test/:id" component={MySummary} />
-                        <PrivateRoute path="/food" component={Food} />
-                        <PrivateRoute path="/glucose/:id" component={Glucose} />
+                        <PrivateRoute path="/test/:id" render={()=>(<MySummary user={user.sub} />)} />
+                        <PrivateRoute path="/food" render={()=>(<Food user={user.sub} />)} />
+                        <PrivateRoute path="/glucose/:id" render={()=>(<Glucose user={user.sub} />)} />
                         <PrivateRoute path="/test2/" component={Accordion} />
 
                         {/* <PrivateRoute path="/education" component={Education} />

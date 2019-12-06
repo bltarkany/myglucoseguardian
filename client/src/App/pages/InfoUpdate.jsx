@@ -8,7 +8,7 @@ import { InputGroup, InputGroupAddon } from 'reactstrap';
 import { Submit, InfoInput } from '../components/Form/Form';
 // ============= API ===============
 import API from '../utils/API';
-import { stat } from 'fs';
+// import { stat } from 'fs';
 
 
 class InfoUpdate extends Component {
