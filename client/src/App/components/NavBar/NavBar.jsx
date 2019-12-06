@@ -92,21 +92,21 @@ const NavBar = () => {
                     </DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
-                      to="/profile"
+                      to="/test/:id"
                       className="dropdown-profile"
                     >
                       <FontAwesomeIcon icon="server" className="mr-3" /> Summary
                     </DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
-                      to="/test/:id"
+                      to="/food"
                       className="dropdown-profile"
                     >
                       <FontAwesomeIcon icon="comment" className="mr-3" /> Food
                     </DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
-                      to="/food"
+                      to="/glucose/:id"
                       className="dropdown-profile"
                     >
                       <FontAwesomeIcon icon="comment" className="mr-3" /> Glucose
