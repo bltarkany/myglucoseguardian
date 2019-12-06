@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Icon from "../Icon/Icon"
 
 import {
   Collapse,
   Container,
   Navbar,
   NavbarToggler,
+  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -17,6 +17,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import logo from "../NavBar/shield.png";
 
 import { useAuth0 } from "../../react-auth0-spa";
 
@@ -24,22 +25,38 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
- 
+
+    const CompanyLogo = () => {
+    return <img src="../NavBar/shield.png"></img>
+  }
+
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin
     });
 
   return (
-    <div className="nav-container" >
-      <Navbar light expand="md" style={{backgroundColor: "#6369D1"}}>
+    <div className="nav-container">
+      <Navbar style={{ backgroundColor: '#d7c0d0'}} light expand="md">
         <Container>
-        <Icon className = "navBarStyle"/>
+          <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo}></img>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Home
+                </NavLink>
+              </NavItem>
             </Nav>
+            {/* Actually display on the screen */}
             <Nav className="d-none d-md-block" navbar>
+              {/* If the user is NOT logged in, display login button */}
               {!isAuthenticated && (
                 <NavItem>
                   <Button
@@ -52,6 +69,7 @@ const NavBar = () => {
                   </Button>
                 </NavItem>
               )}
+              {/* if the user IS logged in, display the circle drop down menu */}
               {isAuthenticated && (
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret id="profileDropDown">
@@ -72,7 +90,27 @@ const NavBar = () => {
                     >
                       <FontAwesomeIcon icon="user" className="mr-3" /> Profile
                     </DropdownItem>
-                    
+                    <DropdownItem
+                      tag={RouterNavLink}
+                      to="/profile"
+                      className="dropdown-profile"
+                    >
+                      <FontAwesomeIcon icon="server" className="mr-3" /> Summary
+                    </DropdownItem>
+                    <DropdownItem
+                      tag={RouterNavLink}
+                      to="/test/:id"
+                      className="dropdown-profile"
+                    >
+                      <FontAwesomeIcon icon="comment" className="mr-3" /> Food
+                    </DropdownItem>
+                    <DropdownItem
+                      tag={RouterNavLink}
+                      to="/food"
+                      className="dropdown-profile"
+                    >
+                      <FontAwesomeIcon icon="comment" className="mr-3" /> Glucose
+                    </DropdownItem>
                     <DropdownItem
                       id="qsLogoutBtn"
                       onClick={() => logoutWithRedirect()}
@@ -84,6 +122,9 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
+​
+​
+            {/* if the user is NOT logged in */}
             {!isAuthenticated && (
               <Nav className="d-md-none" navbar>
                 <NavItem>
@@ -98,6 +139,7 @@ const NavBar = () => {
                 </NavItem>
               </Nav>
             )}
+            {/* This is the Link to Route */}
             {isAuthenticated && (
               <Nav
                 className="d-md-none justify-content-between"
@@ -122,6 +164,30 @@ const NavBar = () => {
                     activeClassName="router-link-exact-active"
                   >
                     Profile
+                  </RouterNavLink>
+                </NavItem>
+                <NavItem>
+                  <FontAwesomeIcon icon="comment" className="mr-3" />
+                  <RouterNavLink
+                    to="/test/:id"
+                  >
+                    My Summary
+                  </RouterNavLink>
+                </NavItem>
+                <NavItem>
+                  <FontAwesomeIcon icon="comment" className="mr-3" />
+                  <RouterNavLink
+                    to="/food"
+                  >
+                    Food
+                  </RouterNavLink>
+                </NavItem>
+                <NavItem>
+                  <FontAwesomeIcon icon="utensils" className="mr-3" />
+                  <RouterNavLink
+                    to="/glucose/:id"
+                  >
+                    Glucose
                   </RouterNavLink>
                 </NavItem>
                 <NavItem>

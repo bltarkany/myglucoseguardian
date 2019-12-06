@@ -15,8 +15,8 @@ import CardBody from '../components/Card/Card';
 // =============== Food Database pull ===========
 import API from "../utils/API";
 // ============= Auth0 and NavBar
-import Header from "../components/Header/Header.jsx";
-import Navigation from "../components/Navigation/Navigation";
+import NavBar from "../components/NavBar/NavBar";
+
 
 
 // compiled by BT
@@ -117,8 +117,7 @@ class Food extends Component {
         return (
             
             <Container>
-                <Header />
-                <Navigation />
+                <NavBar/>
                 <br></br>
                 <Row>
                     <Col xs="12" sm="12">
