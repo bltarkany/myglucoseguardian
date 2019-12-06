@@ -50,6 +50,7 @@ const App = () => {
                 className="d-flex flex-column h-100"
                 style={{ backgroundColor: "#5AC0FD" }}
             >
+                <NavBar/>
                 <Container >
                     <Switch>
                         <Route path="/" exact component={Home} />
