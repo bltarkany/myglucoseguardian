@@ -1,18 +1,16 @@
-.footer {
+/* .footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 10px;
   text-align: center;
-}
+
+} */
 
 .foot {
   border-left: 1px solid whitesmoke;
-  border-right: none;
-  border-bottom: none;
-  border-top: none;
   border-radius: 1px;
-  margin: none;
-  padding: none;
-  background-color: #6369D1;
+  background-color:#d7c0d0;
+  height: 10px;
 }

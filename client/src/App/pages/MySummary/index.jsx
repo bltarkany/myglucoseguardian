@@ -34,7 +34,6 @@ class MySummary extends Component {
             <Container fluid>
                 <Row>
                     <Col size="sm-12">
-                    <NavBar/>
                     </Col>
                 </Row>
             

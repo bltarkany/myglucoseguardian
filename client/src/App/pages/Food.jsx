@@ -17,25 +17,30 @@ import API from "../utils/API";
 // ============= Auth0 and NavBar
 import NavBar from "../components/NavBar/NavBar";
 
-
-
 // compiled by BT
 class Food extends Component {
-    state = {
-        search: "",
-        foodList: null,
-        item: this.emptyItem(),
-        name: "",
-        brand: "",
-        calories: 0,
-        totalFat: 0,
-        carbs: 0,
-        dietaryFiber: 0,
-        sugars: 0,
-        protein: 0,
-        mealTime: ""
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            search: "",
+            foodList: null,
+            item: this.emptyItem(),
+            name: "",
+            brand: "",
+            calories: 0,
+            totalFat: 0,
+            carbs: 0,
+            dietaryFiber: 0,
+            sugars: 0,
+            protein: 0,
+            mealTime: "",
+            auth0_id: this.props.user
+        };
+    }
 
+    componentDidMount(){
+        console.log(this.state.auth0_id);
+    }
     // compile empty card body as a place holder
     emptyItem() {
         let emptyObj = {
@@ -117,7 +122,6 @@ class Food extends Component {
         return (
             
             <Container>
-                <NavBar/>
                 <br></br>
                 <Row>
                     <Col xs="12" sm="12">

@@ -135,7 +135,6 @@ class Glucose extends Component {
         console.log("STATE OF GLU", this.state);
         return (
             <Container>
-                <NavBar/>
                 <br />
                 <Row>
                     <Col xs="12" sm="12">

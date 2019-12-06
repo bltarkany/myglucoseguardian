@@ -7,7 +7,6 @@ import "./style.css"
 
 const Home = () => (
   <Fragment>  
-    <NavBar/>
     <Hero />
     <hr className="break"/>
     <Content />
