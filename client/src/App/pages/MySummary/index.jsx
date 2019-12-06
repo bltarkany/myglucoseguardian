@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header.jsx";
-import Navigation from "../../components/Navigation/Navigation";
+import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import { Container, Row, Col } from "../../components/Grid/index";
 import "../../components/Footer/Footer.css";
@@ -40,7 +40,7 @@ class MySummary extends Component {
                 </Row>
                 <Row>
                     <Col size="sm-12">
-                        <Navigation />
+                    <NavBar/>
                     </Col>
                 </Row>
             
