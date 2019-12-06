@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../../components/Header/Header.jsx";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import { Container, Row, Col } from "../../components/Grid/index";
@@ -33,11 +32,6 @@ class MySummary extends Component {
     render() {
         return (
             <Container fluid>
-                <Row>
-                    <Col size="sm-12">
-                        <Header />
-                    </Col>
-                </Row>
                 <Row>
                     <Col size="sm-12">
                     <NavBar/>
