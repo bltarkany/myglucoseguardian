@@ -24,7 +24,7 @@ const Profile = () => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [userData, setUserData] = useState([]);
 
-  useEffect (() => {
+  useEffect( () => {
     if(!isUpdated) {
       getUserInfo();
       setIsUpdated(true);
@@ -66,7 +66,7 @@ const Profile = () => {
       <Row>
         <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
       </Row> */}
-
+      <br></br>
       <Row>
         <Col xs="12" sm="12">
           <Title>
