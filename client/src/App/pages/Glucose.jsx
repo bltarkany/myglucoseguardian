@@ -17,20 +17,26 @@ import API from "../utils/API";
 // import { stringify } from "querystring";
 
 class Glucose extends Component {
-    state = {
-        userInfo: {},
-        glucoseInfo: {},
-        glucoseInput: null,
-        numLogs: 0,
-        glucoseLevel: 0,
-        day: "",
-        time: "",
-        searchDate: ""
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            userInfo: {},
+            glucoseInfo: {},
+            glucoseInput: null,
+            numLogs: 0,
+            glucoseLevel: 0,
+            day: "",
+            time: "",
+            searchDate: "",
+            auth0_id: this.props.user
+        };
+    }
+
 
     componentDidMount() {
-        this.loadUser(this.props.match.params.id);
-    }
+        console.log(this.state.auth0_id);
+        this.loadUser(this.state.auth0_id);
+    };
 
     // handle input change and set state
     handleInputChange = event => {
@@ -44,10 +50,10 @@ class Glucose extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         // if user is successfully logged in and entered a search date
-        if (this.state.userInfo.auth0__id && this.state.searchDate) {
+        if (this.state.auth0_id && this.state.searchDate) {
             console.log("Entered this date", this.state.searchDate);
             API.loadUserLogs(
-                this.state.userInfo.auth0__id,
+                this.state.auth0_id,
                 this.state.searchDate
             )
                 .then(res => {
@@ -77,19 +83,19 @@ class Glucose extends Component {
         event.preventDefault();
 
         if (
-            this.state.userInfo.auth0__id &&
+            this.state.auth0_id &&
             this.state.glucoseLevel &&
             this.state.day &&
             this.state.time
         ) {
             console.log(
-                this.state.userInfo.auth0__id,
+                this.state.auth0_id,
                 this.state.glucoseLevel,
                 this.state.day,
                 this.state.time
             );
             API.submitNewGlucoseLog(
-                this.state.userInfo.auth0__id,
+                this.state.auth0_id,
                 this.state.glucoseLevel,
                 this.state.day,
                 this.state.time
