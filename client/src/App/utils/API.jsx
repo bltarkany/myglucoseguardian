@@ -46,7 +46,10 @@ module.exports = {
                 return res.data.foods;
             });
     },
-
+    createFood: function(obj){
+        console.log("grabbed food", obj)
+        return axios.post("api/food/", obj)
+    },
     createUser: function(obj) {
         console.log("grabbed obj",  obj);
         return axios.post("/api/user/", obj);
