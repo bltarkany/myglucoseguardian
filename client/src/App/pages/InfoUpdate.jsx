@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 // ============ grid ==================
 import { Container, Row, Col } from 'reactstrap';
 // ============== Form ===================
@@ -7,6 +8,7 @@ import { InputGroup, InputGroupAddon } from 'reactstrap';
 import { Submit, InfoInput } from '../components/Form/Form';
 // ============= API ===============
 import API from '../utils/API';
+import { stat } from 'fs';
 
 
 class InfoUpdate extends Component {
@@ -22,12 +24,36 @@ class InfoUpdate extends Component {
             dob: "",
             height: 0,
             weight: 0,
-            diabetes_type: 0
+            diabetes_type: 0,
+            status: 0,
+            user: []
         }
     }
 
     componentDidMount = () => {
         console.log("Mounted", this.state.auth0_id);
+
+        if (this.props.userId){
+            this.setState({ isUpdate: true });
+            API.getUser(this.props.userId)
+            .then(res => {
+                console.log(res)
+                if(res.data && res.data.length) {
+                    const userInfo = res.data[0] != null ? res.data[0] : null;
+
+                    this.setState({ user: userInfo });
+                    this.setState({ first_name: this.state.first_name });
+                    this.setState({ last_name: this.state.last_name });
+                    this.setState({ email: this.state.email });
+                    this.setState({ gender:  this.state.gender });
+                    this.setState({ dob: this.state.dob });
+                    this.setState({ height: this.state.height });
+                    this.setState({ weight: this.state.weight });
+                    this.setState({ diabetes_type: this.state.diabetes_type });
+                    this.setState({ auth0_id: this.state.auth0_id });
+                }
+            })
+        }
     }
 
     // handle input change of the search
@@ -41,7 +67,11 @@ class InfoUpdate extends Component {
     // handle submit of the search request
     handleFormSubmit = event => {
         event.preventDefault();
-        this.createUser();
+        if(this.state.isUpdate){
+            this.updateUser();
+        } else {
+            this.createUser();
+        }
         
     };
 
@@ -63,7 +93,7 @@ class InfoUpdate extends Component {
         .then(res => {
             console.log(newUser);
             console.log(res);
-
+            this.setState({ status: 1 });
         }).catch(err => {
             console.log('User Creation error:', err.res);
         });
@@ -84,103 +114,124 @@ class InfoUpdate extends Component {
         API.updateUser(this.state.auth0_id)
         .then(res =>{
             console.log(res);
+            this.setState({ status: 2 });
+            this.props.setIsUpdated(false);
         }).catch(err => {
             console.log(`User update error: ${err}`);
         });
     };
 
     render () {
-        return (
+        switch (this.state.status) {
+            case 0:
+                    return (
+            
+                        <Container>
+                            <Row>
+                                <Col xs="12" sm="12">
+                                    <br></br>
+                                <h3>Update Account Details</h3>
+                                </Col>
+                            </Row>
+                            <br></br>
+                            <Row>
+                                <Col xs="12" sm="12">
+                                <Form>
+                                    <Row>
+                                    <Col xs="12" sm="12" md="6">
+                                        <FormGroup>
+                                            <Label>First Name</Label>
+                                            <Input
+                                            name="first_name"
+                                            onChange={this.handleInputChange}
+                                            type="text"
+                                            defaultValue={this.state.user.first_name ? this.state.user.first_name : ""} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label>Last Name</Label>
+                                            <Input
+                                            name="last_name"
+                                            onChange={this.handleInputChange}
+                                            type="text"
+                                            defaultValue={this.state.user.last_name ? this.state.user.last_name : ""} />
+                                        </FormGroup>          
+                                    </Col>
+                                    <Col xs="12" sm="12" md="6">
+                                        <FormGroup>
+                                            <Label>Email Address</Label>
+                                            <Input
+                                            name="email"
+                                            onChange={this.handleInputChange}
+                                            type="email"
+                                            defaultValue={this.state.user.email ? this.state.user.email : ""} />
+                                        </FormGroup>               
+                                    </Col>
+                                    </Row>
+                                    <Row>
+                                    <Col xs="12" sm="12" md="6">
+                                        <FormGroup>
+                                            <Label>Gender</Label>
+                                            <Input
+                                            name="gender"
+                                            onChange={this.handleInputChange}
+                                            type="text"
+                                            defaultValue={this.state.user.gender ? this.state.user.gender : ""} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label>Weight - lbs</Label>
+                                            <Input
+                                            name="weight"
+                                            onChange={this.handleInputChange}
+                                            type="number"
+                                            defaultValue={this.state.user.weight ? this.state.user.weight : ""} />
+                                        </FormGroup>          
+                                    </Col>
+                                    <Col xs="12" sm="12" md="6">
+                                        <FormGroup>
+                                            <Label>BirthDay</Label>
+                                            <Input
+                                            name="dob"
+                                            onChange={this.handleInputChange}
+                                            type="date"
+                                            defaultValue={this.state.user.dob ? this.state.user.dob : ""} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label>Height - in inches</Label>
+                                            <Input
+                                            name="height"
+                                            onChange={this.handleInputChange}
+                                            type="number"
+                                            defaultValue={this.state.user.height ? this.state.user.height : ""} />
+                                        </FormGroup>               
+                                    </Col>
+                                    <Col xs="12" sm="12" md="6">
+                                        <FormGroup>
+                                            <Label>Diabetes Type</Label>
+                                            <Input
+                                            name="diabetes_type"
+                                            onChange={this.handleInputChange}
+                                            type="number"
+                                            defaultValue={this.state.user.diabetes_type ? this.state.user.diabetes_type : ""} />
+                                        </FormGroup>             
+                                    </Col>
+                                    </Row>
+                                    <Submit onClick={this.handleFormSubmit} />
+                                </Form>
+                                </Col>
+                            </Row>
+                            <br></br>
+                        </Container>
+            
+                    )
+            case 1:
+                return <Redirect to='/test/:id' />
+            case 2:
+                return <Redirect to='/profile' />
+            default:
+                console.log("your should never reach this");
+        }
 
-            <Container>
-                <Row>
-                    <Col xs="12" sm="12">
-                        <br></br>
-                    <h3>Update Account Details</h3>
-                    </Col>
-                </Row>
-                <br></br>
-                <Row>
-                    <Col xs="12" sm="12">
-                    <Form>
-                        <Row>
-                        <Col xs="12" sm="12" md="6">
-                            <FormGroup>
-                                <Label>First Name</Label>
-                                <Input
-                                name="first_name"
-                                onChange={this.handleInputChange}
-                                type="text" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Last Name</Label>
-                                <Input
-                                name="last_name"
-                                onChange={this.handleInputChange}
-                                type="text" />
-                            </FormGroup>          
-                        </Col>
-                        <Col xs="12" sm="12" md="6">
-                            <FormGroup>
-                                <Label>Email Address</Label>
-                                <Input
-                                name="email"
-                                onChange={this.handleInputChange}
-                                type="email" />
-                            </FormGroup>               
-                        </Col>
-                        </Row>
-                        <Row>
-                        <Col xs="12" sm="12" md="6">
-                            <FormGroup>
-                                <Label>Gender</Label>
-                                <Input
-                                name="gender"
-                                onChange={this.handleInputChange}
-                                type="text" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Weight - lbs</Label>
-                                <Input
-                                name="weight"
-                                onChange={this.handleInputChange}
-                                type="number" />
-                            </FormGroup>          
-                        </Col>
-                        <Col xs="12" sm="12" md="6">
-                            <FormGroup>
-                                <Label>BirthDay</Label>
-                                <Input
-                                name="dob"
-                                onChange={this.handleInputChange}
-                                type="date" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Height - in inches</Label>
-                                <Input
-                                name="height"
-                                onChange={this.handleInputChange}
-                                type="number" />
-                            </FormGroup>               
-                        </Col>
-                        <Col xs="12" sm="12" md="6">
-                            <FormGroup>
-                                <Label>Diabetes Type</Label>
-                                <Input
-                                name="diabetes_type"
-                                onChange={this.handleInputChange}
-                                type="number" />
-                            </FormGroup>             
-                        </Col>
-                        </Row>
-                        <Submit onClick={this.handleFormSubmit} />
-                    </Form>
-                    </Col>
-                </Row>
-                <br></br>
-            </Container>
-
-        )
+       
     }
 
 }
