@@ -31,13 +31,15 @@ class InfoUpdate extends Component {
 
     componentDidMount() {
         console.log("Mounted", this.state.auth0_id);
+        console.log("Here's the rest of state, " + JSON.stringify(this.state))
 
         if (this.props.userId){
-            this.setState({ isUpdate: true });
             API.getUser(this.props.userId)
             .then(res => {
                 console.log(res)
                 if(res.data && res.data.length) {
+                    console.log('Passed the Test')
+                    this.setState({ isCreated: true });
                     const userInfo = res.data[0] != null ? res.data[0] : null;
 
                     this.setState({ user: userInfo });
@@ -66,7 +68,7 @@ class InfoUpdate extends Component {
     // handle submit of the search request
     handleFormSubmit = event => {
         event.preventDefault();
-        if(this.state.isUpdate){
+        if(this.state.isCreated){
             this.updateUser();
         } else {
             this.createUser();
@@ -121,6 +123,7 @@ class InfoUpdate extends Component {
     };
 
     render () {
+        console.log("State of SignUp Page: " + JSON.stringify(this.state));
         switch (this.state.status) {
             case 0:
                     return (
@@ -223,11 +226,11 @@ class InfoUpdate extends Component {
             
                     )
             case 1:
-                return <Redirect to='/summary/:id' />
+                return <Redirect to='/mysummary/' />
             case 2:
                 return <Redirect to='/profile' />
             default:
-                console.log("your should never reach this");
+                console.log("you should never reach this");
         }
 
        
