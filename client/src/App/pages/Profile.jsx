@@ -20,17 +20,18 @@ import API from '../utils/API';
 const Profile = () => {
   
   const { loading, user } = useAuth0();
-  const [isUpdated, setIsUpdated] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
   const [userData, setUserData] = useState([]);
 
   useEffect( () => {
-    if(!isUpdated) {
+    if(isCreated) {
       getUserInfo();
-      setIsUpdated(true);
+      setIsCreated(true);
     }
-  });
+  }, [isCreated, getUserInfo]);
 
   function getUserInfo () {
+    console.log('User created an account previously, fetching info');
     API.getUser(user.sub)
       .then(res => {
         console.log(res)
@@ -46,24 +47,11 @@ const Profile = () => {
     return <Loading />;
   }
 
+  console.log('user info: ' + JSON.stringify(user));
+  console.log('status of userData: ' + userData);
+  console.log('status of isCreated: ' + isCreated);
   return (
     <Container className="mb-5">
-      {/* <Row className="align-items-center profile-header mb-5 text-center text-md-left">
-        <Col md={2}>
-          <img
-            src={user.picture}
-            alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
-        </Col>
-        <Col md>
-          <h2>{user.name}</h2>
-          <p className="lead text-muted">{user.email}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
-      </Row> */}
       <br></br>
       <Row>
         <Col xs="12" sm="12">
@@ -101,7 +89,7 @@ const Profile = () => {
         <Card>
           <InfoUpdate
           userId={user.sub}
-          setIsUpdated={setIsUpdated} />
+          setIsCreated={isCreated} />
         </Card>
     </UncontrolledCollapse>
     <br></br>

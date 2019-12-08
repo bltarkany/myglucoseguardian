@@ -82,6 +82,7 @@ module.exports = {
     },
 
     submitNewGlucoseLog: function(glucoseUserID, glucoseLevel,dateString,timeString){
+        // %3A is ASCII for ':' which is not thrown into the URL (colons usually reserved for port definitions)
         let cleanTimeString = timeString.replace(":", "%3A")
         let apiString = "/api/Glucose/" + glucoseUserID + "/" + glucoseLevel + "/" + dateString + "/" + cleanTimeString;
         console.log(glucoseUserID + " has entered getGlucoseLogCharts API call");
