@@ -32,8 +32,8 @@ class InfoUpdate extends Component {
         // console.log("Here's the rest of state, " + JSON.stringify(this.state));
 
         if (this.props.userId) {
-            // API.getUser(this.props.userId).then(res => {
-                console.log(res);
+            API.getUser(this.props.userId).then(res => {
+                // console.log(res);
                 if (res.data && res.data.length) {
                     // console.log("Passed the Test");
                     const userInfo = res.data[0] != null ? res.data[0] : null;
