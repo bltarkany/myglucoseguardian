@@ -12,7 +12,7 @@ class MySummary extends Component {
     };
 
     componentDidMount() {
-        this.loadUser(this.props.match.params.id);
+        // this.loadUser(this.props.match.params.id);
     }
 
     loadUser = id => {

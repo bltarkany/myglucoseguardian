@@ -8,7 +8,6 @@ import { InputGroup, InputGroupAddon } from 'reactstrap';
 import { Submit, InfoInput } from '../components/Form/Form';
 // ============= API ===============
 import API from '../utils/API';
-// import { stat } from 'fs';
 
 
 class InfoUpdate extends Component {
@@ -30,7 +29,7 @@ class InfoUpdate extends Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
         console.log("Mounted", this.state.auth0_id);
 
         if (this.props.userId){
@@ -224,7 +223,7 @@ class InfoUpdate extends Component {
             
                     )
             case 1:
-                return <Redirect to='/test/:id' />
+                return <Redirect to='/summary/:id' />
             case 2:
                 return <Redirect to='/profile' />
             default:

@@ -18,7 +18,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Food from "./pages/Food";
-import MySummary from "./pages/MySummary/index";
+import MySummary from "./pages/MySummary";
 import Glucose from "./pages/Glucose";
 //==================================================================//
 
@@ -56,7 +56,7 @@ const App = () => {
                         <Route path="/" exact component={Home} />
                         <PrivateRoute path="/profile" component={Profile} />
                         {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
-                        <PrivateRoute path="/test/:id" render={()=>(<MySummary user={user.sub} />)} />
+                        <PrivateRoute path="/summary/:id" render={()=>(<MySummary user={user.sub} />)} />
                         <PrivateRoute path="/food" render={()=>(<Food user={user.sub} />)} />
                         <PrivateRoute path="/glucose/:id" render={()=>(<Glucose user={user.sub} />)} />
                         <PrivateRoute path="/test2/" component={Accordion} />
