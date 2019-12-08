@@ -55,9 +55,20 @@ module.exports = {
         return axios.post("/api/user/", obj);
     },
 
-    updateUser: function(id) {
-        console.log("grabbed user id", id);
-        return axios.put("api/user/" );
+    updateUser: function(obj) {
+        console.log("grabbed user id from object", obj.id);
+        let body = {
+            first_name: obj.first_name,
+            last_name: obj.last_name,
+            email: obj.email,
+            gender: obj.gender,
+            dob: obj.dob,
+            height: obj.height,
+            weight: obj.weight,
+            diabetes_type: obj.diabetes_type
+        };
+        console.log(body)
+        return axios.put("api/user/" + obj.id, body);
     },
 
     getUser: function(id) {

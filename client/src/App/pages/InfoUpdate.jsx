@@ -28,14 +28,14 @@ class InfoUpdate extends Component {
     }
 
     componentDidMount() {
-        console.log("Mounted", this.state.auth0_id);
-        console.log("Here's the rest of state, " + JSON.stringify(this.state));
+        // console.log("Mounted", this.state.auth0_id);
+        // console.log("Here's the rest of state, " + JSON.stringify(this.state));
 
         if (this.props.userId) {
-            API.getUser(this.props.userId).then(res => {
+            // API.getUser(this.props.userId).then(res => {
                 console.log(res);
                 if (res.data && res.data.length) {
-                    console.log("Passed the Test");
+                    // console.log("Passed the Test");
                     const userInfo = res.data[0] != null ? res.data[0] : null;
                     this.setState({
                         isCreated: true,
@@ -85,12 +85,12 @@ class InfoUpdate extends Component {
             weight: this.state.weight,
             diabetes_type: this.state.diabetes_type
         };
-        console.log("Obj to be submitted creating new user");
-        console.log(newUser);
+        // console.log("Obj to be submitted creating new user");
+        // console.log(newUser);
         API.createUser(newUser)
             .then(res => {
-                console.log(newUser);
-                console.log(res);
+                // console.log(newUser);
+                // console.log(res);
                 this.setState({ status: 1 });
             })
             .catch(err => {
@@ -100,6 +100,7 @@ class InfoUpdate extends Component {
 
     updateUser = () => {
         let updateUser = {
+            id: this.state.auth0_id,
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             email: this.state.email,
@@ -109,11 +110,12 @@ class InfoUpdate extends Component {
             weight: this.state.weight,
             diabetes_type: this.state.diabetes_type
         };
-        console.log(`Updating user ${this.state.auth0_id}`);
+        // console.log(`Updating user ${this.state.auth0_id}`);
         API.updateUser(updateUser)
             .then(res => {
-                console.log(res);
-                this.setState({ status: 2, isCreated: false });
+                // console.log(res);
+                this.setState({ status: 2 });
+                this.props.setIsCreated(false);
             })
             .catch(err => {
                 console.log(`User update error: ${err}`);
@@ -121,7 +123,6 @@ class InfoUpdate extends Component {
     };
 
     render() {
-        console.log("State of SignUp Page: " + JSON.stringify(this.state));
         switch (this.state.status) {
             case 0:
                 return (

@@ -23,6 +23,8 @@ const Profile = () => {
   const [isCreated, setIsCreated] = useState(false);
   const [userData, setUserData] = useState([]);
 
+
+
   useEffect( () => {
     if(!isCreated) {
       const getUserInfo = () => {
@@ -48,9 +50,9 @@ const Profile = () => {
     return <Loading />;
   }
 
-  console.log('user info: ' + JSON.stringify(user));
-  console.log('status of userData: ' + userData);
-  console.log('status of isCreated: ' + isCreated);
+  // console.log('user info: ' + JSON.stringify(user));
+  // console.log('status of userData: ' + userData);
+  // console.log('status of isCreated: ' + isCreated);
   return (
     <Container className="mb-5">
       <br></br>
@@ -90,7 +92,7 @@ const Profile = () => {
         <Card>
           <InfoUpdate
           userId={user.sub}
-          setIsCreated={isCreated} />
+          setIsCreated={setIsCreated} />
         </Card>
     </UncontrolledCollapse>
     <br></br>
