@@ -58,6 +58,50 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    aggregate: function (req, res) {
+        db.Glucose.aggregate( 
+            [ 
+               { 
+                  $match:{ 
+                    "auth0__id" : req.body.auth0__id,
+                     dateCollected:{ 
+                        $gte:"2019-11-02",
+                        $lt: "2019-12-05",
+                     }
+                  }
+               },
+               { 
+                  $group:{ 
+                     _id:"$auth0__id",
+                     periodAvg:{ 
+                        $avg:"$glucoseLevel"
+                     },
+                     periodTotal:{ 
+                        $sum:"$glucoseLevel"
+                     },
+                     periodMin:{ 
+                        $min:"$glucoseLevel"
+                     },
+                     periodMax:{ 
+                        $max:"$glucoseLevel"
+                     }
+                  }
+               },
+               { 
+                  $project:{ 
+                     _id:"$_id",
+                     periodAvg:"$periodAvg",
+                     periodTotal:"$periodTotal",
+                     periodMin:"$periodMin",
+                     periodMax:"$periodMax",
+                     auth0__id:"$_id"
+                  }
+               }
+            ]
+         )
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     remove: function (req, res) {
         db.Glucose
             .findById({
