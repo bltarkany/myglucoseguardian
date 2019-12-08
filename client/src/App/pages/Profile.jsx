@@ -23,33 +23,36 @@ const Profile = () => {
   const [isCreated, setIsCreated] = useState(false);
   const [userData, setUserData] = useState([]);
 
+
+
   useEffect( () => {
     if(!isCreated) {
-      getUserInfo();
+      const getUserInfo = () => {
+        console.log('User created an account previously, fetching info');
+        API.getUser(user.sub)
+          .then(res => {
+            console.log(res)
+            if(res.data && res.data.length) {
+              const userInfo = res.data[0] != null ? res.data[0] : null;
+              setUserData(userInfo);
+              setIsCreated(true);
+            }
+          })
+      };
+      getUserInfo();      
     }
-  }, [isCreated, getUserInfo]);
+  });
 
-  function getUserInfo () {
-    console.log('User created an account previously, fetching info');
-    API.getUser(user.sub)
-      .then(res => {
-        console.log(res)
-        if(res.data && res.data.length) {
-          const userInfo = res.data[0] != null ? res.data[0] : null;
-          setIsCreated(true);
-          setUserData(userInfo);
-        }
-      })
-  }
+  
   
 
   if (loading || !user) {
     return <Loading />;
   }
 
-  console.log('user info: ' + JSON.stringify(user));
-  console.log('status of userData: ' + userData);
-  console.log('status of isCreated: ' + isCreated);
+  // console.log('user info: ' + JSON.stringify(user));
+  // console.log('status of userData: ' + userData);
+  // console.log('status of isCreated: ' + isCreated);
   return (
     <Container className="mb-5">
       <br></br>
@@ -89,7 +92,7 @@ const Profile = () => {
         <Card>
           <InfoUpdate
           userId={user.sub}
-          setIsCreated={isCreated} />
+          setIsCreated={setIsCreated} />
         </Card>
     </UncontrolledCollapse>
     <br></br>

@@ -18,7 +18,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Food from "./pages/Food";
-import MySummary from "./pages/MySummary/index";
+import MySummary from "./pages/MySummary";
 import Glucose from "./pages/Glucose";
 //==================================================================//
 

@@ -47,22 +47,33 @@ module.exports = {
             });
     },
     createFood: function(obj){
-        console.log("grabbed food", obj)
+        // console.log("grabbed food", obj)
         return axios.post("api/food/", obj)
     },
     createUser: function(obj) {
-        console.log("grabbed obj",  obj);
+        // console.log("grabbed obj",  obj);
         return axios.post("/api/user/", obj);
     },
 
-    updateUser: function(id) {
-        console.log("grabbed user id", id);
-        return axios.put("api/user/" + id);
+    updateUser: function(obj) {
+        // console.log("grabbed user id from object", obj.id);
+        let body = {
+            first_name: obj.first_name,
+            last_name: obj.last_name,
+            email: obj.email,
+            gender: obj.gender,
+            dob: obj.dob,
+            height: obj.height,
+            weight: obj.weight,
+            diabetes_type: obj.diabetes_type
+        };
+        // console.log(body)
+        return axios.put("api/user/" + obj.id, body);
     },
 
     getUser: function(id) {
-        console.log(id + " has entered API call");
-        console.log(axios.get("/api/user/" + id));
+        // console.log(id + " has entered API call");
+        // console.log(axios.get("/api/user/" + id));
         return axios.get("/api/user/" + id);
     },
 
