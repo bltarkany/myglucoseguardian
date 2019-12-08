@@ -24,9 +24,8 @@ const Profile = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect( () => {
-    if(isCreated) {
+    if(!isCreated) {
       getUserInfo();
-      setIsCreated(true);
     }
   }, [isCreated, getUserInfo]);
 
@@ -37,6 +36,7 @@ const Profile = () => {
         console.log(res)
         if(res.data && res.data.length) {
           const userInfo = res.data[0] != null ? res.data[0] : null;
+          setIsCreated(true);
           setUserData(userInfo);
         }
       })
