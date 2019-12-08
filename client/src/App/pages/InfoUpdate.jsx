@@ -42,16 +42,19 @@ class InfoUpdate extends Component {
                     this.setState({ isCreated: true });
                     const userInfo = res.data[0] != null ? res.data[0] : null;
 
-                    this.setState({ user: userInfo });
-                    this.setState({ first_name: this.state.first_name });
-                    this.setState({ last_name: this.state.last_name });
-                    this.setState({ email: this.state.email });
-                    this.setState({ gender:  this.state.gender });
-                    this.setState({ dob: this.state.dob });
-                    this.setState({ height: this.state.height });
-                    this.setState({ weight: this.state.weight });
-                    this.setState({ diabetes_type: this.state.diabetes_type });
-                    this.setState({ auth0_id: this.state.auth0_id });
+                    this.setState({ 
+                        user: userInfo,
+                        first_name: this.state.first_name,
+                        last_name: this.state.last_name,
+                        email: this.state.email,
+                        gender:  this.state.gender,
+                        dob: this.state.dob,
+                        height: this.state.height,
+                        weight: this.state.weight,
+                        diabetes_type: this.state.diabetes_type,
+                        auth0_id: this.state.auth0_id
+                    });
+                   
                 }
             })
         }
@@ -112,11 +115,13 @@ class InfoUpdate extends Component {
             diabetes_type: this.state.diabetes_type
         };
         console.log(`Updating user ${this.state.auth0_id}`);
-        API.updateUser(this.state.auth0_id)
+        API.updateUser(this.state.auth0_id, updateUser)
         .then(res =>{
             console.log(res);
-            this.setState({ status: 2 });
-            this.props.setIsUpdated(false);
+            this.setState({
+                isCreated: false, 
+                status: 2                
+             });
         }).catch(err => {
             console.log(`User update error: ${err}`);
         });

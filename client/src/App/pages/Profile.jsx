@@ -24,23 +24,24 @@ const Profile = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect( () => {
-    if(isCreated) {
-      getUserInfo();
-      setIsCreated(true);
+    if(!isCreated) {
+      const getUserInfo = () => {
+        console.log('User created an account previously, fetching info');
+        API.getUser(user.sub)
+          .then(res => {
+            console.log(res)
+            if(res.data && res.data.length) {
+              const userInfo = res.data[0] != null ? res.data[0] : null;
+              setUserData(userInfo);
+              setIsCreated(true);
+            }
+          })
+      };
+      getUserInfo();      
     }
-  }, [isCreated, getUserInfo]);
+  });
 
-  function getUserInfo () {
-    console.log('User created an account previously, fetching info');
-    API.getUser(user.sub)
-      .then(res => {
-        console.log(res)
-        if(res.data && res.data.length) {
-          const userInfo = res.data[0] != null ? res.data[0] : null;
-          setUserData(userInfo);
-        }
-      })
-  }
+  
   
 
   if (loading || !user) {

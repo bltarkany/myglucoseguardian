@@ -57,7 +57,7 @@ module.exports = {
 
     updateUser: function(id) {
         console.log("grabbed user id", id);
-        return axios.put("api/user/" + id);
+        return axios.put("api/user/" );
     },
 
     getUser: function(id) {
