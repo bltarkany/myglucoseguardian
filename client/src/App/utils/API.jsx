@@ -49,31 +49,48 @@ module.exports = {
             });
     },
     createFood: function(obj){
-        console.log("grabbed food", obj)
-        return axios.post("api/food/", obj)
+        let body = {
+            meal: obj.meal,
+            mealTime: obj.mealTime,
+            calories: obj.calories,
+            fats: obj.fats,
+            carbs: obj.carbs,
+            sugar: obj.sugar,
+            dietFiber: obj.dietFiber,
+            proteins: obj.proteins,
+            auth0_id: obj.id
+        }
+        return axios.post("/api/food/", body);
     },
     createUser: function(obj) {
         console.log("grabbed obj",  obj);
         return axios.post("/api/user/", obj);
     },
 
-    updateUser: function(id) {
-        console.log("grabbed user id", id);
-        return axios.put("api/user/" + id);
+    updateUser: function(obj) {
+        
+        let body = {
+            first_name: obj.first_name,
+            last_name: obj.last_name,
+            email: obj.email,
+            gender: obj.gender,
+            dob: obj.dob,
+            height: obj.height,
+            weight: obj.weight,
+            diabetes_type: obj.diabetes_type
+        };
+        
+        return axios.put("/api/user/" + obj.id, body);
     },
 
     getUser: function(id) {
-        console.log(id + " has entered API call");
+        
         return axios.get("/api/user/" + id);
     },
 
-    loadUserLogs: function(glucoseUserID, dateString) {
-        let apiString = "/api/Glucose/" + glucoseUserID + "/" + dateString;
-        axios.get(apiString)
-            .then(res => {
-                console.log(res.data);
-            })
-        return axios.get(apiString);
+    getLogsForSingleDate: function(obj) {
+       
+        return axios.get(`/api/glucose/${obj.id}/${obj.date}`);
     },
 
     //see if I can factor this into glucose pages call
@@ -99,12 +116,15 @@ module.exports = {
         return axios.post("/api/glucose/aggregate/", body)
     },
 
-    submitNewGlucoseLog: function(glucoseUserID, glucoseLevel,dateString,timeString){
-        // %3A is ASCII for ':' which is not thrown into the URL (colons usually reserved for port definitions)
-        let cleanTimeString = timeString.replace(":", "%3A")
-        let apiString = "/api/Glucose/" + glucoseUserID + "/" + glucoseLevel + "/" + dateString + "/" + cleanTimeString;
-        console.log(glucoseUserID + " has entered getGlucoseLogCharts API call");
-        console.log(apiString) 
-        return axios.post(apiString);
+    submitNewGlucoseLog: function(obj){
+        
+        let body = {
+            id: obj.id,
+            date: obj.date,
+            time: obj.time,
+            glucoseLevel: obj.glucoseLevel
+        }
+       
+        return axios.post("/api/glucose/levels", body);
     }
 };
