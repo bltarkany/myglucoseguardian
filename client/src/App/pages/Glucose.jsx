@@ -138,7 +138,7 @@ class Glucose extends Component {
     render() {
         
         return (
-            <Container>
+            <Container style={{ height: "100%" }}>
                 <br />
                 <Row>
                     <Col xs="12" sm="12">

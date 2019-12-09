@@ -37,9 +37,9 @@ const NavBar = () => {
 
   return (
     <div className="nav-container">
-      <Navbar style={{ backgroundColor: '#d7c0d0'}} light expand="md">
+      <Navbar style={{ backgroundColor: '#db616a'}} light expand="md">
         <Container>
-          <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo}></img>
+          <FontAwesomeIcon className="fal fa-shield-alt" style={{ color: "#a43134"}} />
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
@@ -49,8 +49,9 @@ const NavBar = () => {
                   to="/"
                   exact
                   // activeClassName="router-link-exact-active"
+                  className="text-center"
                 >
-                  Home
+                  <strong><h1>Glucose Guardian</h1></strong>
                 </NavLink>
               </NavItem>
             </Nav>
