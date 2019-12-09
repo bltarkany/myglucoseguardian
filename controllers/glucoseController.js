@@ -1,3 +1,5 @@
+//glucose controller
+
 const db = require("../models");
 
 module.exports = {
@@ -34,6 +36,18 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findByAuthIdAndStartEndDate: function (req,res) {
+        db.Glucose
+        .find({
+            "auth0__id": req.params.id,
+            "dateCollected" :{ 
+               $gte: req.params.start_Date,
+               $lt:  req.params.end_Date
+            } 
+        })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
     createNewRecord: function (req, res) {
         db.Glucose
             .create({
@@ -60,14 +74,15 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     aggregate: function (req, res) {
+        console.log(req.body)
         db.Glucose.aggregate( 
             [ 
                { 
                   $match:{ 
-                    "auth0__id" : req.body.auth0__id,
-                     dateCollected:{ 
-                        $gte:"2019-11-02",
-                        $lt: "2019-12-05",
+                    "auth0__id" : req.body.id,
+                     "dateCollected" :{ 
+                        $gte: req.body.start_Date,
+                        $lt:  req.body.end_Date
                      }
                   }
                },

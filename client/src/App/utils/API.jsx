@@ -1,3 +1,5 @@
+//api
+
 // require path to env -- prevent conflicts with react env
 require("dotenv").config({ path: "../../../.env" });
 // import keys file
@@ -68,10 +70,8 @@ module.exports = {
     },
 
     createUser: function(obj) {
-        // console.log("grabbed obj",  obj);
         return axios.post("/api/user/", obj);
     },
-
     updateUser: function(obj) {
         
         let body = {
@@ -84,27 +84,39 @@ module.exports = {
             weight: obj.weight,
             diabetes_type: obj.diabetes_type
         };
-        
         return axios.put("/api/user/" + obj.id, body);
     },
 
     getUser: function(id) {
-        
         return axios.get("/api/user/" + id);
     },
 
     getLogsForSingleDate: function(obj) {
-       
         return axios.get(`/api/glucose/${obj.id}/${obj.date}`);
     },
 
-    getGlucoseInput: function(id) {
-        
-        return axios.get(`/api/glucose/${id}`);
+    //see if I can factor this into glucose pages call
+    getLogsForDateRange: function(obj){
+        let body = {
+            id : obj.id,
+            start_Date : obj.start_Date,
+            end_Date : obj.end_Date
+        }
+        console.log('package recieved', body);
+        return axios.get(`/api/glucose/${body.id}/${body.start_Date}/${body.end_Date}/`)
+    },
+
+    getAggregatedDataForDateRange: function(obj){
+        let body = {
+            id : obj.id,
+            start_Date : obj.start_Date,
+            end_Date : obj.end_Date
+        }
+        console.log('package recieved', body);
+        return axios.post("/api/glucose/aggregate/", body)
     },
 
     submitNewGlucoseLog: function(obj){
-        
         let body = {
             id: obj.id,
             date: obj.date,
