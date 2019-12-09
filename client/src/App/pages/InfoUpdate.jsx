@@ -292,7 +292,7 @@ class InfoUpdate extends Component {
                     </Container>
                 );
             case 1:
-                return <Redirect to="/mysummary" />;
+                return <Redirect to="/mySummary" />;
             case 2:
                 return <Redirect to="/profile" />;
             default:

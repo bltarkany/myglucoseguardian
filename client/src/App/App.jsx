@@ -56,7 +56,7 @@ const App = () => {
                         <Route path="/" exact component={Home} />
                         <PrivateRoute path="/profile" component={Profile} />
                         {/* Use /test to view your experimental components. Just swap out "Header" for whatever component you're building"*/}
-                        <PrivateRoute path="/mysummary" render={()=>(<MySummary user={user.sub} />)} />
+                        <PrivateRoute path="/mySummary" render={()=>(<MySummary user={user.sub} />)} />
                         <PrivateRoute path="/food" render={()=>(<Food user={user.sub} />)} />
                         <PrivateRoute path="/glucose" render={()=>(<Glucose user={user.sub} />)} />
                         <PrivateRoute path="/test2/" component={Accordion} />

@@ -25,6 +25,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     findByAuthIdAndDate: function (req, res) {
+        console.log(req.body);
         db.Glucose
             .find({
                 "auth0__id": req.params.id,
@@ -36,10 +37,10 @@ module.exports = {
     createNewRecord: function (req, res) {
         db.Glucose
             .create({
-                "glucoseLevel": req.params.glucoseLevel,
-                "dateCollected": req.params.date,
-                "timeCollected":req.params.time,
-                "auth0__id":req.params.id
+                "glucoseLevel": req.body.glucoseLevel,
+                "dateCollected": req.body.date,
+                "timeCollected": req.body.time,
+                "auth0__id": req.body.id
             })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

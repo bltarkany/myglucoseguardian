@@ -48,7 +48,7 @@ module.exports = {
     },
     createFood: function(obj){
         // console.log("grabbed food", obj)
-        return axios.post("api/food/", obj)
+        return axios.post("/api/food/", obj);
     },
     createUser: function(obj) {
         // console.log("grabbed obj",  obj);
@@ -56,7 +56,7 @@ module.exports = {
     },
 
     updateUser: function(obj) {
-        // console.log("grabbed user id from object", obj.id);
+        
         let body = {
             first_name: obj.first_name,
             last_name: obj.last_name,
@@ -67,37 +67,34 @@ module.exports = {
             weight: obj.weight,
             diabetes_type: obj.diabetes_type
         };
-        // console.log(body)
-        return axios.put("api/user/" + obj.id, body);
+        
+        return axios.put("/api/user/" + obj.id, body);
     },
 
     getUser: function(id) {
-        // console.log(id + " has entered API call");
-        // console.log(axios.get("/api/user/" + id));
+        
         return axios.get("/api/user/" + id);
     },
 
-    loadUserLogs: function(glucoseUserID, dateString) {
-        let apiString = "/api/Glucose/" + glucoseUserID + "/" + dateString;
-        axios.get(apiString)
-            .then(res => {
-                console.log(res.data);
-            })
-        return axios.get(apiString);
+    loadUserLogs: function(obj) {
+       
+        return axios.get(`/api/glucose/${obj.id}/${obj.date}`);
     },
 
-    getGlucoseInput: function(glucoseID) {
-        console.log(glucoseID + " has entered getGlucoseLogCharts API call");
-        // console.log(axios.get("/api/GlucoseChart/" + glucoseID));
-        return axios.get("/api/Glucose/" + glucoseID);
+    getGlucoseInput: function(id) {
+        
+        return axios.get(`/api/glucose/${id}`);
     },
 
-    submitNewGlucoseLog: function(glucoseUserID, glucoseLevel,dateString,timeString){
-        // %3A is ASCII for ':' which is not thrown into the URL (colons usually reserved for port definitions)
-        let cleanTimeString = timeString.replace(":", "%3A")
-        let apiString = "/api/Glucose/" + glucoseUserID + "/" + glucoseLevel + "/" + dateString + "/" + cleanTimeString;
-        console.log(glucoseUserID + " has entered getGlucoseLogCharts API call");
-        console.log(apiString) 
-        return axios.post(apiString);
+    submitNewGlucoseLog: function(obj){
+        
+        let body = {
+            id: obj.id,
+            date: obj.date,
+            time: obj.time,
+            glucoseLevel: obj.glucoseLevel
+        }
+       
+        return axios.post("/api/glucose/levels", body);
     }
 };
