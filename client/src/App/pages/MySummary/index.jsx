@@ -6,6 +6,7 @@ import { Container, Row, Col } from "../../components/Grid/index";
 import "../../components/Footer/Footer.css";
 import API from "../../utils/API";
 import { format } from "path";
+import Linegraph from "../../components/Linegraph";
 
 class MySummary extends Component {
     constructor(props) {
@@ -19,6 +20,9 @@ class MySummary extends Component {
             glucoseAvg: null,
             glucoseMin: null,
             glucoseMax: null,
+            emptyDataSet: null,
+            glucoseLevelArr: null,
+            glucoseTimeStampArr: null,
             dateRange: "today",
             // for custom date ranges
             startDate: "",
@@ -61,7 +65,13 @@ class MySummary extends Component {
             end_Date: endDate
         };
 
-        console.log("User: " + id + " has entered loadUser.");
+        this.loadMySummaryUser(id);
+        this.loadMySummaryAggregateData(summaryObj);
+        this.loadMySummaryLogs(summaryObj);
+    };
+
+    loadMySummaryUser = id => {
+        console.log("User: " + id + " has entered loadMySummaryUser.");
         API.getUser(id)
             .then(res => {
                 console.log("promise received");
@@ -71,22 +81,51 @@ class MySummary extends Component {
                 });
             })
             .catch(err => console.log(err));
+    };
+
+    loadMySummaryAggregateData = summaryObj => {
+        console.log(
+            "Obj: " + summaryObj + " has entered loadMySummaryAggregateData."
+        );
         API.getAggregatedDataForDateRange(summaryObj)
             .then(res => {
-                console.log(res.data[0]);
-                this.setState({
-                    glucoseSum: res.data[0].periodTotal,
-                    glucoseAvg: res.data[0].periodAvg,
-                    glucoseMin: res.data[0].periodMin,
-                    glucoseMax: res.data[0].periodMax
-                });
+                console.log(res.data);
+                if (res.data.length) {
+                    this.setState({
+                        glucoseSum: res.data[0].periodTotal,
+                        glucoseAvg:
+                            Math.round(100 * res.data[0].periodAvg) / 100, //rounds to nearest hundredth
+                        glucoseMin: res.data[0].periodMin,
+                        glucoseMax: res.data[0].periodMax,
+                        emptyDataSet: false
+                    });
+                } else {
+                    this.setState({
+                        glucoseSum: 0,
+                        glucoseAvg: 0,
+                        glucoseMin: 0,
+                        glucoseMax: 0,
+                        emptyDataSet: true
+                    });
+                }
             })
             .catch(err => console.log(err));
+    };
+
+    loadMySummaryLogs = summaryObj => {
+        console.log("Obj: " + summaryObj + " has entered loadMySummaryLogs.");
         API.getLogsForDateRange(summaryObj)
             .then(res => {
+                console.log("This is the data you're looking for");
                 console.log(res.data);
                 this.setState({
-                    glucoseInput: res.data
+                    glucoseInput: res.data,
+                    glucoseLevelArr: res.data.map(level => {
+                        return level.glucoseLevel;
+                    }),
+                    glucoseTimeStampArr: res.data.map(time => {
+                        return time.timeCollected;
+                    })
                 });
             })
             .catch(err => console.log(err));
@@ -112,31 +151,23 @@ class MySummary extends Component {
                     <Col size="sm-12"></Col>
                 </Row>
 
-                <Row className="chart.js mockup">
+                <Row
+                >
                     <Col size="sm-12">
-                        <div
-                            style={{
-                                width: "300px",
-                                height: "400px",
-                                border: "1px solid #000",
-                                margin: "auto",
-                                marginTop: "25px",
-                                marginBottom: "25px"
-                            }}
-                        >
-                            <h5>Hello {this.state.userInfo.first_name}</h5>
-                            <h5>
-                                This is your email {this.state.userInfo.email}
-                            </h5>
-                            <h5>avg: {this.state.glucoseAvg}</h5>
-                            <h5>sum: {this.state.glucoseSum}</h5>
-                            <h5>min: {this.state.glucoseMin}</h5>
-                            <h5>max: {this.state.glucoseMax}</h5>
-                        </div>
+                        <header>
+                            <h1 style={{ textAlign: "center" }}>
+                                Sales Dashboard
+                            </h1>
+                        </header>
+                        <Linegraph
+                            glucoseLevelArr={this.state.glucoseLevelArr}
+                            glucoseTimeStampArr={this.state.glucoseTimeStampArr}
+                        />
                     </Col>
                 </Row>
+                <br />
                 <Row>
-                    <Col size="sm-8">
+                    <Col size="sm-12">
                         <Form>
                             <FormGroup>
                                 <Label>Start Date:</Label>
