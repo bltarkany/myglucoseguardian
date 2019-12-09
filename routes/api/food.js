@@ -13,4 +13,9 @@ router
     .put(foodController.update)
     .delete(foodController.remove);
 
+// matches with "/api/food/:id/:date"
+router
+    .route("/:id/:date")
+    .get(foodController.findByAuthIdAndDate)
+
 module.exports = router;

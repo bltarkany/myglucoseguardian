@@ -47,8 +47,18 @@ module.exports = {
             });
     },
     createFood: function(obj){
-        // console.log("grabbed food", obj)
-        return axios.post("/api/food/", obj);
+        let body = {
+            meal: obj.meal,
+            mealTime: obj.mealTime,
+            calories: obj.calories,
+            fats: obj.fats,
+            carbs: obj.carbs,
+            sugar: obj.sugar,
+            dietFiber: obj.dietFiber,
+            proteins: obj.proteins,
+            auth0_id: obj.id
+        }
+        return axios.post("/api/food/", body);
     },
     createUser: function(obj) {
         // console.log("grabbed obj",  obj);
@@ -76,7 +86,7 @@ module.exports = {
         return axios.get("/api/user/" + id);
     },
 
-    loadUserLogs: function(obj) {
+    getLogsForSingleDate: function(obj) {
        
         return axios.get(`/api/glucose/${obj.id}/${obj.date}`);
     },

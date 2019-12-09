@@ -11,7 +11,7 @@ var foodSchema = new Schema({
     type: String,
     required: true
   },
-  DateEntered: {
+  dateEntered: {
     type: Date,
     default: Date.now,
     required: true
