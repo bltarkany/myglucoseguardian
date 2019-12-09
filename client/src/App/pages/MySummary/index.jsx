@@ -7,6 +7,7 @@ import "../../components/Footer/Footer.css";
 import API from "../../utils/API";
 import { format } from "path";
 import Linegraph from "../../components/Linegraph";
+import Title from "../../components/Title/Title";
 
 class MySummary extends Component {
     constructor(props) {
@@ -147,27 +148,66 @@ class MySummary extends Component {
         console.log("STATE OF MySummary", this.state);
         return (
             <Container fluid>
+                <br/>
                 <Row>
-                    <Col size="sm-12"></Col>
-                </Row>
-
-                <Row
-                >
                     <Col size="sm-12">
-                        <header>
+                        <Title>
                             <h1 style={{ textAlign: "center" }}>
-                                Sales Dashboard
+                                Hello {this.state.userInfo.first_name}
                             </h1>
-                        </header>
+                            <h4 style={{ textAlign: "center" }}>
+                                Your summary!
+                            </h4>
+                        </Title>
+                    </Col>
+                </Row>
+                <br/>
+                <Row>
+                    <Col size="sm-1" style={{ top: "50%" }}>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h5 style={{ textAlign: "center" }}>Sum</h5>
+                        <p style={{ textAlign: "center" }}>
+                            {this.state.glucoseSum}
+                        </p>
+                        <h5 style={{ textAlign: "center" }}>Avg</h5>
+                        <p style={{ textAlign: "center" }}>
+                            {this.state.glucoseAvg}
+                        </p>
+                    </Col>
+                    <Col size="sm-10">
                         <Linegraph
                             glucoseLevelArr={this.state.glucoseLevelArr}
                             glucoseTimeStampArr={this.state.glucoseTimeStampArr}
                         />
                     </Col>
+                    <Col size="sm-1">
+                    <Col size="sm-1" style={{ top: "50%" }}>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h5 style={{ textAlign: "center" }}>Min</h5>
+                        <p style={{ textAlign: "center" }}>
+                            {this.state.glucoseMax}
+                        </p>
+                        <h5 style={{ textAlign: "center" }}>Max</h5>
+                        <p style={{ textAlign: "center" }}>
+                            {this.state.glucoseMax}
+                        </p>
+                    </Col>
+                    </Col>
                 </Row>
                 <br />
                 <Row>
                     <Col size="sm-12">
+                        <h4>View your logs!</h4>
                         <Form>
                             <FormGroup>
                                 <Label>Start Date:</Label>
