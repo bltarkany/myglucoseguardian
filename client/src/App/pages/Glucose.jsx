@@ -34,7 +34,7 @@ class Glucose extends Component {
 
 
     componentDidMount() {
-        console.log(this.state.auth0_id);
+        // console.log(this.state.auth0_id);
         this.loadUser(this.state.auth0_id);
     };
 
@@ -49,13 +49,20 @@ class Glucose extends Component {
     // handle submit of the search request for logs
     handleFormSubmit = event => {
         event.preventDefault();
+        this.logs();
+    };
+
+    // grab logs for a specific date
+    logs = () => {
+        let search = {
+            id: this.state.auth0_id,
+            date: this.state.searchDate
+        };
+        // console.log(search);
         // if user is successfully logged in and entered a search date
         if (this.state.auth0_id && this.state.searchDate) {
-            console.log("Entered this date", this.state.searchDate);
-            API.loadUserLogs(
-                this.state.auth0_id,
-                this.state.searchDate
-            )
+            
+            API.loadUserLogs(search)
                 .then(res => {
                     // if API returns data, set state
                     if (res.data.length) {
@@ -76,33 +83,33 @@ class Glucose extends Component {
                 glucoseInput: null
             });
         }
-    };
+    }
 
     // handle glucose input submit
     handleSubmit = event => {
         event.preventDefault();
+        this.entry();
+    };
 
+    // glucose log entry
+    entry = () => {
+        let newEntry = {
+            id: this.state.auth0_id,
+            date: this.state.day,
+            time: this.state.time,
+            glucoseLevel: this.state.glucoseLevel
+        };
+       
         if (
             this.state.auth0_id &&
             this.state.glucoseLevel &&
             this.state.day &&
             this.state.time
         ) {
-            console.log(
-                this.state.auth0_id,
-                this.state.glucoseLevel,
-                this.state.day,
-                this.state.time
-            );
-            API.submitNewGlucoseLog(
-                this.state.auth0_id,
-                this.state.glucoseLevel,
-                this.state.day,
-                this.state.time
-            )
+            API.submitNewGlucoseLog(newEntry)
                 .then(res => {
                     console.log("Successful push to Database!");
-                    console.log(res.data);
+                    // console.log(res.data);
                     this.setState({
                         glucoseLevel: 0,
                         day: "",
@@ -117,22 +124,19 @@ class Glucose extends Component {
 
     // Changes user state on loadup
     loadUser = id => {
-        console.log("User: " + id + " has entered loadUser.");
+        // console.log("User: " + id + " has entered loadUser.");
         API.getUser(id)
             .then(res => {
-                console.log("promise received");
-                console.log(res.data);
-
+               
                 this.setState({
                     userInfo: res.data
                 });
-                //this.loadUserGlucoseLogs(res.data.auth0__id);
             })
             .catch(err => console.log(err));
     };
 
     render() {
-        console.log("STATE OF GLU", this.state);
+        
         return (
             <Container>
                 <br />

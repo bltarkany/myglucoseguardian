@@ -13,13 +13,14 @@ router
     .put(glucoseController.update)
     .delete(glucoseController.remove);
 
+//Matches with "/api/glucose/:id/:date" 
 router
     .route("/:id/:date")
     .get(glucoseController.findByAuthIdAndDate)
     .put(glucoseController.update)
     .delete(glucoseController.remove);
 router
-    .route("/:id/:glucoseLevel/:date/:time")
+    .route("/levels")
     .post(glucoseController.createNewRecord)
     .put(glucoseController.update)
     .delete(glucoseController.remove);
