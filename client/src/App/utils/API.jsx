@@ -1,3 +1,5 @@
+//api
+
 // require path to env -- prevent conflicts with react env
 require("dotenv").config({ path: "../../../.env" });
 // import keys file
@@ -47,33 +49,21 @@ module.exports = {
             });
     },
     createFood: function(obj){
-        // console.log("grabbed food", obj)
+        console.log("grabbed food", obj)
         return axios.post("api/food/", obj)
     },
     createUser: function(obj) {
-        // console.log("grabbed obj",  obj);
+        console.log("grabbed obj",  obj);
         return axios.post("/api/user/", obj);
     },
 
-    updateUser: function(obj) {
-        // console.log("grabbed user id from object", obj.id);
-        let body = {
-            first_name: obj.first_name,
-            last_name: obj.last_name,
-            email: obj.email,
-            gender: obj.gender,
-            dob: obj.dob,
-            height: obj.height,
-            weight: obj.weight,
-            diabetes_type: obj.diabetes_type
-        };
-        // console.log(body)
-        return axios.put("api/user/" + obj.id, body);
+    updateUser: function(id) {
+        console.log("grabbed user id", id);
+        return axios.put("api/user/" + id);
     },
 
     getUser: function(id) {
-        // console.log(id + " has entered API call");
-        // console.log(axios.get("/api/user/" + id));
+        console.log(id + " has entered API call");
         return axios.get("/api/user/" + id);
     },
 
@@ -86,10 +76,27 @@ module.exports = {
         return axios.get(apiString);
     },
 
-    getGlucoseInput: function(glucoseID) {
-        console.log(glucoseID + " has entered getGlucoseLogCharts API call");
-        // console.log(axios.get("/api/GlucoseChart/" + glucoseID));
-        return axios.get("/api/Glucose/" + glucoseID);
+    //see if I can factor this into glucose pages call
+    getLogsForDateRange: function(obj){
+        console.log('package recieved', obj)
+        let body = {
+            id : obj.id,
+            start_Date : obj.start_Date,
+            end_Date : obj.end_Date
+        }
+        console.log(body);
+        return axios.get(`/api/glucose/${body.id}/${body.start_Date}/${body.end_Date}/`)
+    },
+
+    getAggregatedDataForDateRange: function(obj){
+        console.log('package recieved', obj)
+        let body = {
+            id : obj.id,
+            start_Date : obj.start_Date,
+            end_Date : obj.end_Date
+        }
+        console.log(body);
+        return axios.post("/api/glucose/aggregate/", body)
     },
 
     submitNewGlucoseLog: function(glucoseUserID, glucoseLevel,dateString,timeString){
