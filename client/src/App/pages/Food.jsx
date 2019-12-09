@@ -25,14 +25,12 @@ class Food extends Component {
             search: "",
             foodList: null,
             item: this.emptyItem(),
-            name: "",
-            brand: "",
             calories: 0,
-            totalFat: 0,
+            fats: 0,
             carbs: 0,
-            dietaryFiber: 0,
-            sugars: 0,
-            protein: 0,
+            dietFiber: 0,
+            sugar: 0,
+            proteins: 0,
             mealTime: "",
             auth0_id: this.props.user
         };
@@ -93,16 +91,44 @@ class Food extends Component {
         });
     };
 
+    // custom food log insert
+    createFood = () => {
+        let foodLog = {
+            meal: "custom",
+            mealTime: this.state.mealTime,
+            calories: this.state.calories,
+            fats: this.state.fats,
+            carbs: this.state.carbs,
+            sugar: this.state.sugar,
+            dietFiber: this.state.dietFiber,
+            proteins: this.state.proteins,
+            id: this.state.auth0_id
+        };
+        // console.log(foodLog);
+        API.createFood(foodLog)
+        .then(res => {
+            console.log(`Database creation success`);
+           
+        }).catch(err => {
+            console.log(err)
+        });
+        this.setState({
+            mealTime: "",
+            calories: 0,
+            fats: 0,
+            carbs: 0,
+            sugar: 0,
+            dietFiber: 0,
+            proteins: 0
+        });
+    };
+
     // handle push food item to the database
     handleSubmit = event => {
         event.preventDefault();
-        let foodLog = {
-            meal: "celery",
-            mealTime: this.state.mealTime,
-            calories: this.state.calories,
-            fats: this.state.fats
-        }
+        this.createFood();
     };
+
 
     // handle input change of the search
     handleInputChange = event => {
@@ -182,7 +208,7 @@ class Food extends Component {
                             
                                         <Label>Sugars</Label>
                                         <InfoInput
-                                        name="sugars" value={this.state.sugars}
+                                        name="sugar" value={this.state.sugar}
                                         onChange={this.handleInputChange}
                                         type="number" />
                                     </FormGroup>
@@ -191,19 +217,19 @@ class Food extends Component {
                                     <FormGroup>
                                         <Label>Total Fats</Label>
                                         <InfoInput 
-                                        name="totalFat" value={this.state.totalFat}
+                                        name="fats" value={this.state.fats}
                                         onChange={this.handleInputChange}
                                         type="number" />
 
                                         <Label>Dietary Fiber</Label>
                                         <InfoInput 
-                                        name="dietaryFiber" value={this.state.dietaryFiber}
+                                        name="dietFiber" value={this.state.dietFiber}
                                         onChange={this.handleInputChange}
                                         type="number" />
                                         
                                         <Label>Proteins</Label>
                                         <InfoInput 
-                                        name="protein" value={this.state.protein}
+                                        name="proteins" value={this.state.proteins}
                                         onChange={this.handleInputChange}
                                         type="number" />
                                     </FormGroup>
@@ -212,15 +238,10 @@ class Food extends Component {
                                 <Row>
                                     <Col xs="12" sm="12">
                                     <FormGroup>
-                                        <Label>Which meal was this?</Label>
-                                        <Input type="select" name="mealTime"
+                                        <Label>What time was this meal?</Label>
+                                        <Input type="time" name="mealTime"
                                         value={this.state.mealTime}
                                         onChange={this.handleInputChange} >
-                                        <option defaultValue>Options</option>
-                                        <option value="breakfast">Breakfast</option>
-                                        <option value="lunch">Lunch</option>
-                                        <option value="dinner">Dinner</option>
-                                        <option value="snack">Snack</option>
                                         </Input>
                                     </FormGroup>
                                     </Col>

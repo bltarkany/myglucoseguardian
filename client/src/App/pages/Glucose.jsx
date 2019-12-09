@@ -62,7 +62,7 @@ class Glucose extends Component {
         // if user is successfully logged in and entered a search date
         if (this.state.auth0_id && this.state.searchDate) {
             
-            API.loadUserLogs(search)
+            API.getLogsForSingleDate(search)
                 .then(res => {
                     // if API returns data, set state
                     if (res.data.length) {

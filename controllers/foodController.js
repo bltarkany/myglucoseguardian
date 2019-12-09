@@ -13,6 +13,15 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByAuthIdAndDate: function(req, res) {
+    db.Food
+      .find({
+        "auth0__id": req.params.id,
+        "dateEntered": req.params.date
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.Food
       .create(req.body)
