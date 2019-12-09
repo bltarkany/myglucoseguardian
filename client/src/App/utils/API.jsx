@@ -46,6 +46,7 @@ module.exports = {
                 return res.data.foods;
             });
     },
+
     createFood: function(obj){
         let body = {
             meal: obj.meal,
@@ -60,6 +61,12 @@ module.exports = {
         }
         return axios.post("/api/food/", body);
     },
+
+    // grab food logs for summary
+    foodLogs: function(obj) {
+        return axios.get(`/api/food/${obj.id}/${obj.date}`);
+    },
+
     createUser: function(obj) {
         // console.log("grabbed obj",  obj);
         return axios.post("/api/user/", obj);
